@@ -1,0 +1,30 @@
+export const ATTRIBUTES = new Map<string, number>([
+    [
+        'Atractivo',
+        0
+    ],
+    [
+        'Combate',
+        0
+    ],
+    [
+        'Intelecto',
+        0
+    ],
+    [
+        'Fortaleza',
+        0
+    ],
+    [
+        'Precisión',
+        0
+    ],
+    [
+        'Sentidos',
+        0
+    ],
+    [
+        'Mente',
+        0
+    ],
+])
