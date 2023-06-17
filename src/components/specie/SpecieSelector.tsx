@@ -6,6 +6,7 @@ import { SelectedSpecie } from "../../data/types/specie.type";
 
 export default function SpecieSelector() {
     const [specie, setSpecie] = useState({} as SelectedSpecie);
+
     return (
         <Container>
             <Grid container spacing={2}>
