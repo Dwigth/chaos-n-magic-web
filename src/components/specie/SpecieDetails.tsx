@@ -3,6 +3,10 @@ import { SelectedSpecie } from "../../data/types/specie.type";
 import VelocitiesList from "./VelocitiesList";
 
 export default function SpecieDetails({ specie: { specieName, specie } }: { specie: SelectedSpecie }) {
+    if (!specie) {
+        return null;
+    }
+
     return (
         <>
             <h1>{specieName}</h1>

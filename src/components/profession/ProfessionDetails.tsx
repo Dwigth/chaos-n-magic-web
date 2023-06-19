@@ -2,6 +2,9 @@ import { SelectedProfession } from "../../data/types/profression.type";
 import ProfessionSpecializationList from "./ProfessionSpecializationList";
 
 export default function ProfessionDetails({ profession: { profession, professionName } }: { profession: SelectedProfession }) {
+    if (!profession) {
+        return null;
+    }
     return (
         <>
             <h1>{professionName}</h1>
