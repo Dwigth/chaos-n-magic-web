@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useEffect, useState } from 'react'
+import { Dispatch, SetStateAction, useState } from 'react'
 import { Box, Button, Grid } from "@mui/material";
 import { SPECIES } from '../../data/species';
 import { SelectedSpecie } from '../../data/types/specie.type';
