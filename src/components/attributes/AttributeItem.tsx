@@ -7,7 +7,6 @@ export default function AttributeItem({ label, onSetPointsLeft, pointsLeft }: {
     pointsLeft: number;
 }) {
     const defaultValue = -3;
-    const minValue = -4;
     const maxValue = 6;
     const [level, setLevel] = useState(defaultValue);
 
