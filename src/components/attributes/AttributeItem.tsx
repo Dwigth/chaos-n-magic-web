@@ -1,24 +1,43 @@
-import { Box } from "@mui/material";
-import { useState } from "react";
+import { Box, Button, ButtonGroup } from "@mui/material";
+import { Dispatch, SetStateAction, useState } from "react";
 
-export default function AttributeItem({ label }: {
+export default function AttributeItem({ label, onSetPointsLeft, pointsLeft }: {
     label: string;
+    onSetPointsLeft: Dispatch<SetStateAction<number>>;
+    pointsLeft: number;
 }) {
-    const [level, setLevel] = useState(-3);
+    const defaultValue = -3;
+    const minValue = -4;
+    const maxValue = 6;
+    const [level, setLevel] = useState(defaultValue);
 
-    function onLevelChange(changedValue: number) {
-        setLevel(changedValue);
+    function onIncreasePoints() {
+        if (level < maxValue && pointsLeft > 0) {
+
+            setLevel(value => value + 1);
+            onSetPointsLeft(value => value - 1);
+        }
+    }
+    function onDecreasePoints() {
+        if (level > defaultValue) {
+            setLevel(value => value - 1);
+            onSetPointsLeft(value => value + 1);
+        }
     }
 
     return (
-        <>
-            <Box sx={{
-                border: 'dotted'
-            }}>
-                <p>{label}</p>
-                <input onChange={(input) => onLevelChange(+input.target.value)} type="number" min={-4} max={6} />
-                <small>{level}</small>
+
+        <Box sx={{
+        }}>
+            <p>{label}</p>
+            <h1>{level}</h1>
+            <Box>
+                <ButtonGroup orientation="vertical" variant="contained" aria-label="text button group">
+                    <Button onClick={onIncreasePoints}>+</Button>
+                    <Button onClick={onDecreasePoints}>-</Button>
+                </ButtonGroup>
             </Box>
-        </>
+        </Box>
+
     )
 }
