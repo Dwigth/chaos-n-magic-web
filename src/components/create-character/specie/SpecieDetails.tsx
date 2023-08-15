@@ -1,4 +1,4 @@
-import { SelectedSpecie } from "../../data/types/specie.type";
+import { SelectedSpecie } from "../../../data/types/specie.type";
 // import TalentsList from "./TalentsList";
 import VelocitiesList from "./VelocitiesList";
 

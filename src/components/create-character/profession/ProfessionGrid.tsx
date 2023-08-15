@@ -1,8 +1,8 @@
 import { Dispatch, SetStateAction } from 'react'
 import { Box, Button, Grid } from "@mui/material";
-import { PROFESSIONS } from '../../data/professions';
-import { SelectedProfession } from '../../data/types/profression.type';
-import { SelectedItems } from '../../data/enum/selected-items.enum';
+import { PROFESSIONS } from '../../../data/professions';
+import { SelectedProfession } from '../../../data/types/profression.type';
+import { SelectedItems } from '../../../data/enum/selected-items.enum';
 
 export default function ProfessionGrid({ onProfessionSelect }: {
     onProfessionSelect: Dispatch<SetStateAction<SelectedProfession>>

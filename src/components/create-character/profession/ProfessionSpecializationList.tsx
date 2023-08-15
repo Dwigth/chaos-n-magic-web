@@ -1,4 +1,4 @@
-import { Characteristic } from "../../data/types/characteristic.type";
+import { Characteristic } from "../../../data/types/characteristic.type";
 
 export default function ProfessionSpecializationList({ specializations }: { specializations: Characteristic[] }) {
     const specializationValuesItems = specializations.map(characteristic =>

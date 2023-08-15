@@ -2,7 +2,7 @@ import { Container, Grid } from "@mui/material";
 import { useState } from "react";
 import ProfessionGrid from "./ProfessionGrid";
 import ProfessionDetails from "./ProfessionDetails";
-import { SelectedProfession } from "../../data/types/profression.type";
+import { SelectedProfession } from "../../../data/types/profression.type";
 
 
 export default function ProfessionSelector() {

@@ -2,7 +2,7 @@ import { Container, Grid } from "@mui/material";
 import SpecieGrid from "./SpecieGrid";
 import SpecieDetails from "./SpecieDetails";
 import { useState } from "react";
-import { SelectedSpecie } from "../../data/types/specie.type";
+import { SelectedSpecie } from "../../../data/types/specie.type";
 
 export default function SpecieSelector() {
     const [specie, setSpecie] = useState({} as SelectedSpecie);

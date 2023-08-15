@@ -1,8 +1,8 @@
 import { Dispatch, SetStateAction, useState } from 'react'
 import { Box, Button, Grid } from "@mui/material";
-import { SPECIES } from '../../data/species';
-import { SelectedSpecie } from '../../data/types/specie.type';
-import { SelectedItems } from '../../data/enum/selected-items.enum';
+import { SPECIES } from '../../../data/species';
+import { SelectedSpecie } from '../../../data/types/specie.type';
+import { SelectedItems } from '../../../data/enum/selected-items.enum';
 
 export default function SpecieGrid({ onSpecie }: {
     onSpecie: Dispatch<SetStateAction<SelectedSpecie>>

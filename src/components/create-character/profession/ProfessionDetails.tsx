@@ -1,4 +1,4 @@
-import { SelectedProfession } from "../../data/types/profression.type";
+import { SelectedProfession } from "../../../data/types/profression.type";
 import ProfessionSpecializationList from "./ProfessionSpecializationList";
 
 export default function ProfessionDetails({ profession: { profession, professionName } }: { profession: SelectedProfession }) {

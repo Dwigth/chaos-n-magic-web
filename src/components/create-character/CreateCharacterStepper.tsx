@@ -5,7 +5,7 @@ import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { CreateCharacterSteps } from '../data/types/create-character-steps';
+import { CreateCharacterSteps } from '../../data/types/create-character-steps';
 
 // const steps = [
 //     'Selecciona una especie',

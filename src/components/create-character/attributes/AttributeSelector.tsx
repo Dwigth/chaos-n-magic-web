@@ -1,6 +1,6 @@
 import { Grid } from "@mui/material";
 import AttributeItem from "./AttributeItem";
-import { ATTRIBUTES } from "../../data/attributes";
+import { ATTRIBUTES } from "../../../data/attributes";
 import { useState } from "react";
 
 export default function AttributeSelector() {

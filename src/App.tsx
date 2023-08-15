@@ -1,15 +1,17 @@
-import './App.css';
-import CreateCharacterStepper from './components/CreateCharacterStepper';
-import ProfessionSelector from './components/profession/ProfessionSelector';
-import SpecieSelector from './components/specie/SpecieSelector';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
-import ButtonAppBar from './components/menu/MenuBar';
-import AttributeSelector from './components/attributes/AttributeSelector';
+import "./App.css";
+// import CreateCharacterStepper from "./components/create-character/CreateCharacterStepper";
+// import ProfessionSelector from "./components/create-character/profession/ProfessionSelector";
+// import SpecieSelector from "./components/create-character/specie/SpecieSelector";
+// import AttributeSelector from "./components/create-character/attributes/AttributeSelector";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+import ButtonAppBar from "./components/menu/MenuBar";
+import CharacterSheet from "./components/character-sheet/character-sheet";
+import HomePage from "./components/home-page/home-page";
 
 const darkTheme = createTheme({
   palette: {
-    mode: 'dark',
+    mode: "dark",
   },
 });
 
@@ -18,7 +20,9 @@ function App() {
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
       <ButtonAppBar />
-      <CreateCharacterStepper steps={[
+      {/* <CharacterSheet /> */}
+      <HomePage />
+      {/* <CreateCharacterStepper steps={[
         {
           label: 'Select Specie',
           element: <SpecieSelector />,
@@ -31,9 +35,9 @@ function App() {
           label: 'Select attributes',
           element: <AttributeSelector />
         }
-      ]} />
-    </ ThemeProvider>
-  )
+      ]} /> */}
+    </ThemeProvider>
+  );
 }
 
-export default App
+export default App;
