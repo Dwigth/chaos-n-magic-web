@@ -1,6 +1,5 @@
-import React, { ChangeEvent, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import ProgressBar from "@ramonak/react-progress-bar";
-import Barvalue from "./progressBar";
 
 export default function CSstats() {
   const [value, setValue] = useState<string | number>("");

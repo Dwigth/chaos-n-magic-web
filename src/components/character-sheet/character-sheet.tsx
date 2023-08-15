@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import CSInfo from "./info/CSinfo";
 import CSenergy from "./energy/CSenergy";
 import CSattributes from "./attributes/CSattributes";
