@@ -20,8 +20,8 @@ function App() {
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
       <ButtonAppBar />
-      {/* <CharacterSheet /> */}
-      <HomePage />
+      <CharacterSheet />
+      {/* <HomePage /> */}
       {/* <CreateCharacterStepper steps={[
         {
           label: 'Select Specie',
