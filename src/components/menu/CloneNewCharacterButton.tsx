@@ -1,6 +1,6 @@
 // Botón de Clonar Personaje
 
-import { Button, Grid, Typography, TextField, Box } from "@mui/material";
+import { Button, Grid, TextField, Box } from "@mui/material";
 
 export function CloneCharacterSheet() {
   return (

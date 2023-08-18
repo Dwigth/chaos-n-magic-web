@@ -53,5 +53,3 @@ export function OpenCharacterSheet() {
     </Box>
   );
 }
-
-function InputID() {}
