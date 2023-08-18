@@ -1,0 +1,61 @@
+
+
+html{
+    background-color: #0c1b0b;
+}
+
+/** Tamaños de Títulos */
+
+.title1 {
+    font-family: 'Cardinal';
+    font-size: 24px;
+}
+
+
+.title3 {
+    font-family: 'Bookman Old Style';
+    font-size: 18px;
+    color:  #f2d1a4;
+}
+
+/* Botones extras  */
+
+.widebutton {
+    background-color: #0c1b0b;
+    color: #f2d1a4;
+    font-family: 'Bookman Old Style';
+    font-size: 24px;
+    width: 60%;
+    padding:25px;
+    border: 3px solid #b1971c;
+}
+
+.widecontainer {
+    background-color: #0c1b0b;
+    width: 60%;
+    padding:5px;
+    border: 3px solid #b1971c;
+}
+
+.center {
+    text-align: center;
+    justify-content: center;
+    margin-top: 0.2em;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    display: flex;
+}
+
+.input-text {
+    font-family: 'Bookman Old Style';
+    font-size: 1em;
+    padding: 5px;
+    background-color: #959e78 ;
+}
+
+.input-text::placeholder {
+    font-family: 'Bookman Old Style';
+    font-size: 1em;
+    color: #393f29  ;
+}
