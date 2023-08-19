@@ -4,15 +4,18 @@ import { CreateNewCharacterSheet } from "./menu/CreateNewCharacterButton";
 import { OpenCharacterSheet } from "./menu/OpenCharacterSheet";
 
 import { Container, Grid, Paper } from "@mui/material";
-import {cnmMenu} from "../style/mainTheme.tsx";
+import { cnmMenu } from "../style/mainTheme.tsx";
 
-export function CharMainMenu() {
+export default function CharMainMenu() {
   return (
     <ThemeProvider theme={cnmMenu}>
       <Container>
-        <Paper elevation={2} style={{
-          padding: '5px',
-        }}>
+        <Paper
+          elevation={2}
+          style={{
+            padding: "5px",
+          }}
+        >
           <Grid
             container
             spacing={1}

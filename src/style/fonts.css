@@ -1,0 +1,12 @@
+@import url('https://fonts.google.com/specimen/Oldenburg?preview.text=%C3%B1oclo&preview.text_type=custom&query=old');
+
+@font-face {
+    font-family: 'Oldenburg';
+    src: url('../assets/fonts/Oldenburg-Regular.ttf');
+}
+
+@font-face{
+    font-family: "Sawarabi Mincho";
+    src: url('../assets/fonts/SawarabiMincho-Regular.ttf');
+
+}
