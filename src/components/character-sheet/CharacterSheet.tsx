@@ -1,7 +1,7 @@
 // import React from "react";
 import CSInfo from "./info/CSinfo";
 import CSenergy from "./energy/CSenergy";
-import CSattributes from "./attributes/CSattributes";
+import CSattributes from "./attributes/CSAttributes";
 import CSdefense from "./defense/CSdefense";
 import CSstats from "./stats/CSstats";
 import Panels from "./panels/panels";
@@ -21,17 +21,17 @@ import { Box } from "@mui/material";
 
 export default function characterSheet() {
   return (
-    <Box sx={{ width: "100%" }}>
+    <Box sx={{ width: "80%", marginLeft: "10%", marginRight: "10%", marginTop: '2%' }}>
       <Grid
         container
         rowSpacing={1}
         columnSpacing={{ xs: 0, sm: 0, md: 0 }}
         spacing={1}
       >
-        <Grid xs={3.3}>
+        <Grid xs={2}>
           <CSInfo />
         </Grid>
-        <Grid xs={3.8}>
+        <Grid xs={4}>
           <Grid>
             <CSdefense />
           </Grid>
@@ -42,7 +42,7 @@ export default function characterSheet() {
             <CSattributes />
           </Grid>
         </Grid>
-        <Grid xs={4.3}>
+        <Grid xs={5}>
           <CSstats />
         </Grid>
         <Grid xs={10}>

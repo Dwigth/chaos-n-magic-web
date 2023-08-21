@@ -5,7 +5,7 @@ export const cnmMenu = createTheme({
   palette: {
     mode: "dark",
     primary: {
-      main: "#0c1b0b",
+      main: "#959e78 ",
       light: "#959e78",
       contrastText: "#f2d1a4",
       dark: "#959e78",
@@ -30,12 +30,12 @@ export const cnmMenu = createTheme({
       main: "#b6300b",
     },
     info: {
-      main: "#6bd0c9",
+      main: "#5a481e",
       contrastText: "#213f3d",
     },
     success: {
       main: "#6bd0c9",
-      contrastText: "#1d3937",
+      contrastText: "#5a481e",
     },
   },
   typography: {

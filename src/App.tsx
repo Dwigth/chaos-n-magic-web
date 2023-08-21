@@ -6,8 +6,9 @@ import "./App.css";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import ButtonAppBar from "./components/menu/MenuBar";
-import CharacterSheet from "./components/character-sheet/character-sheet";
+import CharacterSheet from "./components/character-sheet/CharacterSheet.tsx";
 import CharMainMenu from "./components/CharacterMainMenu";
+import { cnmMenu } from "./style/mainTheme.tsx";
 
 const darkTheme = createTheme({
   palette: {
@@ -17,7 +18,7 @@ const darkTheme = createTheme({
 
 function App() {
   return (
-    <ThemeProvider theme={darkTheme}>
+    <ThemeProvider theme={cnmMenu}>
       <CssBaseline />
       <ButtonAppBar />
       <CharacterSheet />
