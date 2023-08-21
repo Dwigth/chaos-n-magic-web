@@ -10,11 +10,6 @@ import CharacterSheet from "./components/character-sheet/CharacterSheet.tsx";
 // import CharMainMenu from "./components/CharacterMainMenu";
 import { cnmMenu } from "./style/mainTheme.tsx";
 
-// const darkTheme = createTheme({
-//   palette: {
-//     mode: "dark",
-//   },
-// });
 
 function App() {
   return (

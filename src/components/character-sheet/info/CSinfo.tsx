@@ -23,6 +23,7 @@ export default function CSinfo() {
         rowSpacing={0.8}
         columnSpacing={{ xs: 1, sm: 1, md: 0.3 }}
         spacing={1}
+      
       >
         <Grid xs={12}>
           <CSCharName />

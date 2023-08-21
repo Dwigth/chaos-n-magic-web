@@ -7,6 +7,7 @@ export function CSCharCharacteristics(){
               id="info-caracteristicas"
               label="Características"
               variant="outlined"
+              color="secondary"
               type="text"
               name="info-caracteristicas"
               defaultValue=" "

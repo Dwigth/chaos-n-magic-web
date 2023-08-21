@@ -5,18 +5,19 @@ export function HeroClimbingSpeed() {
     <TextField
       fullWidth
       id="info-velocity-climb"
+      name="info-velocity-climb"
+      color="secondary"
       label="Escalado"
       variant="outlined"
       type="number"
-      name="info-velocity-climb"
       defaultValue="0"
       InputLabelProps={{
-        style:{
-            maxWidth: '100%',
-            fontSize: 13,
-            marginTop: '3px',
-            left: '-5px'
-        }
+        style: {
+          maxWidth: "100%",
+          fontSize: 13,
+          marginTop: "3px",
+          left: "-5px",
+        },
       }}
     />
   );

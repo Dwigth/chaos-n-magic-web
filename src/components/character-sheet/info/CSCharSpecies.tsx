@@ -3,7 +3,7 @@ import { TextField } from "@mui/material";
 export function CSCharSpecies() {
   return (
     <TextField
-      color="primary"
+      color="secondary"
       fullWidth
       id="info-specie"
       label="Especie"

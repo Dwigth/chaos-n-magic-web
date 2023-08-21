@@ -11,10 +11,11 @@ export default function CharMainMenu() {
     <ThemeProvider theme={cnmMenu}>
       <Container>
         <Paper
-          elevation={2}
+          elevation={8}
           style={{
             padding: "5px",
           }}
+          
         >
           <Grid
             container

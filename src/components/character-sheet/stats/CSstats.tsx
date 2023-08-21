@@ -140,7 +140,6 @@ export default function CSstats() {
             variant="outlined"
             type="number"
             name="level"
-            style={{ width: "10%" }}
           />
         </Grid>
         <Grid xs={5}>

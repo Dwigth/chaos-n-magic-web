@@ -5,10 +5,11 @@ export function HeroSwimmingSpeed() {
     <TextField
       fullWidth
       id="info-velocity-swimming"
+      name="info-velocity-swimming"
+      color="secondary"
       label="Nado"
       variant="outlined"
       type="number"
-      name="info-velocity-swimming"
       defaultValue="0"
     />
   );
