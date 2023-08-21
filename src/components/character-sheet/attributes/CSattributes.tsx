@@ -3,7 +3,9 @@ import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Unstable_Grid2";
 import { Avatar, Box, TextField, Typography } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Item = styled(Paper)(({}) => ({
   background: "none",
@@ -14,22 +16,55 @@ const Item = styled(Paper)(({}) => ({
   // padding: theme.spacing(0),
 }));
 
+function getRandomInt(max: any) {
+  return Math.floor(Math.random() * max + 1);
+}
+
 export default function CSAttributes() {
   const [attributes, setAttribute] = useState({
-    personalidad: "",
-    combate: "",
-    intelecto: "",
-    fortaleza: "",
-    agilidad: "",
-    sentidos: "",
-    mente: "",
+    personalidad: 0,
+    combate: 0,
+    intelecto: 0,
+    fortaleza: 0,
+    agilidad: 0,
+    sentidos: 0,
+    mente: 0,
   });
 
-  const handleChange = (event) => {
+  const handleChange = (event: any) => {
     const { name, value } = event.target;
     setAttribute((attributes) => {
       return { ...attributes, [name]: value };
     });
+  };
+
+  const alerts = (men: string) => {
+    toast.info(men, {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      icon: () => (
+        <img
+          src="/src/assets/images/icons/dados-d12.png"
+          style={{ width: "100%" }}
+        />
+      ),
+      theme: "light",
+    });
+  };
+
+  const tirada = (attr: string, val: number) => {
+    let random = getRandomInt(12);
+    console.log("Numero random = " + random);
+    let sum = random + Number(val);
+
+    const mensaje = attr + ": d12(" + random + ") + " + val + " = " + sum;
+
+    alerts(mensaje);
   };
 
   return (
@@ -57,16 +92,18 @@ export default function CSAttributes() {
                   fontSize: 32,
                   textAlign: "center",
                   justifyContent: "center",
-                  alignItems: 'center'
+                  alignItems: "center",
                 },
               }}
               InputLabelProps={{
-                style:{
-                  fontSize: 'calc(100% - 14)'
-                }
+                style: {
+                  fontSize: "calc(100% - 14)",
+                },
               }}
             />
-            <Item>
+            <Item
+              onClick={() => tirada("Personalidad", attributes.personalidad)}
+            >
               <Avatar
                 alt="Personalidad"
                 src="/src/assets/images/attributes/Attributes_P.png"
@@ -91,16 +128,16 @@ export default function CSAttributes() {
                   fontSize: 32,
                   textAlign: "center",
                   justifyContent: "center",
-                  alignItems: 'center'
-                },                
+                  alignItems: "center",
+                },
               }}
               InputLabelProps={{
-                style:{
-                  fontSize: 'calc(100% - 14)'
-                }
+                style: {
+                  fontSize: "calc(100% - 14)",
+                },
               }}
             />
-            <Item>
+            <Item onClick={() => tirada("Combate", attributes.combate)}>
               <Avatar
                 alt="Combate"
                 src="/src/assets/images/attributes/Attributes_C.png"
@@ -116,7 +153,7 @@ export default function CSAttributes() {
               label="Intelecto"
               variant="outlined"
               type="number"
-              name="intelligent"
+              name="intelecto"
               defaultValue="0"
               onChange={handleChange}
               inputProps={{
@@ -124,16 +161,16 @@ export default function CSAttributes() {
                   fontSize: 32,
                   textAlign: "center",
                   justifyContent: "center",
-                  alignItems: 'center'
-                },                
+                  alignItems: "center",
+                },
               }}
               InputLabelProps={{
-                style:{
-                  fontSize: 'calc(100% - 14)'
-                }
+                style: {
+                  fontSize: "calc(100% - 14)",
+                },
               }}
             />
-            <Item>
+            <Item onClick={() => tirada("Intelecto", attributes.intelecto)}>
               <Avatar
                 alt="Intelecto"
                 src="/src/assets/images/attributes/Attributes_I.png"
@@ -149,7 +186,7 @@ export default function CSAttributes() {
               label="Fortaleza"
               variant="outlined"
               type="number"
-              name="strength"
+              name="fortaleza"
               defaultValue="0"
               onChange={handleChange}
               inputProps={{
@@ -157,17 +194,17 @@ export default function CSAttributes() {
                   fontSize: 32,
                   textAlign: "center",
                   justifyContent: "center",
-                  alignItems: 'center'
-                },                
+                  alignItems: "center",
+                },
               }}
               InputLabelProps={{
-                style:{
-                  fontSize: 'calc(100% - 14)'
-                }
+                style: {
+                  fontSize: "calc(100% - 14)",
+                },
               }}
             />
           </Item>
-          <Item>
+          <Item onClick={() => tirada("Fortaleza", attributes.fortaleza)}>
             <Avatar
               alt="Fortaleza"
               src="/src/assets/images/attributes/Attributes_F.png"
@@ -182,7 +219,7 @@ export default function CSAttributes() {
               label="Agilidad"
               variant="outlined"
               type="number"
-              name="agility"
+              name="agilidad"
               defaultValue="0"
               onChange={handleChange}
               inputProps={{
@@ -190,17 +227,17 @@ export default function CSAttributes() {
                   fontSize: 32,
                   textAlign: "center",
                   justifyContent: "center",
-                  alignItems: 'center'
-                },                
+                  alignItems: "center",
+                },
               }}
               InputLabelProps={{
-                style:{
-                  fontSize: 'calc(100% - 14)'
-                }
+                style: {
+                  fontSize: "calc(100% - 14)",
+                },
               }}
             />
           </Item>
-          <Item>
+          <Item onClick={() => tirada("Agilidad", attributes.agilidad)}>
             <Avatar
               alt="Agilidad"
               src="/src/assets/images/attributes/Attributes_A.png"
@@ -215,7 +252,7 @@ export default function CSAttributes() {
               label="Sentidos"
               variant="outlined"
               type="number"
-              name="senses"
+              name="sentidos"
               defaultValue="0"
               onChange={handleChange}
               inputProps={{
@@ -223,17 +260,17 @@ export default function CSAttributes() {
                   fontSize: 32,
                   textAlign: "center",
                   justifyContent: "center",
-                  alignItems: 'center'
-                },                
+                  alignItems: "center",
+                },
               }}
               InputLabelProps={{
-                style:{
-                  fontSize: 'calc(100% - 14)'
-                }
+                style: {
+                  fontSize: "calc(100% - 14)",
+                },
               }}
             />
           </Item>
-          <Item>
+          <Item onClick={() => tirada("Sentidos", attributes.sentidos)}>
             <Avatar
               alt="Sentidos"
               src="/src/assets/images/attributes/Attributes_S.png"
@@ -248,7 +285,7 @@ export default function CSAttributes() {
               label="Mente"
               variant="outlined"
               type="number"
-              name="mind"
+              name="mente"
               defaultValue="0"
               onChange={handleChange}
               inputProps={{
@@ -256,17 +293,17 @@ export default function CSAttributes() {
                   fontSize: 32,
                   textAlign: "center",
                   justifyContent: "center",
-                  alignItems: 'center'
-                },                
+                  alignItems: "center",
+                },
               }}
               InputLabelProps={{
-                style:{
-                  fontSize: 'calc(100% - 14)'
-                }
+                style: {
+                  fontSize: "calc(100% - 14)",
+                },
               }}
             />
           </Item>
-          <Item>
+          <Item onClick={() => tirada("Mente", attributes.mente)}>
             <Avatar
               alt="Mente"
               src="/src/assets/images/attributes/Attributes_M.png"
@@ -275,6 +312,21 @@ export default function CSAttributes() {
           </Item>
         </Grid>
       </Grid>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
     </Box>
   );
+}
+function handleClick() {
+  throw new Error("Function not implemented.");
 }

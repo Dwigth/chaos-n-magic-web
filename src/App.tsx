@@ -7,7 +7,7 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import ButtonAppBar from "./components/menu/MenuBar";
 import CharacterSheet from "./components/character-sheet/CharacterSheet.tsx";
-import CharMainMenu from "./components/CharacterMainMenu";
+// import CharMainMenu from "./components/CharacterMainMenu";
 import { cnmMenu } from "./style/mainTheme.tsx";
 
 const darkTheme = createTheme({
@@ -22,7 +22,7 @@ function App() {
       <CssBaseline />
       <ButtonAppBar />
       <CharacterSheet />
-      <CharMainMenu />
+      {/* <CharMainMenu /> */}
       {/* <CreateCharacterStepper steps={[
         {
           label: 'Select Specie',
