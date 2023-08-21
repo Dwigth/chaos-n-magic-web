@@ -21,7 +21,14 @@ import { Box } from "@mui/material";
 
 export default function characterSheet() {
   return (
-    <Box sx={{ width: "80%", marginLeft: "10%", marginRight: "10%", marginTop: '2%' }}>
+    <Box
+      sx={{
+        width: "80%",
+        marginLeft: "10%",
+        marginRight: "10%",
+        marginTop: "2%",
+      }}
+    >
       <Grid
         container
         rowSpacing={1}

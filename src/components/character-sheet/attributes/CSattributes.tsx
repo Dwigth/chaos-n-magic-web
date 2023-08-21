@@ -1,9 +1,8 @@
-// import React from "react";
 import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Unstable_Grid2";
-import { Avatar, Box, TextField, Typography } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import { Avatar, Box, TextField } from "@mui/material";
+import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -41,7 +40,7 @@ export default function CSAttributes() {
   const alerts = (men: string) => {
     toast.info(men, {
       position: "bottom-right",
-      autoClose: 5000,
+      autoClose: 8000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -314,7 +313,7 @@ export default function CSAttributes() {
       </Grid>
       <ToastContainer
         position="bottom-right"
-        autoClose={5000}
+        autoClose={8000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
@@ -326,7 +325,4 @@ export default function CSAttributes() {
       />
     </Box>
   );
-}
-function handleClick() {
-  throw new Error("Function not implemented.");
 }
