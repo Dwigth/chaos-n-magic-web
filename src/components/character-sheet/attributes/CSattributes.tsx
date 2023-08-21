@@ -41,7 +41,7 @@ export default function CSAttributes() {
     toast.info(men, {
       position: "bottom-right",
       autoClose: 8000,
-      hideProgressBar: false,
+      hideProgressBar: true,
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,
