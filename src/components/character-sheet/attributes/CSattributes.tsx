@@ -1,7 +1,7 @@
 import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Unstable_Grid2";
-import { Avatar, Box, TextField } from "@mui/material";
+import { Avatar, Box, TextField, Typography } from "@mui/material";
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -67,14 +67,19 @@ export default function CSAttributes() {
   };
 
   return (
-    <Box sx={{ width: "140%", padding: 1 }}>
+    <Box sx={{ width: "100%", padding: 1 }}>
       <Grid
         container
         rowSpacing={0}
         columnSpacing={{ xs: 1, sm: 3, md: 0 }}
         spacing={0}
         columns={7}
+        justifyContent={"center"}
+        alignItems={"center"}
       >
+        <Grid xs={7}>
+          <Typography variant="h5"> Atributos</Typography>
+        </Grid>
         <Grid xs={1}>
           <Item>
             <TextField

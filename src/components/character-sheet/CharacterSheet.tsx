@@ -1,13 +1,13 @@
 // import React from "react";
 import CSInfo from "./info/CSinfo";
-import CSenergy from "./energy/CSenergy";
+import { CSEnergyControl } from "./energy/CSEnergyControl";
 import CSstats from "./stats/CSstats";
 import Panels from "./panels/panels";
 
 import Grid from "@mui/material/Unstable_Grid2";
 import { Box } from "@mui/material";
 import CSAttributes from "./attributes/CSattributes";
-import CSDefense from "./defense/CSdefense";
+import CSDefense from "./defense/CSDefense";
 
 export default function characterSheet() {
   return (
@@ -27,28 +27,25 @@ export default function characterSheet() {
         rowSpacing={1}
         spacing={1}
         alignItems={"stretch"}
+        justifyContent={"center"}
         columnSpacing={{ xs: 0, sm: 0, md: 0 }}
       >
         <Grid xs={6}>
           <CSInfo />
         </Grid>
-        <Grid xs={8}>
+        <Grid container xs={10} columns={24}>
           <Grid xs={24}>
             <CSDefense />
           </Grid>
           <Grid xs={24}>
-            <CSenergy />
+            <CSEnergyControl />
           </Grid>
-        </Grid>
-        <Grid xs={10}>
-          <CSstats />
-        </Grid>
-        <Grid xs={12}>
-          <Grid xs></Grid>
-          <Grid xs={12}>
+          <Grid xs={24}>
             <CSAttributes />
           </Grid>
-          <Grid xs></Grid>
+        </Grid>
+        <Grid xs={6}>
+          <CSstats />
         </Grid>
         <Grid xs={24}>
           <Panels />

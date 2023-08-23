@@ -27,15 +27,15 @@ const CssTextField = styled(TextField)({
 export function CSDefenseControl() {
   return (
     <Grid container spacing={0} alignItems={"center"} justifyContent={"center"}>
-      <Grid xs={12}>
+      <Grid item xs={12}>
         <Typography variant="caption">Curar o Recibir Daño</Typography>
       </Grid>
-      <Grid xs={2} />
-      <Grid xs={8}>
+      <Grid item xs={2} />
+      <Grid item xs={8}>
       <CssTextField variant="outlined" />
       </Grid>
-      <Grid xs={2}/>
-      <Grid xs={12}>
+      <Grid item xs={2}/>
+      <Grid item xs={12}>
         <DefenseHealDamage />
       </Grid>
     </Grid>
