@@ -10,7 +10,6 @@ import CharacterSheet from "./components/character-sheet/CharacterSheet.tsx";
 // import CharMainMenu from "./components/CharacterMainMenu";
 import { cnmMenu } from "./style/mainTheme.tsx";
 
-
 function App() {
   return (
     <ThemeProvider theme={cnmMenu}>

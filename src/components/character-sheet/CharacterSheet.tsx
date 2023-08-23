@@ -1,4 +1,3 @@
-// import React from "react";
 import CSInfo from "./info/CSinfo";
 import CSenergy from "./energy/CSenergy";
 import CSstats from "./stats/CSstats";

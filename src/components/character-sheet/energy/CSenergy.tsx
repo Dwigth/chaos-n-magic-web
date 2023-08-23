@@ -1,17 +1,8 @@
-// import React from "react";
 import { styled } from "@mui/material/styles";
 import Checkbox, { CheckboxProps } from "@mui/material/Checkbox";
 import { Box } from "@mui/material";
-// import Paper from "@mui/material/Paper";
-import Grid from "@mui/material/Unstable_Grid2";
 
-// const Item = styled(Paper)(({ theme }) => ({
-//   backgroundColor: theme.palette.mode === "dark" ? "#060505" : "#fff",
-//   // ...theme.typography.body2,
-//   padding: theme.spacing(0),
-//   textAlign: "center",
-//   // color: theme.palette.grey[500],
-// }));
+import Grid from "@mui/material/Unstable_Grid2";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 

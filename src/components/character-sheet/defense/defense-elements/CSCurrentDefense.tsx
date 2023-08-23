@@ -1,8 +1,9 @@
 import { TextField, Typography, styled } from "@mui/material";
+import { FC, useState } from "react";
 
 /** DEFENSA ACTUAL
  * La Defensa actual no puede ser mayor a la Defensa Máxima total (Defensa Max + Bono)
- * La Defensa actual se reinicia cada vez que empieza el turno del jugador 
+ * La Defensa actual se reinicia cada vez que empieza el turno del jugador
  * y Cada vez que el jugador pierde 1 Postura
  */
 
@@ -27,11 +28,24 @@ const CssTextField = styled(TextField)({
   },
 });
 
-export function CSCurrentDefense() {
+interface Props {
+  actDef: number;
+}
+
+export const CSCurrentDefense: FC<Props> = ({ actDef }) => {
   return (
     <>
       <Typography variant="caption">Defensa Actual</Typography>
-      <CssTextField fullWidth type="number" id="Defensa" defaultValue="0" style={{maxWidth: '60%'}} />
+      <CssTextField
+        fullWidth
+        type="number"
+        id="Defensa"
+        defaultValue={0}
+        value={actDef}
+        style={{ maxWidth: "60%" }}
+        draggable
+        disabled
+      />
     </>
   );
-}
+};
