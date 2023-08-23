@@ -1,5 +1,5 @@
 import { TextField, Typography, styled } from "@mui/material";
-import { FC, useState } from "react";
+import { FC } from "react";
 
 /** DEFENSA ACTUAL
  * La Defensa actual no puede ser mayor a la Defensa Máxima total (Defensa Max + Bono)

@@ -51,7 +51,7 @@ export const CSDefenseBonus: FC<Props> = ({ bonus, actBonus }) => {
       id="bono"
       name="bonusShield"
       defaultValue={bonusDef.bonusShield}
-      // value={actBonus}
+      value={actBonus}
       onChange={handleDefense}
       disabled
     />
