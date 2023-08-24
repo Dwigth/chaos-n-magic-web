@@ -5,13 +5,48 @@ import { CSMaxDefense } from "./defense-elements/CSMaxDefense";
 import { CSDefenseBonus } from "./defense-elements/CSDefenseBonus";
 import { CSDefenseControl } from "./defense-elements/CSDefenseControl";
 import Image from "../../../assets/images/charsheet/Defense_Background_shield.png";
+import { useState } from "react";
+
+let defenseAct = 0;
 
 export default function CSDefense() {
+  const [defData, setDataDef] = useState(0);
+
+  const [bonoData, setDataBono] = useState(0);
+
+  const [bonusData, setDataBonus] = useState(0);
+
+  // const [newBonusData, setNewDataBonus] = useState(0);
+
+  const [amountDef, setAmountDef] = useState(0);
+
+  let allDef = Number(defData) + Number(bonoData);
+  let newDef = bonusData;
+
+  defenseAct = Number(defData) + Number(bonoData);
+
+  let NewBonus = 0;
+
+  if (amountDef != 0) {
+    defenseAct = amountDef;
+    newDef = NewBonus;
+    if (bonusData != 0) {
+      newDef = NewBonus;
+    }
+
+    // console.log("Bonus final: " + newDef);
+  }
+
   return (
     <Paper sx={{ padding: "15px" }}>
       <Grid container rowSpacing={1} spacing={1}>
         <Grid xs={4}>
-          <CSDefenseControl />
+          <CSDefenseControl
+            getBonus={newDef}
+            actualDefense={defenseAct}
+            totalDefense={allDef}
+            sendNewDefense={(dmHl) => setAmountDef(dmHl)}
+          />
         </Grid>
         <Grid
           container
@@ -23,14 +58,20 @@ export default function CSDefense() {
           }}
         >
           <Grid xs={6}>
-            <CSCurrentDefense />
+            <CSCurrentDefense actDef={defenseAct} />
           </Grid>
           <Grid xs={6}>
-            <CSMaxDefense />
+            <CSMaxDefense
+              defMax={(d) => setDataDef(d)}
+              defBono={(bon) => setDataBono(bon)}
+            />
           </Grid>
           <Grid xs={4}></Grid>
           <Grid xs={4}>
-            <CSDefenseBonus />
+            <CSDefenseBonus
+              bonus={(bonusSh) => setDataBonus(bonusSh)}
+              actBonus={NewBonus}
+            />
           </Grid>
         </Grid>
       </Grid>

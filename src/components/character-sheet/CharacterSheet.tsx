@@ -1,4 +1,3 @@
-// import React from "react";
 import CSInfo from "./info/CSinfo";
 import { CSEnergyControl } from "./energy/CSEnergyControl";
 import CSstats from "./stats/CSstats";
@@ -7,7 +6,7 @@ import Panels from "./panels/panels";
 import Grid from "@mui/material/Unstable_Grid2";
 import { Box } from "@mui/material";
 import CSAttributes from "./attributes/CSattributes";
-import CSDefense from "./defense/CSDefense";
+import CSDefense from "./defense/CSdefense";
 
 export default function characterSheet() {
   return (

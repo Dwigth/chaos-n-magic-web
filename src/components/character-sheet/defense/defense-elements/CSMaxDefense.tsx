@@ -1,4 +1,5 @@
-import {  Grid, TextField, Typography, styled } from "@mui/material";
+import { Grid, TextField, Typography, styled } from "@mui/material";
+import { FC, useState } from "react";
 
 /** DEFENSA MÁXIMA
  *  La defensa máxima consiste en dos números:
@@ -29,8 +30,36 @@ const CssTextField = styled(TextField)({
   },
 });
 
+interface Props {
+  defMax: (def: number) => void;
+  defBono: (bon: number) => void;
+}
 
-export function CSMaxDefense() {
+export const CSMaxDefense: FC<Props> = ({ defMax, defBono }) => {
+  const [maxDefense, setMaxDefense] = useState({ defense: 0, bono: 0 });
+
+  const currentDef = (val: number) => {
+    defMax(val);
+  };
+  const currentBono = (val: number) => defBono(val);
+
+  const handleDefense = (event: any) => {
+    const { name, value } = event.target;
+    setMaxDefense((maxDefense) => {
+      return { ...maxDefense, [name]: value };
+    });
+
+    currentDef(value);
+  };
+
+  const handleBono = (event: any) => {
+    const { name, value } = event.target;
+    setMaxDefense((maxDefense) => {
+      return { ...maxDefense, [name]: value };
+    });
+    currentBono(value);
+  };
+
   return (
     <>
       <Typography variant="caption">Defensa Máxima</Typography>
@@ -40,7 +69,10 @@ export function CSMaxDefense() {
             fullWidth
             type="number"
             id="defensaMax"
-            defaultValue={0}
+            name="defense"
+            defaultValue={maxDefense.defense}
+            onChange={handleDefense}
+            // onClick={() => defMax(maxDefense.defense)}
           />
         </Grid>
         <Grid item xs={5}>
@@ -48,17 +80,19 @@ export function CSMaxDefense() {
             size="small"
             type="number"
             label="Bono"
+            name="bono"
             id="defensamaxbonus"
-            defaultValue={0}
+            defaultValue={maxDefense.bono}
+            onChange={handleBono}
             InputLabelProps={{
-              style:{
+              style: {
                 fontSize: 13,
-                top: '10%'
-              }
+                top: "10%",
+              },
             }}
           />
         </Grid>
       </Grid>
     </>
   );
-}
+};
