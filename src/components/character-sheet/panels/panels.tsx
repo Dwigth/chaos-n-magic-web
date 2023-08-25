@@ -4,7 +4,7 @@ import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 
-import Accions from "./acc-talents/accions";
+import Action from "./acc-talents/accions";
 import Talents from "./acc-talents/talents";
 import Inventory from "./inventory/inventory";
 import Magic from "./magic/magic";
@@ -73,7 +73,7 @@ export default function Panels() {
         <Tab label="Personalidad y transfondo" {...a11yProps(3)} />
       </Tabs>
       <TabPanel value={value} index={0}>
-        <Accions />
+        <Action />
         <Talents />
       </TabPanel>
       <TabPanel value={value} index={1}>

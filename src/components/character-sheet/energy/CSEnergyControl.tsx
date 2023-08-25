@@ -1,7 +1,7 @@
-import { Box, IconButton, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { Grid } from "@mui/material";
 import { CSEnergyButton } from "./CSEnergyButton";
-import AddCircleIcon from "@mui/icons-material/AddCircle";
+import GEbuttons from "./GenerateEnergyButtons";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
@@ -37,11 +37,7 @@ export function CSEnergyControl() {
         <Grid item xs={1} md={1.2}>
           <CSEnergyButton {...label} defaultChecked />
         </Grid>
-        <Grid item xs={1} md={1}>
-          <IconButton aria-label="agregar" style={{ paddingTop: 4 }} color="secondary">
-            <AddCircleIcon />
-          </IconButton>
-        </Grid>
+        <GEbuttons />
       </Grid>
     </Box>
   );

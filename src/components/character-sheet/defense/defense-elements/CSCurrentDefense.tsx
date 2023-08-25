@@ -40,7 +40,6 @@ export const CSCurrentDefense: FC<Props> = ({ actDef }) => {
         fullWidth
         type="number"
         id="Defensa"
-        defaultValue={0}
         value={actDef}
         style={{ maxWidth: "60%" }}
         draggable

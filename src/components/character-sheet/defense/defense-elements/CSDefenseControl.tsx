@@ -122,7 +122,6 @@ export const CSDefenseControl: FC<Props> = ({
           variant="outlined"
           name="defenseControl"
           type="number"
-          defaultValue={amount.defenseControl}
           value={amount.defenseControl}
           onChange={handleChange}
         />
@@ -135,9 +134,8 @@ export const CSDefenseControl: FC<Props> = ({
             variant="contained"
             color="error"
             onClick={() => {
-              sendNewDefense(Damage()), getBonus;
+              sendNewDefense(Damage());
             }}
-            // onClickCapture={() => sendNewBonus(newB(passBonus))}
           >
             Daño
           </Button>
