@@ -1,12 +1,15 @@
 import CSInfo from "./info/CSinfo";
 import { CSEnergyControl } from "./energy/CSEnergyControl";
-import CSstats from "./stats/CSstats";
 import Panels from "./panels/panels";
 
 import Grid from "@mui/material/Unstable_Grid2";
 import { Box } from "@mui/material";
 import CSAttributes from "./attributes/CSattributes";
 import CSDefense from "./defense/CSdefense";
+import CSStanceControl from "./stance/CSStanceControl";
+import { CSLevelControl } from "./info/level/CSLevelControl";
+import { DamageStacksControl } from "./damage-stacks/DamageStacksControl";
+import { CSPowerControl } from "./power/CSPowerControl";
 
 export default function characterSheet() {
   return (
@@ -32,9 +35,17 @@ export default function characterSheet() {
         <Grid xs={6}>
           <CSInfo />
         </Grid>
-        <Grid container xs={10} columns={24}>
-          <Grid xs={24}>
+        <Grid container xs={12} columns={24}>
+          <Grid xs={14}>
             <CSDefense />
+          </Grid>
+          <Grid container xs={10} direction={"column"}>
+            <Grid xs>
+              <CSStanceControl />
+            </Grid>
+            <Grid xs>
+              <DamageStacksControl />
+            </Grid>
           </Grid>
           <Grid xs={24}>
             <CSEnergyControl />
@@ -44,7 +55,10 @@ export default function characterSheet() {
           </Grid>
         </Grid>
         <Grid xs={6}>
-          <CSstats />
+          <CSLevelControl />
+          <Grid xs={6}>
+            <CSPowerControl />
+          </Grid>
         </Grid>
         <Grid xs={24}>
           <Panels />

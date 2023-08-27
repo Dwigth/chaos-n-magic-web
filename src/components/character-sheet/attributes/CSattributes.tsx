@@ -1,7 +1,7 @@
 import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Unstable_Grid2";
-import { Avatar, Box, TextField, Typography } from "@mui/material";
+import { Avatar, Box, Button, TextField, Typography } from "@mui/material";
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -11,6 +11,7 @@ const Item = styled(Paper)(({}) => ({
   justifyContent: "center",
   boxShadow: "none",
   textAlign: "center",
+  draggable: "false",
   // ...theme.typography.body2,
   // padding: theme.spacing(0),
 }));
@@ -109,11 +110,14 @@ export default function CSAttributes() {
             <Item
               onClick={() => tirada("Personalidad", attributes.personalidad)}
             >
-              <Avatar
-                alt="Personalidad"
-                src="/src/assets/images/attributes/Attributes_P.png"
-                sx={{ width: "100%", height: "100%" }}
-              ></Avatar>
+              <Button size="small" draggable="false">
+                <Avatar
+                  alt="Personalidad"
+                  src="/src/assets/images/attributes/Attributes_P.png"
+                  sx={{ width: "100%", height: "100%" }}
+                  draggable="false"
+                />
+              </Button>
             </Item>
           </Item>
         </Grid>
@@ -144,11 +148,14 @@ export default function CSAttributes() {
               }}
             />
             <Item onClick={() => tirada("Combate", attributes.combate)}>
-              <Avatar
-                alt="Combate"
-                src="/src/assets/images/attributes/Attributes_C.png"
-                sx={{ width: "100%", height: "100%" }}
-              ></Avatar>
+              <Button size="small" color="secondary">
+                <Avatar
+                  alt="Combate"
+                  src="/src/assets/images/attributes/Attributes_C.png"
+                  sx={{ width: "100%", height: "100%" }}
+                  draggable="false"
+                ></Avatar>
+              </Button>
             </Item>
           </Item>
         </Grid>
@@ -178,11 +185,13 @@ export default function CSAttributes() {
               }}
             />
             <Item onClick={() => tirada("Intelecto", attributes.intelecto)}>
-              <Avatar
-                alt="Intelecto"
-                src="/src/assets/images/attributes/Attributes_I.png"
-                sx={{ width: "100%", height: "100%" }}
-              ></Avatar>
+              <Button size="small">
+                <Avatar
+                  alt="Intelecto"
+                  src="/src/assets/images/attributes/Attributes_I.png"
+                  sx={{ width: "100%", height: "100%" }}
+                ></Avatar>
+              </Button>
             </Item>
           </Item>
         </Grid>
@@ -213,11 +222,13 @@ export default function CSAttributes() {
             />
           </Item>
           <Item onClick={() => tirada("Fortaleza", attributes.fortaleza)}>
-            <Avatar
-              alt="Fortaleza"
-              src="/src/assets/images/attributes/Attributes_F.png"
-              sx={{ width: "100%", height: "100%" }}
-            ></Avatar>
+            <Button size="small">
+              <Avatar
+                alt="Fortaleza"
+                src="/src/assets/images/attributes/Attributes_F.png"
+                sx={{ width: "100%", height: "100%" }}
+              ></Avatar>
+            </Button>
           </Item>
         </Grid>
         <Grid xs={1}>
@@ -247,11 +258,13 @@ export default function CSAttributes() {
             />
           </Item>
           <Item onClick={() => tirada("Agilidad", attributes.agilidad)}>
-            <Avatar
-              alt="Agilidad"
-              src="/src/assets/images/attributes/Attributes_A.png"
-              sx={{ width: "100%", height: "100%" }}
-            ></Avatar>
+            <Button size="small">
+              <Avatar
+                alt="Agilidad"
+                src="/src/assets/images/attributes/Attributes_A.png"
+                sx={{ width: "100%", height: "100%" }}
+              ></Avatar>
+            </Button>
           </Item>
         </Grid>
         <Grid xs={1}>
@@ -281,11 +294,13 @@ export default function CSAttributes() {
             />
           </Item>
           <Item onClick={() => tirada("Sentidos", attributes.sentidos)}>
-            <Avatar
-              alt="Sentidos"
-              src="/src/assets/images/attributes/Attributes_S.png"
-              sx={{ width: "100%", height: "100%" }}
-            ></Avatar>
+            <Button size="small">
+              <Avatar
+                alt="Sentidos"
+                src="/src/assets/images/attributes/Attributes_S.png"
+                sx={{ width: "100%", height: "100%" }}
+              ></Avatar>
+            </Button>
           </Item>
         </Grid>
         <Grid xs={1}>
@@ -315,11 +330,13 @@ export default function CSAttributes() {
             />
           </Item>
           <Item onClick={() => tirada("Mente", attributes.mente)}>
-            <Avatar
-              alt="Mente"
-              src="/src/assets/images/attributes/Attributes_M.png"
-              sx={{ width: "100%", height: "100%" }}
-            ></Avatar>
+            <Button size="small">
+              <Avatar
+                alt="Mente"
+                src="/src/assets/images/attributes/Attributes_M.png"
+                sx={{ width: "100%", height: "100%" }}
+              ></Avatar>
+            </Button>
           </Item>
         </Grid>
       </Grid>
