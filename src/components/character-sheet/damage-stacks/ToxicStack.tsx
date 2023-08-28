@@ -68,7 +68,7 @@ export function ToxicStackElement() {
           defaultValue={0}
           inputProps={{
             style: { fontSize: "10px", width: "100%" },
-            inputProps: { max: 10, min: 10, step: 1 },
+            inputprops: { max: 10, min: 10, step: 1 },
           }}
           InputLabelProps={{ style: { fontSize: "8px" } }}
         />

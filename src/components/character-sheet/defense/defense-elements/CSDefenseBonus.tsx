@@ -50,7 +50,6 @@ export const CSDefenseBonus: FC<Props> = ({ bonus, actBonus }) => {
       label="Bono"
       id="bono"
       name="bonusShield"
-      defaultValue={actBonus}
       value={bonusDef.bonusShield}
       onChange={handleDefense}
       disabled

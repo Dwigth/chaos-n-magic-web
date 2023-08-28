@@ -32,12 +32,15 @@ function BleedingStack() {
           position: "relative",
         }}
       />
-      <VerticalProgress variant="determinate" value={100} /*Value = Máximo/100 * Stack actual */ />
+      <VerticalProgress
+        variant="determinate"
+        value={100} /*Value = Máximo/100 * Stack actual */
+      />
     </>
   );
 }
 
-export function BleedingStackElement(){
+export function BleedingStackElement() {
   return (
     <Grid
       container
@@ -75,8 +78,8 @@ export function BleedingStackElement(){
             type="number"
             defaultValue={0}
             inputProps={{
-              style: { fontSize: "10px", width: "100%"},
-              inputProps: { max: 10, min: 0, step: 1 },
+              style: { fontSize: "10px", width: "100%" },
+              inputprops: { max: 10, min: 0, step: 1 },
             }}
           />
         </Grid>
