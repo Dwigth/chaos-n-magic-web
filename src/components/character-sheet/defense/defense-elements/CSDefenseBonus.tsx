@@ -42,7 +42,6 @@ export const CSDefenseBonus: FC<Props> = ({ bonus, actBonus }) => {
 
     actBonus = value;
   };
-
   return (
     <CssTextField
       fullWidth

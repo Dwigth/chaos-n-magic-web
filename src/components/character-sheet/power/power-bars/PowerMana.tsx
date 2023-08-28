@@ -1,26 +1,34 @@
-import { Box, LinearProgress, TextField, styled } from "@mui/material";
+import {
+  Box,
+  InputLabel,
+  LinearProgress,
+  TextField,
+  styled,
+} from "@mui/material";
 import Grid2 from "@mui/material/Unstable_Grid2";
+import { PowerField, PowerFieldLabel } from "./PowerInputStyle";
 
 const PowerBar = styled(LinearProgress)({
   "& .MuiLinearProgress-barColorPrimary": {
     backgroundColor: "#33eaff",
-    width: '100%',
-    height: '100%',
+    width: "100%",
+    height: "100%",
   },
   "& .MuiLinearProgress-colorPrimary": {
     backgroundColor: "transparent",
-    width: '100%',
   },
   backgroundColor: "transparent",
   transform: "rotate(-90deg) translate(55%) scaleX(80%) scaleY(3000%)",
-  height: 2.5,
+  height: "3%",
   width: "100%",
+  left: "12%",
   zIndex: 0,
-  left: "0%",
   position: "relative",
   WebkitMask: "radial-gradient(circle, black 100%, rgba(0,0,0,1) 100%)",
-  WebkitBorderRadius: "100%",
+  WebkitBorderRadius: "50%",
 });
+
+
 
 export function PowerManaBar() {
   return (
@@ -53,39 +61,31 @@ export function PowerMana() {
           <PowerManaBar />
         </Grid2>
         <Grid2 xs={6}>
-          <TextField
+          <PowerFieldLabel shrink htmlFor="curmana-input" style={{fontSize: '0.7rem', marginBottom: '-10%'}}>
+            Actual
+          </PowerFieldLabel>
+          <PowerField
+            id="curmana-input"
+            type="number"
             variant="outlined"
             color="secondary"
             size="small"
-            label="Maná"
-            inputProps={{
-              style: {
-                fontSize: "10px",
-              },
-            }}
-            InputLabelProps={{
-              style: {
-                fontSize: "8px",
-              },
-            }}
           />
         </Grid2>
         <Grid2 xs={6}>
-          <TextField
+          <PowerFieldLabel
+            shrink
+            htmlFor="maxmana-input"
+            style={{ fontSize: "" }}
+          >
+            Max
+          </PowerFieldLabel>
+          <PowerField
+            type="number"
+            id="maxmana-input"
             variant="outlined"
             color="secondary"
             size="small"
-            label="Max"
-            inputProps={{
-              style: {
-                fontSize: "10px",
-              },
-            }}
-            InputLabelProps={{
-              style: {
-                fontSize: "8px",
-              },
-            }}
           />
         </Grid2>
       </Grid2>

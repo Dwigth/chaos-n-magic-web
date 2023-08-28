@@ -4,7 +4,7 @@ import { PowerField, PowerFieldLabel } from "./PowerInputStyle";
 
 const PowerBar = styled(LinearProgress)({
   "& .MuiLinearProgress-barColorPrimary": {
-    backgroundColor: "#ffef62",
+    backgroundColor: "#606dbb",
     height: "100%",
     width: "100%",
   },
@@ -13,16 +13,15 @@ const PowerBar = styled(LinearProgress)({
   },
   backgroundColor: "transparent",
   transform: "rotate(-90deg) translate(55%) scaleX(80%) scaleY(3000%)",
-  height: "2px",
+  height: "3%",
   width: "100%",
-  left: "0%",
+  left: "12%",
   zIndex: 0,
   position: "relative",
   WebkitMask: "radial-gradient(circle, black 100%, rgba(0,0,0,1) 100%)",
   WebkitBorderRadius: "50%",
 });
-
-export function PowerFaithBar() {
+export function PowerChaosBar() {
   return (
     <>
       <img
@@ -40,7 +39,7 @@ export function PowerFaithBar() {
   );
 }
 
-export function PowerFaith() {
+export function PowerChaos() {
   return (
     <Box>
       <Grid2
@@ -50,38 +49,32 @@ export function PowerFaith() {
         alignItems={"stretch"}
       >
         <Grid2 xs={12}>
-          <PowerFaithBar />
+          <PowerChaosBar />
         </Grid2>
         <Grid2 xs={6}>
           <PowerFieldLabel
             shrink
-            htmlFor="curfaith-input"
+            htmlFor="curcaos-input"
             style={{ fontSize: "0.7rem", marginBottom: "-10%" }}
           >
             Actual
           </PowerFieldLabel>
           <PowerField
-            id="curfaith-input"
+            id="caos"
             variant="outlined"
             color="secondary"
             size="small"
-            
           />
         </Grid2>
         <Grid2 xs={6}>
           <PowerFieldLabel
             shrink
-            htmlFor="maxfaith-input"
+            htmlFor="maxki-input"
             style={{ fontSize: "" }}
           >
             Max
           </PowerFieldLabel>
-          <PowerField
-            id="maxfaith-input"
-            variant="outlined"
-            color="secondary"
-            size="small"
-          />
+          <PowerField id="maxcaos-input" variant="outlined" color="secondary" size="small" />
         </Grid2>
       </Grid2>
     </Box>
