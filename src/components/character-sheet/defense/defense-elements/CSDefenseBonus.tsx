@@ -27,7 +27,7 @@ interface Props {
   bonus: (bonnus: number) => void;
 }
 
-export const CSDefenseBonus: FC<Props> = ({ bonus, actBonus }) => {
+export const CSDefenseBonus: FC<Props> = ({ bonus }) => {
   const [bonusDef, setBonus] = useState({ bonusShield: 0 });
 
   const currentBonus = (val: number) => bonus(val);
@@ -40,7 +40,7 @@ export const CSDefenseBonus: FC<Props> = ({ bonus, actBonus }) => {
 
     currentBonus(value);
 
-    actBonus = value;
+    // actBonus = value;
   };
   return (
     <CssTextField

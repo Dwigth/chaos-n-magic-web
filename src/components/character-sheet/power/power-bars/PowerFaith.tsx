@@ -1,4 +1,4 @@
-import { Box, LinearProgress, TextField, styled } from "@mui/material";
+import { Box, LinearProgress, styled } from "@mui/material";
 import Grid2 from "@mui/material/Unstable_Grid2";
 import { PowerField, PowerFieldLabel } from "./PowerInputStyle";
 
@@ -12,8 +12,8 @@ const PowerBar = styled(LinearProgress)({
     backgroundColor: "transparent",
   },
   backgroundColor: "transparent",
-  transform: "rotate(-90deg) translate(55%) scaleX(80%) scaleY(3000%)",
-  height: "2px",
+  transform: "rotate(-90deg) translate(55%) scaleX(80%) scaleY(2500%)",
+  height: "3%",
   width: "100%",
   left: "0%",
   zIndex: 0,
@@ -65,7 +65,6 @@ export function PowerFaith() {
             variant="outlined"
             color="secondary"
             size="small"
-            
           />
         </Grid2>
         <Grid2 xs={6}>

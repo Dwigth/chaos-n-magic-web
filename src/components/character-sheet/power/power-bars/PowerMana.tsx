@@ -1,10 +1,4 @@
-import {
-  Box,
-  InputLabel,
-  LinearProgress,
-  TextField,
-  styled,
-} from "@mui/material";
+import { Box, LinearProgress, styled } from "@mui/material";
 import Grid2 from "@mui/material/Unstable_Grid2";
 import { PowerField, PowerFieldLabel } from "./PowerInputStyle";
 
@@ -18,17 +12,15 @@ const PowerBar = styled(LinearProgress)({
     backgroundColor: "transparent",
   },
   backgroundColor: "transparent",
-  transform: "rotate(-90deg) translate(55%) scaleX(80%) scaleY(3000%)",
+  transform: "rotate(-90deg) translate(55%) scaleX(80%) scaleY(2500%)",
   height: "3%",
   width: "100%",
-  left: "12%",
+  left: "2%",
   zIndex: 0,
   position: "relative",
   WebkitMask: "radial-gradient(circle, black 100%, rgba(0,0,0,1) 100%)",
   WebkitBorderRadius: "50%",
 });
-
-
 
 export function PowerManaBar() {
   return (
@@ -61,7 +53,11 @@ export function PowerMana() {
           <PowerManaBar />
         </Grid2>
         <Grid2 xs={6}>
-          <PowerFieldLabel shrink htmlFor="curmana-input" style={{fontSize: '0.7rem', marginBottom: '-10%'}}>
+          <PowerFieldLabel
+            shrink
+            htmlFor="curmana-input"
+            style={{ fontSize: "0.7rem", marginBottom: "-10%" }}
+          >
             Actual
           </PowerFieldLabel>
           <PowerField

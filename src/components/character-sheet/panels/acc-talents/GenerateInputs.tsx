@@ -16,7 +16,7 @@ function AddDynamicInput() {
     deletVal.splice(i, 1);
     setVal(deletVal);
   };
-  console.log(val, "data-");
+  // console.log(val, "data-");
   return (
     <>
       {val.map((datas, int) => {

@@ -2,9 +2,17 @@ import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Unstable_Grid2";
 import { Avatar, Box, Button, TextField, Typography } from "@mui/material";
-import { useState } from "react";
+import { FC, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
+import Personalty from "../../../assets/images/attributes/Attributes_P.png";
+import Combat from "../../../assets/images/attributes/Attributes_C.png";
+import Inteligent from "../../../assets/images/attributes/Attributes_I.png";
+import Fortress from "../../../assets/images/attributes/Attributes_F.png";
+import Agility from "../../../assets/images/attributes/Attributes_A.png";
+import Sense from "../../../assets/images/attributes/Attributes_S.png";
+import Mind from "../../../assets/images/attributes/Attributes_M.png";
 
 const Item = styled(Paper)(({}) => ({
   background: "none",
@@ -20,7 +28,13 @@ function getRandomInt(max: any) {
   return Math.floor(Math.random() * max + 1);
 }
 
-export default function CSAttributes() {
+interface Props {
+  Combate: (comb: number) => void;
+  Fortaleza: (fort: number) => void;
+  Mente: (mind: number) => void;
+}
+
+export const CSAttributes: FC<Props> = ({ Combate, Fortaleza, Mente }) => {
   const [attributes, setAttribute] = useState({
     personalidad: 0,
     combate: 0,
@@ -32,10 +46,25 @@ export default function CSAttributes() {
   });
 
   const handleChange = (event: any) => {
-    const { name, value } = event.target;
+    const { name } = event.target;
+    const value = Math.max(0, Math.min(99, Number(event.target.value)));
     setAttribute((attributes) => {
       return { ...attributes, [name]: value };
     });
+
+    if (name == "combate") {
+      Combate(value);
+    }
+
+    if (name == "fortaleza") {
+      Fortaleza(value);
+    }
+
+    if (name == "mente") {
+      Mente(value);
+    }
+
+    console.log("Combate: " + Combate);
   };
 
   const alerts = (men: string) => {
@@ -79,7 +108,9 @@ export default function CSAttributes() {
         alignItems={"center"}
       >
         <Grid xs={7}>
-          <Typography variant="h5"> Atributos</Typography>
+          <Typography variant="h5" align="center" sx={{ padding: 2 }}>
+            Atributos
+          </Typography>
         </Grid>
         <Grid xs={1}>
           <Item>
@@ -88,11 +119,11 @@ export default function CSAttributes() {
               variant="outlined"
               name="personalidad"
               color="secondary"
-              defaultValue="0"
               label="Personalidad"
               type="number"
               size="medium"
               onChange={handleChange}
+              value={attributes.personalidad}
               inputProps={{
                 style: {
                   fontSize: 32,
@@ -113,7 +144,7 @@ export default function CSAttributes() {
               <Button size="small" draggable="false">
                 <Avatar
                   alt="Personalidad"
-                  src="/src/assets/images/attributes/Attributes_P.png"
+                  src={Personalty}
                   sx={{ width: "100%", height: "100%" }}
                   draggable="false"
                 />
@@ -129,8 +160,8 @@ export default function CSAttributes() {
               color="secondary"
               type="number"
               name="combate"
-              defaultValue="0"
               onChange={handleChange}
+              value={attributes.combate}
               label="Combate"
               size="medium"
               inputProps={{
@@ -151,7 +182,7 @@ export default function CSAttributes() {
               <Button size="small" color="secondary">
                 <Avatar
                   alt="Combate"
-                  src="/src/assets/images/attributes/Attributes_C.png"
+                  src={Combat}
                   sx={{ width: "100%", height: "100%" }}
                   draggable="false"
                 ></Avatar>
@@ -168,8 +199,8 @@ export default function CSAttributes() {
               color="secondary"
               type="number"
               name="intelecto"
-              defaultValue="0"
               onChange={handleChange}
+              value={attributes.intelecto}
               inputProps={{
                 style: {
                   fontSize: 32,
@@ -188,7 +219,7 @@ export default function CSAttributes() {
               <Button size="small">
                 <Avatar
                   alt="Intelecto"
-                  src="/src/assets/images/attributes/Attributes_I.png"
+                  src={Inteligent}
                   sx={{ width: "100%", height: "100%" }}
                 ></Avatar>
               </Button>
@@ -204,8 +235,8 @@ export default function CSAttributes() {
               color="secondary"
               type="number"
               name="fortaleza"
-              defaultValue="0"
               onChange={handleChange}
+              value={attributes.fortaleza}
               inputProps={{
                 style: {
                   fontSize: 32,
@@ -225,7 +256,7 @@ export default function CSAttributes() {
             <Button size="small">
               <Avatar
                 alt="Fortaleza"
-                src="/src/assets/images/attributes/Attributes_F.png"
+                src={Fortress}
                 sx={{ width: "100%", height: "100%" }}
               ></Avatar>
             </Button>
@@ -240,8 +271,8 @@ export default function CSAttributes() {
               color="secondary"
               type="number"
               name="agilidad"
-              defaultValue="0"
               onChange={handleChange}
+              value={attributes.agilidad}
               inputProps={{
                 style: {
                   fontSize: 32,
@@ -261,7 +292,7 @@ export default function CSAttributes() {
             <Button size="small">
               <Avatar
                 alt="Agilidad"
-                src="/src/assets/images/attributes/Attributes_A.png"
+                src={Agility}
                 sx={{ width: "100%", height: "100%" }}
               ></Avatar>
             </Button>
@@ -276,8 +307,8 @@ export default function CSAttributes() {
               color="secondary"
               type="number"
               name="sentidos"
-              defaultValue="0"
               onChange={handleChange}
+              value={attributes.sentidos}
               inputProps={{
                 style: {
                   fontSize: 32,
@@ -297,7 +328,7 @@ export default function CSAttributes() {
             <Button size="small">
               <Avatar
                 alt="Sentidos"
-                src="/src/assets/images/attributes/Attributes_S.png"
+                src={Sense}
                 sx={{ width: "100%", height: "100%" }}
               ></Avatar>
             </Button>
@@ -312,8 +343,8 @@ export default function CSAttributes() {
               color="secondary"
               type="number"
               name="mente"
-              defaultValue="0"
               onChange={handleChange}
+              value={attributes.mente}
               inputProps={{
                 style: {
                   fontSize: 32,
@@ -333,7 +364,7 @@ export default function CSAttributes() {
             <Button size="small">
               <Avatar
                 alt="Mente"
-                src="/src/assets/images/attributes/Attributes_M.png"
+                src={Mind}
                 sx={{ width: "100%", height: "100%" }}
               ></Avatar>
             </Button>
@@ -354,4 +385,4 @@ export default function CSAttributes() {
       />
     </Box>
   );
-}
+};
