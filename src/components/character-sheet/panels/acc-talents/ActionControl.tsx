@@ -1,17 +1,21 @@
-import { Box, Grid, Typography } from "@mui/material";
+import { Container, Grid, Typography } from "@mui/material";
 import AddDynamicInput from "./GenerateInputs";
+import ActionTextField from "./ActionTextField";
 
 export function ActionControl() {
   return (
-    <Box sx={{ width: "100%" }}>
-      <Grid container alignContent={"center"} justifyContent={"flex-start"}>
+    <Container>
+      <Grid container spacing={1} alignContent={"center"} justifyContent={"flex-start"}>
         <Grid item xs={12}>
           <Typography variant="h5">Acciones</Typography>
+        </Grid>
+        <Grid item xs={12}>
+          <ActionTextField />
         </Grid>
         <Grid item xs={12}>
           <AddDynamicInput />
         </Grid>
       </Grid>
-    </Box>
+    </Container>
   );
 }

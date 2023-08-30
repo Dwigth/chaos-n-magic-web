@@ -4,7 +4,7 @@ import { CSEnergyControl } from "./energy/CSEnergyControl";
 import Grid from "@mui/material/Unstable_Grid2";
 import { Box, IconButton, Typography } from "@mui/material";
 import { CSAttributes } from "./attributes/CSattributes";
-import CSDefense from "./defense/CSdefense";
+import CSDefense from "./defense/CSDefense";
 import CSStanceControl from "./stance/CSStanceControl";
 import { CSLevelControl } from "./info/level/CSLevelControl";
 import { DamageStacksControl } from "./damage-stacks/DamageStacksControl";
@@ -24,7 +24,8 @@ export default function characterSheet() {
         width: "80%",
         marginLeft: "10%",
         marginRight: "10%",
-        marginTop: "2%",
+        marginTop: "0%",
+        marginBottom: '2%',
         justifyContent: "center",
         alignItems: "stretch",
       }}

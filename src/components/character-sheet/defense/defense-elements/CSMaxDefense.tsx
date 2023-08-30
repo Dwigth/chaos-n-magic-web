@@ -64,7 +64,7 @@ export const CSMaxDefense: FC<Props> = ({ defMax, defBono }) => {
     <>
       <Typography variant="caption">Defensa Máxima</Typography>
       <Grid container direction="row">
-        <Grid item xs={7}>
+        <Grid item xs={6}>
           <CssTextField
             fullWidth
             type="number"
@@ -73,9 +73,10 @@ export const CSMaxDefense: FC<Props> = ({ defMax, defBono }) => {
             defaultValue={maxDefense.defense}
             onChange={handleDefense}
             // onClick={() => defMax(maxDefense.defense)}
+            inputProps={{ style: { paddingLeft: '25%', paddingRight: 'auto', justifyContent: 'center', alignContent: 'center'}}}
           />
         </Grid>
-        <Grid item xs={5}>
+        <Grid item xs={6}>
           <CssTextField
             size="small"
             type="number"

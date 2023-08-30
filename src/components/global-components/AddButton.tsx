@@ -1,7 +1,7 @@
-import { IconButton, IconButtonProps } from "@mui/material";
+import { IconButton } from "@mui/material";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 
-export function AddButton(props: IconButtonProps){
+export function AddButton(){
     return(
         <IconButton
           aria-label="agregar"

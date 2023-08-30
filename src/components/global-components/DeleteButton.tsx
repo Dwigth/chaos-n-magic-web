@@ -1,7 +1,7 @@
-import { IconButton, IconButtonProps } from "@mui/material";
+import { IconButton } from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
 
-export function DeleteButton(props: IconButtonProps){
+export function DeleteButton(){
     return(
         <IconButton
           aria-label="agregar"

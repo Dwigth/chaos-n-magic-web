@@ -38,7 +38,7 @@ export default function CSDefense() {
   }
 
   return (
-    <Paper sx={{ padding: "15px" }}>
+    <Paper sx={{ padding: "15px", height: '100%' }}>
       <Grid container rowSpacing={1} spacing={1}>
         <Grid xs={4}>
           <CSDefenseControl
@@ -66,8 +66,8 @@ export default function CSDefense() {
               defBono={(bon) => setDataBono(bon)}
             />
           </Grid>
-          <Grid xs={4}></Grid>
-          <Grid xs={4}>
+          <Grid xs={3}></Grid>
+          <Grid xs={5}>
             <CSDefenseBonus
               bonus={(bonusSh) => setDataBonus(bonusSh)}
               actBonus={NewBonus}

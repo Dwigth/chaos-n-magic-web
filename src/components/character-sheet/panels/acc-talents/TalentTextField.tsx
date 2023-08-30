@@ -7,7 +7,7 @@ export default function TalentTextField() {
       direction={"row"}
       alignItems={"flex-start"}
       justifyContent={"flex-start"}
-      sx={{ paddingRight: 1, width: "100%" }}
+      sx={{ paddingRight: 1}}
     >
       <Grid item xs={8}>
         <TextField

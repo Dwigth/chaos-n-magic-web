@@ -1,4 +1,4 @@
-import { Grid, SvgIcon, TextField } from "@mui/material";
+import { Grid, IconButton, TextField } from "@mui/material";
 
 export default function ActionTextField() {
   return (
@@ -15,10 +15,12 @@ export default function ActionTextField() {
         />
       </Grid>
       <Grid item xs={1}>
-        <img
-          src="/src/assets/images/icons/DiceIcon_DCM_Mini.png"
-          width={"80%"}
-        />
+        <IconButton>
+          <img
+            src="/src/assets/images/icons/DiceIcon_DCM_Mini.png"
+            width={"120%"}
+          />
+        </IconButton>
       </Grid>
       <Grid item xs={3}>
         <TextField variant="standard" placeholder="Tipo de Daño" size="small" />

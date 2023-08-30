@@ -8,6 +8,7 @@ import { CSCharCharacteristics } from "./CSCharCharacteristics";
 import { HeroWalkingSpeed } from "./speed/HeroWalkingSpeed";
 import { HeroSwimmingSpeed } from "./speed/HeroSwimmingSpeed";
 import { HeroClimbingSpeed } from "./speed/HeroClimbingSpeed";
+import { CSCharLanguages } from "./CSCharLanguages";
 
 
 export default function CSinfo() {
@@ -41,6 +42,9 @@ export default function CSinfo() {
         </Grid>
         <Grid xs={12}>
           <CSCharCharacteristics />
+        </Grid>
+        <Grid xs={12}>
+          <CSCharLanguages />
         </Grid>
         <Grid container xs={12} direction={"row"}>
           <Grid xs={12}>

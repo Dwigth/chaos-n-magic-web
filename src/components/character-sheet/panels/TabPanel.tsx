@@ -4,13 +4,10 @@ import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 
-import Action from "./acc-talents/ActionTextField";
 import Inventory from "./inventory/inventory";
 import Magic from "./magic/magic";
-import Personality from "./pers-transf/personality";
-import { TalentControls } from "./acc-talents/TalentControls";
-import { Grid, Paper } from "@mui/material";
-import { ActionControl } from "./acc-talents/ActionControl";
+import { CSBackgroundPersonalityControl } from "./pers-transf/CSBackgroundPersonalityControl";
+import { TalentAndAttacksControl } from "./acc-talents/TalentAndAttacksControl";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -18,9 +15,9 @@ interface TabPanelProps {
   value: number;
 }
 
+
 function TabPanel(props: TabPanelProps) {
   const { children, value, index, ...other } = props;
-
   return (
     <div
       role="tabpanel"
@@ -31,7 +28,7 @@ function TabPanel(props: TabPanelProps) {
     >
       {value === index && (
         <Box sx={{ p: 3 }}>
-          <Typography component={"span"} color="secondary">{children}</Typography>
+          <Typography component={"span"} >{children}</Typography>
         </Box>
       )}
     </div>
@@ -50,6 +47,7 @@ export default function Panels() {
 
   const handleChange = (_event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
+    
   };
   return (
     <Box
@@ -67,38 +65,21 @@ export default function Panels() {
         value={value}
         onChange={handleChange}
         aria-label="Vertical tabs example"
-        sx={{ borderRight: 1, borderColor: "divider" }}
-        color="secondary"
+        sx={{ borderRight: 1, borderColor: "divider",}}
+        indicatorColor="primary"
+        textColor="secondary"
       >
         <Tab
           label="Acciones y Talentos"
           {...a11yProps(0)}
-          color="secondary"
-          sx={{ color: "secondary" }}
+        
         />
         <Tab label="Inventario" {...a11yProps(1)} />
         <Tab label="Magia" {...a11yProps(2)} />
         <Tab label="Personalidad y transfondo" {...a11yProps(3)} />
       </Tabs>
       <TabPanel value={value} index={0}>
-        <Grid
-          container
-          direction="row"
-          alignItems={"flex-start"}
-          justifyContent={"space-evenly"}
-          sx={{ width: "100%", padding: 2 }}
-        >
-          <Grid item lg={6} xs={6} borderRight={2}>
-            <Paper elevation={1}>
-              <ActionControl />
-            </Paper>
-          </Grid>
-          <Grid item lg={6} xs={6}>
-            <Paper elevation={1} sx={{ width: "100%", minWidth: "50%" }}>
-              <TalentControls />
-            </Paper>
-          </Grid>
-        </Grid>
+        <TalentAndAttacksControl />
       </TabPanel>
       <TabPanel value={value} index={1}>
         <Inventory />
@@ -107,7 +88,7 @@ export default function Panels() {
         <Magic />
       </TabPanel>
       <TabPanel value={value} index={3}>
-        <Personality />
+        <CSBackgroundPersonalityControl />
       </TabPanel>
     </Box>
   );
