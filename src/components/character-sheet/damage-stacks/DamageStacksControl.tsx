@@ -2,8 +2,19 @@ import { Container, Grid } from "@mui/material";
 import { BleedingStackElement } from "./BleedingStack";
 import { ToxicStackElement } from "./ToxicStack";
 import { PsychicStackElement } from "./PsychicStacks";
+import { FC } from "react";
 
-export function DamageStacksControl() {
+interface Props {
+  combat: number;
+  fortaleza: number;
+  mente: number;
+}
+
+export const DamageStacksControl: FC<Props> = ({
+  combat,
+  fortaleza,
+  mente,
+}) => {
   return (
     <Container>
       <Grid
@@ -13,15 +24,15 @@ export function DamageStacksControl() {
         alignItems={"flex-start"}
       >
         <Grid item xs={4}>
-          <BleedingStackElement />
+          <BleedingStackElement combatNumber={combat} />
         </Grid>
         <Grid item xs={4}>
-          <ToxicStackElement />
+          <ToxicStackElement fortress={fortaleza} />
         </Grid>
         <Grid item xs={4}>
-          <PsychicStackElement />
+          <PsychicStackElement mind={mente} />
         </Grid>
       </Grid>
     </Container>
   );
-}
+};

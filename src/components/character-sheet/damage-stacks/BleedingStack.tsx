@@ -5,6 +5,7 @@ import {
   Typography,
   styled,
 } from "@mui/material";
+import { FC, useState } from "react";
 
 const VerticalProgress = styled(LinearProgress)({
   "& .MuiLinearProgress-barColorPrimary": {
@@ -13,14 +14,27 @@ const VerticalProgress = styled(LinearProgress)({
   "& .MuiLinearProgress-colorPrimary": {
     backgroundColor: "red",
   },
-  transform: "rotate(-90deg) translate(55%) scaleX(50%)",
+  transform: "rotate(-90deg) translate(55%) scaleX(55%)",
   width: "100%",
   zIndex: 0,
   backgroundImage: "url('/src/assets/images/charsheet/Bar_Bleeding.png')",
   position: "relative",
 });
 
-function BleedingStack() {
+interface Combate {
+  combatNumber: number;
+}
+
+interface Resistence {
+  resistence: number;
+  actValue: number;
+}
+
+const BleedingStack: FC<Resistence> = ({ resistence, actValue }) => {
+  // let resistence = 6 + Number(combatNumber);
+
+  let progess = (actValue / resistence) * 100;
+
   return (
     <>
       <img
@@ -32,12 +46,29 @@ function BleedingStack() {
           position: "relative",
         }}
       />
-      <VerticalProgress variant="determinate" value={100} /*Value = Máximo/100 * Stack actual */ />
+      <VerticalProgress
+        variant="determinate"
+        value={progess} /*Value = Máximo/100 * Stack actual */
+      />
     </>
   );
-}
+};
 
-export function BleedingStackElement(){
+export const BleedingStackElement: FC<Combate> = ({ combatNumber }) => {
+  let resistence = 6 + Number(combatNumber);
+
+  const [stackValue, setStackValue] = useState({
+    bleeding: 0,
+  });
+
+  const handleChange = (event: any) => {
+    const { name } = event.target;
+    const value = Math.max(0, Math.min(resistence, Number(event.target.value)));
+    setStackValue((stackValue) => {
+      return { ...stackValue, [name]: value };
+    });
+  };
+
   return (
     <Grid
       container
@@ -49,7 +80,7 @@ export function BleedingStackElement(){
     >
       <Grid item xs={1}>
         <Typography variant="caption" textAlign={"center"}>
-          8
+          {resistence}
         </Typography>
       </Grid>
       <Grid
@@ -57,7 +88,7 @@ export function BleedingStackElement(){
         xs={10}
         sx={{ width: "150%", marginTop: -3, marginBottom: -1.5 }}
       >
-        <BleedingStack />
+        <BleedingStack resistence={resistence} actValue={stackValue.bleeding} />
       </Grid>
       <Grid
         container
@@ -73,14 +104,16 @@ export function BleedingStackElement(){
             color="secondary"
             size="small"
             type="number"
-            defaultValue={0}
+            name="bleeding"
+            value={stackValue.bleeding}
+            onChange={handleChange}
             inputProps={{
-              style: { fontSize: "10px", width: "100%"},
-              inputProps: { max: 10, min: 0, step: 1 },
+              style: { fontSize: "10px", width: "100%" },
+              inputprops: { max: 10, min: 0, step: 1 },
             }}
           />
         </Grid>
       </Grid>
     </Grid>
   );
-}
+};

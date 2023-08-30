@@ -4,16 +4,20 @@ import Panels from "./panels/TabPanel";
 
 import Grid from "@mui/material/Unstable_Grid2";
 import { Box } from "@mui/material";
-import CSAttributes from "./attributes/CSattributes";
+import { CSAttributes } from "./attributes/CSattributes";
 import CSDefense from "./defense/CSdefense";
 import CSStanceControl from "./stance/CSStanceControl";
 import { CSLevelControl } from "./info/level/CSLevelControl";
 import { DamageStacksControl } from "./damage-stacks/DamageStacksControl";
 import { CSPowerControl } from "./power/CSPowerControl";
+import { useState } from "react";
 import { CSSensesControl } from "./info/Senses/CSSensesControl";
 import TabPanel from "./panels/TabPanel";
 
 export default function characterSheet() {
+  const [combat, setCombat] = useState(0);
+  const [fort, setFortess] = useState(0);
+  const [mind, setMind] = useState(0);
   return (
     <Box
       sx={{
@@ -46,14 +50,22 @@ export default function characterSheet() {
               <CSStanceControl />
             </Grid>
             <Grid xs>
-              <DamageStacksControl />
+              <DamageStacksControl
+                combat={combat}
+                fortaleza={fort}
+                mente={mind}
+              />
             </Grid>
           </Grid>
           <Grid xs={24}>
             <CSEnergyControl />
           </Grid>
           <Grid xs={24}>
-            <CSAttributes />
+            <CSAttributes
+              Combate={(c) => setCombat(c)}
+              Fortaleza={(f) => setFortess(f)}
+              Mente={(m) => setMind(m)}
+            />
           </Grid>
         </Grid>
         <Grid xs={6}>

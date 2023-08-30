@@ -1,4 +1,4 @@
-import { Box, LinearProgress, TextField, styled } from "@mui/material";
+import { Box, LinearProgress, styled } from "@mui/material";
 import Grid2 from "@mui/material/Unstable_Grid2";
 import { PowerField, PowerFieldLabel } from "./PowerInputStyle";
 
@@ -12,10 +12,10 @@ const PowerBar = styled(LinearProgress)({
     backgroundColor: "transparent",
   },
   backgroundColor: "transparent",
-  transform: "rotate(-90deg) translate(55%) scaleX(80%) scaleY(3000%)",
+  transform: "rotate(-90deg) translate(55%) scaleX(80%) scaleY(2400%)",
   height: "3%",
   width: "100%",
-  left: "12%",
+  left: "10%",
   zIndex: 0,
   position: "relative",
   WebkitMask: "radial-gradient(circle, black 100%, rgba(0,0,0,1) 100%)",
@@ -74,7 +74,12 @@ export function PowerChaos() {
           >
             Max
           </PowerFieldLabel>
-          <PowerField id="maxcaos-input" variant="outlined" color="secondary" size="small" />
+          <PowerField
+            id="maxcaos-input"
+            variant="outlined"
+            color="secondary"
+            size="small"
+          />
         </Grid2>
       </Grid2>
     </Box>
