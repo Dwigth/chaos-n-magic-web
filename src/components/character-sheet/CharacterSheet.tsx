@@ -1,6 +1,6 @@
 import CSInfo from "./info/CSinfo";
 import { CSEnergyControl } from "./energy/CSEnergyControl";
-import Panels from "./panels/panels";
+import Panels from "./panels/TabPanel";
 
 import Grid from "@mui/material/Unstable_Grid2";
 import { Box } from "@mui/material";
@@ -10,6 +10,8 @@ import CSStanceControl from "./stance/CSStanceControl";
 import { CSLevelControl } from "./info/level/CSLevelControl";
 import { DamageStacksControl } from "./damage-stacks/DamageStacksControl";
 import { CSPowerControl } from "./power/CSPowerControl";
+import { CSSensesControl } from "./info/Senses/CSSensesControl";
+import TabPanel from "./panels/TabPanel";
 
 export default function characterSheet() {
   return (
@@ -59,9 +61,12 @@ export default function characterSheet() {
           <Grid xs={6}>
             <CSPowerControl />
           </Grid>
+          <Grid xs={6}>
+            <CSSensesControl />
+          </Grid>
         </Grid>
         <Grid xs={24}>
-          <Panels />
+          <TabPanel />
         </Grid>
       </Grid>
     </Box>

@@ -65,7 +65,6 @@ export function PowerFaith() {
             variant="outlined"
             color="secondary"
             size="small"
-            
           />
         </Grid2>
         <Grid2 xs={6}>

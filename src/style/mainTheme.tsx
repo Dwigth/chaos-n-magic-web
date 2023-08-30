@@ -5,7 +5,7 @@ export const cnmMenu = createTheme({
   palette: {
     mode: "dark",
     primary: {
-      main: "#0c1b0b",
+      main: "#959e78",
       light: "#959e78",
       contrastText: "#f2d1a4",
       dark: "#0c1b0b",

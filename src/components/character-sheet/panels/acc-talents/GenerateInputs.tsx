@@ -1,4 +1,8 @@
 import { useState } from "react";
+import TalentTextField from "./TalentTextField";
+import { AddButton } from "../../../global-components/AddButton";
+import { DeleteButton } from "../../../global-components/DeleteButton";
+import ActionTextField from "./ActionTextField";
 
 function AddDynamicInput() {
   const [val, setVal] = useState<any[]>([]);
@@ -21,18 +25,19 @@ function AddDynamicInput() {
     <>
       {val.map((datas, int) => {
         return (
-          <div>
+          <>
             <input
               key={int}
               value={datas}
               onChange={(e) => handleChange(e, int)}
             />
-            <button onClick={() => handleDelete(int)}>x</button>
-          </div>
+            <TalentTextField />
+            <ActionTextField />
+            <button onClick={() => handleDelete(int)} > <DeleteButton /> </button>
+          </>
         );
       })}
-
-      <button onClick={() => handleAdd()}>Add</button>
+      <button onClick={() => handleAdd()} > <AddButton /></button>
     </>
   );
 }

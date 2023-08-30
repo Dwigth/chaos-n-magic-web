@@ -4,6 +4,7 @@ import { PowerFaith } from "./power-bars/PowerFaith";
 import { PowerKi } from "./power-bars/PowerKi";
 import { PowerChaos } from "./power-bars/PowerChaos";
 
+
 export function CSPowerControl() {
   return (
     <Paper elevation={2}>

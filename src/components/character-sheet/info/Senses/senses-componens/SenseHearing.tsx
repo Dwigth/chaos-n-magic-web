@@ -1,6 +1,6 @@
 import { Avatar, Grid, Typography } from "@mui/material";
 
-export function SenseSight() {
+export function SenseHearing() {
   return (
     <Grid
       container
@@ -12,17 +12,17 @@ export function SenseSight() {
       <Grid item xs={4}>
         <Avatar
           alt="hearing"
-          src="/src/assets/images/charsheet/Icon_Sight.jpg"
+          src="/src/assets/images/charsheet/Icon_Hearing.jpg"
         />
       </Grid>
       <Grid item xs={5}>
-        <Typography variant="body2">3+(S)entidos</Typography>
+        <Typography variant="body2">4+(S)entidos</Typography>
       </Grid>
       <Grid item xs={2}>
         <Typography variant="body1">/</Typography>
       </Grid>
       <Grid item xs={5}>
-        <Typography variant="body2">12+(S)entidos</Typography>
+        <Typography variant="body2">8+(S)entidos</Typography>
       </Grid>
     </Grid>
   );
