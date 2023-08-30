@@ -31,7 +31,7 @@ function TabPanel(props: TabPanelProps) {
     >
       {value === index && (
         <Box sx={{ p: 3 }}>
-          <Typography component={"span"}>{children}</Typography>
+          <Typography component={"span"} color="secondary">{children}</Typography>
         </Box>
       )}
     </div>
@@ -68,6 +68,7 @@ export default function Panels() {
         onChange={handleChange}
         aria-label="Vertical tabs example"
         sx={{ borderRight: 1, borderColor: "divider" }}
+        color="secondary"
       >
         <Tab
           label="Acciones y Talentos"

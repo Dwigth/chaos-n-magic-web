@@ -1,9 +1,8 @@
 import CSInfo from "./info/CSinfo";
 import { CSEnergyControl } from "./energy/CSEnergyControl";
-import Panels from "./panels/TabPanel";
 
 import Grid from "@mui/material/Unstable_Grid2";
-import { Box } from "@mui/material";
+import { Box, IconButton, Typography } from "@mui/material";
 import { CSAttributes } from "./attributes/CSattributes";
 import CSDefense from "./defense/CSdefense";
 import CSStanceControl from "./stance/CSStanceControl";
@@ -13,6 +12,7 @@ import { CSPowerControl } from "./power/CSPowerControl";
 import { useState } from "react";
 import { CSSensesControl } from "./info/Senses/CSSensesControl";
 import TabPanel from "./panels/TabPanel";
+import LockIcon from '@mui/icons-material/Lock';
 
 export default function characterSheet() {
   const [combat, setCombat] = useState(0);
@@ -29,6 +29,16 @@ export default function characterSheet() {
         alignItems: "stretch",
       }}
     >
+      <Grid container direction="row" justifyContent={"flex-end"} alignItems={"flex-end"}>
+        <Grid xs={1}>
+          <Typography variant="overline" color="secondary"> ID de la Hoja</Typography>
+        </Grid>
+        <Grid xs={1}>
+      <IconButton color="secondary">
+        <LockIcon />
+      </IconButton>
+        </Grid>
+      </Grid>
       <Grid
         container
         columns={24}
