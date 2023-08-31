@@ -41,6 +41,7 @@ export const CSMaxDefense: FC<Props> = ({ defMax, defBono }) => {
   const currentDef = (val: number) => {
     defMax(val);
   };
+
   const currentBono = (val: number) => defBono(val);
 
   const handleDefense = (event: any) => {

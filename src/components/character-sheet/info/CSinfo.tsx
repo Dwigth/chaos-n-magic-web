@@ -8,10 +8,12 @@ import { CSCharCharacteristics } from "./CSCharCharacteristics";
 import { HeroWalkingSpeed } from "./speed/HeroWalkingSpeed";
 import { HeroSwimmingSpeed } from "./speed/HeroSwimmingSpeed";
 import { HeroClimbingSpeed } from "./speed/HeroClimbingSpeed";
-import { CSCharLanguages } from "./CSCharLanguages";
+import { FC } from "react";
 
-
-export default function CSinfo() {
+interface CharInfo {
+  Name: string;
+}
+export const CSinfo: FC<CharInfo> = ({ Name }) => {
   return (
     <Box
       component="form"
@@ -24,10 +26,9 @@ export default function CSinfo() {
         rowSpacing={0.8}
         columnSpacing={{ xs: 1, sm: 1, md: 0.3 }}
         spacing={1}
-      
       >
         <Grid xs={12}>
-          <CSCharName />
+          <CSCharName Nombre={Name} />
         </Grid>
         <Grid container xs={12} direction={"row"}>
           <Grid xs={8}>
@@ -42,9 +43,6 @@ export default function CSinfo() {
         </Grid>
         <Grid xs={12}>
           <CSCharCharacteristics />
-        </Grid>
-        <Grid xs={12}>
-          <CSCharLanguages />
         </Grid>
         <Grid container xs={12} direction={"row"}>
           <Grid xs={12}>
@@ -63,4 +61,4 @@ export default function CSinfo() {
       </Grid>
     </Box>
   );
-}
+};

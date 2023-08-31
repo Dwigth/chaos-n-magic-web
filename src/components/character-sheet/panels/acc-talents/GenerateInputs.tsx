@@ -10,11 +10,13 @@ function AddDynamicInput() {
     const abc = [...val, []];
     setVal(abc);
   };
+
   const handleChange = (onChangeValue: any, i: any) => {
     const inputdata = [...val];
     inputdata[i] = onChangeValue.target.value;
     setVal(inputdata);
   };
+
   const handleDelete = (i: any) => {
     const deletVal = [...val];
     deletVal.splice(i, 1);
@@ -33,11 +35,13 @@ function AddDynamicInput() {
             />
             <TalentTextField />
             <ActionTextField />
-            <button onClick={() => handleDelete(int)} > <DeleteButton /> </button>
+            <DeleteButton />
+            <button onClick={() => handleDelete(int)}></button>
           </>
         );
       })}
-      <button onClick={() => handleAdd()} > <AddButton /></button>
+      <AddButton />
+      <button title="Añadir" onClick={() => handleAdd()} />
     </>
   );
 }

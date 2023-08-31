@@ -5,8 +5,13 @@ import { OpenCharacterSheet } from "./menu/OpenCharacterSheet";
 
 import { Container, Grid, Paper } from "@mui/material";
 import { cnmMenu } from "../style/mainTheme.tsx";
+import { FC } from "react";
 
-export default function CharMainMenu() {
+interface PropsId {
+  Datos: (data: JSON) => void;
+}
+
+export const CharMainMenu: FC<PropsId> = ({ Datos }) => {
   return (
     <ThemeProvider theme={cnmMenu}>
       <Container>
@@ -15,7 +20,6 @@ export default function CharMainMenu() {
           style={{
             padding: "5px",
           }}
-          
         >
           <Grid
             container
@@ -31,11 +35,11 @@ export default function CharMainMenu() {
               <CloneCharacterSheet />
             </Grid>
             <Grid item xs={8}>
-              <OpenCharacterSheet />
+              <OpenCharacterSheet Datos={(e) => Datos(e)} />
             </Grid>
           </Grid>
         </Paper>
       </Container>
     </ThemeProvider>
   );
-}
+};
