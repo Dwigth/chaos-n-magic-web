@@ -47,7 +47,7 @@ export const CSAttributes: FC<Props> = ({ Combate, Fortaleza, Mente }) => {
 
   const handleChange = (event: any) => {
     const { name } = event.target;
-    const value = Math.max(0, Math.min(99, Number(event.target.value)));
+    const value = Math.max(-6, Math.min(6, Number(event.target.value)));
     setAttribute((attributes) => {
       return { ...attributes, [name]: value };
     });

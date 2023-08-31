@@ -1,4 +1,4 @@
-import CSInfo from "./info/CSinfo";
+import { CSinfo } from "./info/CSinfo";
 import { CSEnergyControl } from "./energy/CSEnergyControl";
 
 import Grid from "@mui/material/Unstable_Grid2";
@@ -9,15 +9,34 @@ import CSStanceControl from "./stance/CSStanceControl";
 import { CSLevelControl } from "./info/level/CSLevelControl";
 import { DamageStacksControl } from "./damage-stacks/DamageStacksControl";
 import { CSPowerControl } from "./power/CSPowerControl";
-import { useState } from "react";
+import { useState, useEffect, FC } from "react";
 import { CSSensesControl } from "./info/Senses/CSSensesControl";
 import TabPanel from "./panels/TabPanel";
-import LockIcon from '@mui/icons-material/Lock';
+import LockIcon from "@mui/icons-material/Lock";
 
-export default function characterSheet() {
+interface idCharacterSheet {
+  Datos: any;
+}
+
+export const CharacterSheet: FC<idCharacterSheet> = ({ Datos }) => {
   const [combat, setCombat] = useState(0);
   const [fort, setFortess] = useState(0);
   const [mind, setMind] = useState(0);
+
+  // const [combatDB, setCombatDB] = useState(0);
+
+  // const [id, getID] = useState("base");
+  // const [passCode, getpassCode] = useState("");
+  // const [nameDB, getNameDB] = useState("");
+
+  // CHAOS-N-MAGIC-md6Qe
+
+  const [disabled, setDisabled] = useState(false);
+
+  function handleGameClick() {
+    setDisabled(!disabled);
+  }
+
   return (
     <Box
       sx={{
@@ -29,14 +48,42 @@ export default function characterSheet() {
         alignItems: "stretch",
       }}
     >
-      <Grid container direction="row" justifyContent={"flex-end"} alignItems={"flex-end"}>
-        <Grid xs={1}>
-          <Typography variant="overline" color="secondary"> ID de la Hoja</Typography>
+      <Grid
+        container
+        direction="row"
+        justifyContent={"flex-end"}
+        alignItems={"center"}
+      >
+        <Grid xs={0.3}>
+          <Typography variant="body1" color="success">
+            ID:
+          </Typography>
         </Grid>
-        <Grid xs={1}>
-      <IconButton color="secondary">
-        <LockIcon />
-      </IconButton>
+        <Grid xs={1.7}>
+          <Typography variant="caption" color="secondary">
+            {Datos.sheetId}
+          </Typography>
+        </Grid>
+        {disabled
+          ? Datos.sheetPasscode && (
+              <>
+                <Grid xs={0.9}>
+                  <Typography variant="body1" color="success">
+                    Password:
+                  </Typography>
+                </Grid>
+                <Grid>
+                  <Typography variant="caption" color="secondary">
+                    {Datos.sheetPasscode}
+                  </Typography>
+                </Grid>
+              </>
+            )
+          : null}
+        <Grid xs={0.5}>
+          <IconButton color="secondary" onClick={handleGameClick}>
+            <LockIcon />
+          </IconButton>
         </Grid>
       </Grid>
       <Grid
@@ -49,7 +96,7 @@ export default function characterSheet() {
         columnSpacing={{ xs: 0, sm: 0, md: 0 }}
       >
         <Grid xs={6}>
-          <CSInfo />
+          <CSinfo Name={Datos.heroBasicInfo.characterName} />
         </Grid>
         <Grid container xs={12} columns={24}>
           <Grid xs={14}>
@@ -93,4 +140,4 @@ export default function characterSheet() {
       </Grid>
     </Box>
   );
-}
+};

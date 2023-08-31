@@ -26,8 +26,7 @@ export default function TalentTextField() {
           minRows={2}
           multiline
           fullWidth
-          inputProps={{ style: { fontSize: '0.8rem'}}}
-          
+          inputProps={{ style: { fontSize: "0.8rem" } }}
         />
       </Grid>
     </Grid>

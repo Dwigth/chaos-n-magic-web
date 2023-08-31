@@ -4,8 +4,11 @@
 /* Abrir Personaje */
 
 import { Button, Typography } from "@mui/material";
+// import { useEffect } from "react";
 
 // CREAR NUEVO PERSONAJE
+
+// http://localhost:3000/hero-sheet
 
 export function CreateNewCharacterSheet() {
   return (
