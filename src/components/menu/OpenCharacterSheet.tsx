@@ -17,7 +17,7 @@ interface PropID {
 
 export const OpenCharacterSheet: FC<PropID> = ({ Datos }) => {
   const [CSId, setIdCS] = useState({ id: "", passCode: "" });
-  const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
   const [open, setOpen] = useState(true);
 
@@ -41,7 +41,7 @@ export const OpenCharacterSheet: FC<PropID> = ({ Datos }) => {
         `http://localhost:3000/hero-sheet?hero-sheet-id=${CSId.id}`
       );
 
-      setIsLoading(false);
+      // setIsLoading(false);
       if (response.ok) {
         const data = await response.json();
         Datos(data);

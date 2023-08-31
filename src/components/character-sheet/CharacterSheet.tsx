@@ -9,7 +9,7 @@ import CSStanceControl from "./stance/CSStanceControl";
 import { CSLevelControl } from "./info/level/CSLevelControl";
 import { DamageStacksControl } from "./damage-stacks/DamageStacksControl";
 import { CSPowerControl } from "./power/CSPowerControl";
-import { useState, useEffect, FC } from "react";
+import { useState, FC } from "react";
 import { CSSensesControl } from "./info/Senses/CSSensesControl";
 import TabPanel from "./panels/TabPanel";
 import LockIcon from "@mui/icons-material/Lock";

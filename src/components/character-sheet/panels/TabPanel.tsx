@@ -4,7 +4,7 @@ import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 
-import Action from "./acc-talents/ActionTextField";
+// import Action from "./acc-talents/ActionTextField";
 import Inventory from "./inventory/inventory";
 import Magic from "./magic/magic";
 import Personality from "./pers-transf/personality";
@@ -31,7 +31,9 @@ function TabPanel(props: TabPanelProps) {
     >
       {value === index && (
         <Box sx={{ p: 3 }}>
-          <Typography component={"span"} color="secondary">{children}</Typography>
+          <Typography component={"span"} color="secondary">
+            {children}
+          </Typography>
         </Box>
       )}
     </div>

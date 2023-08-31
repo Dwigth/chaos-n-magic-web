@@ -12,13 +12,9 @@ export const CSCharName: FC<Name> = ({ Nombre }) => {
   const handleCSName = (event: any) => {
     const { name, value } = event.target;
 
-    setCSName((CSName) => {
+    setCSName(() => {
       return { ...CSName, [name]: value };
     });
-  };
-
-  const cl = () => {
-    console.log({ CSName });
   };
 
   return (

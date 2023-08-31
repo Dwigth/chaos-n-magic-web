@@ -35,18 +35,12 @@ function AddDynamicInput() {
             />
             <TalentTextField />
             <ActionTextField />
-            <DeleteButton
-              onClick={() => handleDelete(int)}
-              onClickCapture={() => handleDelete(int)}
-            />
+            <DeleteButton />
             <button onClick={() => handleDelete(int)}></button>
           </>
         );
       })}
-      <AddButton
-        onClick={() => handleAdd()}
-        onClickCapture={() => handleAdd()}
-      />
+      <AddButton />
       <button title="Añadir" onClick={() => handleAdd()} />
     </>
   );
