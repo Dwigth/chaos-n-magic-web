@@ -12,10 +12,9 @@ import {
 } from "react-router-dom";
 import CreateCharacter from "./components/create-character/CreateCharacter.tsx";
 import ErrorHandler from "./components/ErrorPages.tsx";
-import { useState } from "react";
 
 function App() {
-  const [data, getData] = useState(JSON);
+  // const [data, getData] = useState(JSON);
 
   const jsonData = JSON.parse(
     localStorage.getItem("CharacterSheetInfo") || "{}"
@@ -32,7 +31,7 @@ function App() {
       element: (
         <>
           <ButtonAppBar />
-          <CharMainMenu Datos={(d) => getData(d)} />
+          <CharMainMenu />
         </>
       ),
       errorElement: <ErrorHandler />,

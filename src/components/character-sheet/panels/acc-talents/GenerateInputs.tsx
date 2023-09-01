@@ -29,7 +29,7 @@ function AddDynamicInput() {
       {val.map((datas, int) => {
         return (
           <span key={crypto.randomUUID()}>
-            {/* <input value={datas} onChange={(e) => handleChange(e, int)} /> */}
+            <input value={datas} onChange={(e) => handleChange(e, int)} />
             <TalentTextField />
             <ActionTextField />
 
