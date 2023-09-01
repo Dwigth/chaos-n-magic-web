@@ -6,32 +6,63 @@ import { CharacterSheet } from "./components/character-sheet/CharacterSheet.tsx"
 import { CharMainMenu } from "./components/CharacterMainMenu";
 import { cnmMenu } from "./style/mainTheme.tsx";
 import {
-  BrowserRouter,
   createBrowserRouter,
   RouterProvider,
+  Navigate,
 } from "react-router-dom";
 import CreateCharacter from "./components/create-character/CreateCharacter.tsx";
 import ErrorHandler from "./components/ErrorPages.tsx";
 import { useState } from "react";
-// import cors from "cors";
 
 function App() {
   const [data, getData] = useState(JSON);
 
+  const jsonData = JSON.parse(
+    localStorage.getItem("CharacterSheetInfo") || "{}"
+  );
+
+  const dataStorage = localStorage.getItem("CharacterSheetInfo");
+
+  console.log("datos: " + dataStorage);
+
   const router = createBrowserRouter([
     {
+      index: true,
       path: "/",
-      element: <CharMainMenu Datos={(d) => getData(d)} />,
+      element: (
+        <>
+          <ButtonAppBar />
+          <CharMainMenu Datos={(d) => getData(d)} />
+        </>
+      ),
       errorElement: <ErrorHandler />,
     },
     {
       path: "/createCharacter",
-      element: <CreateCharacter />,
+      element: (
+        <>
+          <ButtonAppBar />
+          <CreateCharacter />
+        </>
+      ),
       errorElement: <ErrorHandler />,
     },
     {
       path: "/characterSheet",
-      element: <CharacterSheet Datos={data} />,
+      element: (
+        <>
+          {jsonData ? (
+            <>
+              <ButtonAppBar />
+              <CharacterSheet Datos={jsonData} />{" "}
+            </>
+          ) : (
+            <>
+              <Navigate to={"/"} />
+            </>
+          )}
+        </>
+      ),
       errorElement: <ErrorHandler />,
     },
   ]);
@@ -39,8 +70,7 @@ function App() {
   return (
     <ThemeProvider theme={cnmMenu}>
       <CssBaseline />
-      <ButtonAppBar />
-      <BrowserRouter></BrowserRouter>
+
       <RouterProvider router={router} />
     </ThemeProvider>
   );

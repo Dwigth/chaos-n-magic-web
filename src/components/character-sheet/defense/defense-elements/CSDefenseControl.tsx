@@ -35,6 +35,7 @@ interface Props {
   actualDefense: number;
   totalDefense: number;
   sendNewDefense: (def: number) => void;
+  sendNewBonus: (bon: number) => void;
 }
 
 let damage = 0;
@@ -44,37 +45,38 @@ export const CSDefenseControl: FC<Props> = ({
   actualDefense,
   totalDefense,
   sendNewDefense,
+  sendNewBonus,
   getBonus,
 }) => {
   const [amount, setAmount] = useState({ defenseControl: 0 });
 
   let total = totalDefense;
 
+  let totalBonus = getBonus;
+
   const handleChange = (event: any) => {
-    const { name, value } = event.target;
+    const { name } = event.target;
+    const value = Math.max(0, Math.min(99, Number(event.target.value)));
     setAmount((amount) => {
       return { ...amount, [name]: value };
     });
   };
 
-  function NewBonus(val: number) {
-    getBonus = val;
-  }
-
   const Damage = () => {
-    if (getBonus > 0) {
-      if (amount.defenseControl <= getBonus) {
-        bonus = Number(getBonus) - Number(amount.defenseControl);
+    if (totalBonus >= 0) {
+      if (amount.defenseControl <= totalBonus) {
+        bonus = Number(totalBonus) - Number(amount.defenseControl);
 
-        NewBonus(bonus);
-        //  = bonus;
-        // console.log("Bonus Data: " + getBonus);
+        totalBonus = bonus;
+
+        console.log("Bonus Data: " + totalBonus);
+
         damage = Number(actualDefense);
 
         amount.defenseControl = 0;
       } else {
-        bonus = Number(getBonus) - Number(amount.defenseControl);
-        getBonus = bonus;
+        bonus = Number(totalBonus) - Number(amount.defenseControl);
+        totalBonus = bonus;
 
         damage = Number(actualDefense) + bonus;
 
@@ -134,7 +136,7 @@ export const CSDefenseControl: FC<Props> = ({
             variant="contained"
             color="error"
             onClick={() => {
-              sendNewDefense(Damage());
+              sendNewDefense(Damage()), sendNewBonus(totalBonus);
             }}
           >
             Daño

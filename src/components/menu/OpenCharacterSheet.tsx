@@ -12,7 +12,7 @@ import { FC, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 interface PropID {
-  Datos: (data: JSON) => void;
+  Datos: (data: any) => void;
 }
 
 export const OpenCharacterSheet: FC<PropID> = ({ Datos }) => {
@@ -44,7 +44,9 @@ export const OpenCharacterSheet: FC<PropID> = ({ Datos }) => {
       // setIsLoading(false);
       if (response.ok) {
         const data = await response.json();
+        localStorage.setItem("CharacterSheetInfo", JSON.stringify(data));
         Datos(data);
+
         console.log({ data });
         setError("");
         routeChange();

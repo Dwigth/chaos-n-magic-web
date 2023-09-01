@@ -1,6 +1,7 @@
 import { Box, LinearProgress, styled } from "@mui/material";
 import Grid2 from "@mui/material/Unstable_Grid2";
 import { PowerField, PowerFieldLabel } from "./PowerInputStyle";
+import { FC, useState } from "react";
 
 const PowerBar = styled(LinearProgress)({
   "& .MuiLinearProgress-barColorPrimary": {
@@ -22,7 +23,10 @@ const PowerBar = styled(LinearProgress)({
   WebkitBorderRadius: "50%",
 });
 
-export function PowerFaithBar() {
+interface Value {
+  powerValue: number;
+}
+export const PowerFaithBar: FC<Value> = ({ powerValue }) => {
   return (
     <>
       <img
@@ -35,12 +39,35 @@ export function PowerFaithBar() {
         }}
         draggable="false"
       ></img>
-      <PowerBar variant="determinate" value={50} />
+      <PowerBar variant="determinate" value={powerValue} />
     </>
   );
-}
+};
 
 export function PowerFaith() {
+  const [pwChaos, setPwChaos] = useState({ actual: 0, max: 0 });
+
+  const handleMax = (event: any) => {
+    const { name } = event.target;
+    const value = Math.max(0, Math.min(100, Number(event.target.value)));
+    setPwChaos((pwChaos) => {
+      return { ...pwChaos, [name]: value };
+    });
+  };
+
+  const handleActual = (event: any) => {
+    const { name } = event.target;
+    const value = Math.max(
+      0,
+      Math.min(pwChaos.max, Number(event.target.value))
+    );
+    setPwChaos((pwChaos) => {
+      return { ...pwChaos, [name]: value };
+    });
+  };
+
+  let setPowerProgress = (pwChaos.actual / pwChaos.max) * 100;
+
   return (
     <Box>
       <Grid2
@@ -50,7 +77,7 @@ export function PowerFaith() {
         alignItems={"stretch"}
       >
         <Grid2 xs={12}>
-          <PowerFaithBar />
+          <PowerFaithBar powerValue={setPowerProgress} />
         </Grid2>
         <Grid2 xs={6}>
           <PowerFieldLabel
@@ -62,6 +89,10 @@ export function PowerFaith() {
           </PowerFieldLabel>
           <PowerField
             id="curfaith-input"
+            name="actual"
+            type="number"
+            value={pwChaos.actual}
+            onChange={handleActual}
             variant="outlined"
             color="secondary"
             size="small"
@@ -77,6 +108,10 @@ export function PowerFaith() {
           </PowerFieldLabel>
           <PowerField
             id="maxfaith-input"
+            name="max"
+            type="number"
+            value={pwChaos.max}
+            onChange={handleMax}
             variant="outlined"
             color="secondary"
             size="small"

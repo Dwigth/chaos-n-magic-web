@@ -1,6 +1,7 @@
 import { Box, LinearProgress, styled } from "@mui/material";
 import Grid2 from "@mui/material/Unstable_Grid2";
 import { PowerField, PowerFieldLabel } from "./PowerInputStyle";
+import { FC, useState } from "react";
 
 const PowerBar = styled(LinearProgress)({
   "& .MuiLinearProgress-barColorPrimary": {
@@ -21,7 +22,11 @@ const PowerBar = styled(LinearProgress)({
   WebkitMask: "radial-gradient(circle, black 100%, rgba(0,0,0,1) 100%)",
   WebkitBorderRadius: "50%",
 });
-export function PowerChaosBar() {
+
+interface Value {
+  powerValue: number;
+}
+export const PowerChaosBar: FC<Value> = ({ powerValue }) => {
   return (
     <>
       <img
@@ -34,12 +39,35 @@ export function PowerChaosBar() {
         }}
         draggable="false"
       ></img>
-      <PowerBar variant="determinate" value={50} />
+      <PowerBar variant="determinate" value={powerValue} />
     </>
   );
-}
+};
 
 export function PowerChaos() {
+  const [pwChaos, setPwChaos] = useState({ actual: 0, max: 0 });
+
+  const handleMax = (event: any) => {
+    const { name } = event.target;
+    const value = Math.max(0, Math.min(100, Number(event.target.value)));
+    setPwChaos((pwChaos) => {
+      return { ...pwChaos, [name]: value };
+    });
+  };
+
+  const handleActual = (event: any) => {
+    const { name } = event.target;
+    const value = Math.max(
+      0,
+      Math.min(pwChaos.max, Number(event.target.value))
+    );
+    setPwChaos((pwChaos) => {
+      return { ...pwChaos, [name]: value };
+    });
+  };
+
+  let setPowerProgress = (pwChaos.actual / pwChaos.max) * 100;
+
   return (
     <Box>
       <Grid2
@@ -49,7 +77,7 @@ export function PowerChaos() {
         alignItems={"stretch"}
       >
         <Grid2 xs={12}>
-          <PowerChaosBar />
+          <PowerChaosBar powerValue={setPowerProgress} />
         </Grid2>
         <Grid2 xs={6}>
           <PowerFieldLabel
@@ -61,9 +89,13 @@ export function PowerChaos() {
           </PowerFieldLabel>
           <PowerField
             id="caos"
+            type="number"
+            value={pwChaos.actual}
+            onChange={handleActual}
             variant="outlined"
             color="secondary"
             size="small"
+            name="actual"
           />
         </Grid2>
         <Grid2 xs={6}>
@@ -76,9 +108,13 @@ export function PowerChaos() {
           </PowerFieldLabel>
           <PowerField
             id="maxcaos-input"
+            type="number"
+            value={pwChaos.max}
+            onChange={handleMax}
             variant="outlined"
             color="secondary"
             size="small"
+            name="max"
           />
         </Grid2>
       </Grid2>

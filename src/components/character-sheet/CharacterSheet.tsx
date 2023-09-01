@@ -22,14 +22,11 @@ export const CharacterSheet: FC<idCharacterSheet> = ({ Datos }) => {
   const [combat, setCombat] = useState(0);
   const [fort, setFortess] = useState(0);
   const [mind, setMind] = useState(0);
+  const [senses, setSenses] = useState(0);
 
-  // const [combatDB, setCombatDB] = useState(0);
+  let name = "";
 
-  // const [id, getID] = useState("base");
-  // const [passCode, getpassCode] = useState("");
-  // const [nameDB, getNameDB] = useState("");
-
-  // CHAOS-N-MAGIC-md6Qe
+  // name = Datos.heroBasicInfo.characterName;
 
   const [disabled, setDisabled] = useState(false);
 
@@ -96,7 +93,7 @@ export const CharacterSheet: FC<idCharacterSheet> = ({ Datos }) => {
         columnSpacing={{ xs: 0, sm: 0, md: 0 }}
       >
         <Grid xs={6}>
-          <CSinfo Name={Datos.heroBasicInfo.characterName} />
+          <CSinfo Name={name} />
         </Grid>
         <Grid container xs={12} columns={24}>
           <Grid xs={14}>
@@ -122,6 +119,7 @@ export const CharacterSheet: FC<idCharacterSheet> = ({ Datos }) => {
               Combate={(c) => setCombat(c)}
               Fortaleza={(f) => setFortess(f)}
               Mente={(m) => setMind(m)}
+              Sentidos={(s) => setSenses(s)}
             />
           </Grid>
         </Grid>
@@ -131,7 +129,7 @@ export const CharacterSheet: FC<idCharacterSheet> = ({ Datos }) => {
             <CSPowerControl />
           </Grid>
           <Grid xs={6}>
-            <CSSensesControl />
+            <CSSensesControl senses={senses} />
           </Grid>
         </Grid>
         <Grid xs={24}>

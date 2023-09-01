@@ -32,9 +32,15 @@ interface Props {
   Combate: (comb: number) => void;
   Fortaleza: (fort: number) => void;
   Mente: (mind: number) => void;
+  Sentidos: (sens: number) => void;
 }
 
-export const CSAttributes: FC<Props> = ({ Combate, Fortaleza, Mente }) => {
+export const CSAttributes: FC<Props> = ({
+  Combate,
+  Fortaleza,
+  Mente,
+  Sentidos,
+}) => {
   const [attributes, setAttribute] = useState({
     personalidad: 0,
     combate: 0,
@@ -64,7 +70,9 @@ export const CSAttributes: FC<Props> = ({ Combate, Fortaleza, Mente }) => {
       Mente(value);
     }
 
-    console.log("Combate: " + Combate);
+    if (name == "sentidos") {
+      Sentidos(value);
+    }
   };
 
   const alerts = (men: string) => {

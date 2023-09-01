@@ -1,4 +1,5 @@
 import { useRouteError } from "react-router-dom";
+import ButtonAppBar from "./menu/MenuBar";
 
 export default function ErrorPage() {
   const error = useRouteError() as any;
@@ -6,6 +7,7 @@ export default function ErrorPage() {
 
   return (
     <div id="error-page" style={{ alignItems: "center" }}>
+      <ButtonAppBar />
       <h1>Oops!</h1>
       <p>Sorry, an unexpected error has occurred.</p>
       <p>

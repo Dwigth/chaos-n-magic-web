@@ -45,7 +45,8 @@ export const CSMaxDefense: FC<Props> = ({ defMax, defBono }) => {
   const currentBono = (val: number) => defBono(val);
 
   const handleDefense = (event: any) => {
-    const { name, value } = event.target;
+    const { name } = event.target;
+    const value = Math.max(0, Math.min(99, Number(event.target.value)));
     setMaxDefense((maxDefense) => {
       return { ...maxDefense, [name]: value };
     });
@@ -54,7 +55,8 @@ export const CSMaxDefense: FC<Props> = ({ defMax, defBono }) => {
   };
 
   const handleBono = (event: any) => {
-    const { name, value } = event.target;
+    const { name } = event.target;
+    const value = Math.max(0, Math.min(99, Number(event.target.value)));
     setMaxDefense((maxDefense) => {
       return { ...maxDefense, [name]: value };
     });
@@ -71,10 +73,16 @@ export const CSMaxDefense: FC<Props> = ({ defMax, defBono }) => {
             type="number"
             id="defensaMax"
             name="defense"
-            defaultValue={maxDefense.defense}
+            value={maxDefense.defense}
             onChange={handleDefense}
-            // onClick={() => defMax(maxDefense.defense)}
-            inputProps={{ style: { paddingLeft: '25%', paddingRight: 'auto', justifyContent: 'center', alignContent: 'center'}}}
+            inputProps={{
+              style: {
+                paddingLeft: "25%",
+                paddingRight: "auto",
+                justifyContent: "center",
+                alignContent: "center",
+              },
+            }}
           />
         </Grid>
         <Grid item xs={6}>
@@ -84,7 +92,7 @@ export const CSMaxDefense: FC<Props> = ({ defMax, defBono }) => {
             label="Bono"
             name="bono"
             id="defensamaxbonus"
-            defaultValue={maxDefense.bono}
+            value={maxDefense.bono}
             onChange={handleBono}
             InputLabelProps={{
               style: {

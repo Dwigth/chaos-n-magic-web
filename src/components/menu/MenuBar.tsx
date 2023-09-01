@@ -5,8 +5,17 @@ import Toolbar from "@mui/material/Toolbar";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
+import { useNavigate } from "react-router";
 
 export default function ButtonAppBar() {
+  let navigate = useNavigate();
+
+  const routeChange = () => {
+    let path = `/`;
+    localStorage.clear();
+    navigate(path);
+  };
+
   const source =
     "https://static.wixstatic.com/media/c1d84d_d6b0116e26844871bef856d0afddc335~mv2.png/v1/fill/w_165,h_93,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/c1d84d_d6b0116e26844871bef856d0afddc335~mv2.png";
   return (
@@ -22,7 +31,11 @@ export default function ButtonAppBar() {
           >
             <MenuIcon />
           </IconButton>
-          <Button size="medium" sx={{ mr: 0, height: "5pc", flexGrow: 1 }}>
+          <Button
+            size="medium"
+            sx={{ mr: 0, height: "5pc", flexGrow: 1 }}
+            onClick={routeChange}
+          >
             <img src={source} />
           </Button>
 

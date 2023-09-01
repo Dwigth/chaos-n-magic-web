@@ -1,6 +1,18 @@
 import { Avatar, Grid, Typography } from "@mui/material";
+import { FC } from "react";
 
-export function SenseHearing() {
+interface Senses {
+  senses: number;
+}
+
+let sns = 0;
+
+export const SenseHearing: FC<Senses> = ({ senses }) => {
+  if (senses >= 0) {
+    sns = senses;
+  } else {
+    sns = 0;
+  }
   return (
     <Grid
       container
@@ -16,14 +28,14 @@ export function SenseHearing() {
         />
       </Grid>
       <Grid item xs={5}>
-        <Typography variant="body2">4+(S)entidos</Typography>
+        <Typography variant="body2">{4 + sns}</Typography>
       </Grid>
       <Grid item xs={2}>
         <Typography variant="body1">/</Typography>
       </Grid>
       <Grid item xs={5}>
-        <Typography variant="body2">8+(S)entidos</Typography>
+        <Typography variant="body2">{8 + sns}</Typography>
       </Grid>
     </Grid>
   );
-}
+};

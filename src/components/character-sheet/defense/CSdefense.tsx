@@ -16,36 +16,26 @@ export default function CSDefense() {
 
   const [bonusData, setDataBonus] = useState(0);
 
-  // const [newBonusData, setNewDataBonus] = useState(0);
-
   const [amountDef, setAmountDef] = useState(0);
 
   let allDef = Number(defData) + Number(bonoData);
-  let newDef = bonusData;
 
   defenseAct = Number(defData) + Number(bonoData);
 
-  let NewBonus = 0;
-
   if (amountDef != 0) {
     defenseAct = amountDef;
-    newDef = NewBonus;
-    if (bonusData != 0) {
-      newDef = NewBonus;
-    }
-
-    // console.log("Bonus final: " + newDef);
   }
 
   return (
-    <Paper sx={{ padding: "15px", height: '100%' }}>
+    <Paper sx={{ padding: "15px", height: "100%" }}>
       <Grid container rowSpacing={1} spacing={1}>
         <Grid xs={4}>
           <CSDefenseControl
-            getBonus={newDef}
+            getBonus={bonusData}
             actualDefense={defenseAct}
             totalDefense={allDef}
             sendNewDefense={(dmHl) => setAmountDef(dmHl)}
+            sendNewBonus={(b) => setDataBonus(b)}
           />
         </Grid>
         <Grid
@@ -70,7 +60,7 @@ export default function CSDefense() {
           <Grid xs={5}>
             <CSDefenseBonus
               bonus={(bonusSh) => setDataBonus(bonusSh)}
-              actBonus={NewBonus}
+              actBonus={bonusData}
             />
           </Grid>
         </Grid>

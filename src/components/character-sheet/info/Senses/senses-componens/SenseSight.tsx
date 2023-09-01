@@ -1,6 +1,18 @@
 import { Avatar, Grid, Typography } from "@mui/material";
+import { FC } from "react";
 
-export function SenseSight() {
+interface Senses {
+  senses: number;
+}
+
+let sns = 0;
+
+export const SenseSight: FC<Senses> = ({ senses }) => {
+  if (senses >= 0) {
+    sns = senses;
+  } else {
+    sns = 0;
+  }
   return (
     <Grid
       container
@@ -16,14 +28,14 @@ export function SenseSight() {
         />
       </Grid>
       <Grid item xs={5}>
-        <Typography variant="body2">3+(S)entidos</Typography>
+        <Typography variant="body2">{3 + sns}</Typography>
       </Grid>
       <Grid item xs={2}>
         <Typography variant="body1">/</Typography>
       </Grid>
       <Grid item xs={5}>
-        <Typography variant="body2">12+(S)entidos</Typography>
+        <Typography variant="body2">{12 + sns}</Typography>
       </Grid>
     </Grid>
   );
-}
+};

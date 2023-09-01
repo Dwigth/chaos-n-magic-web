@@ -3,6 +3,7 @@ import TalentTextField from "./TalentTextField";
 import { AddButton } from "../../../global-components/AddButton";
 import { DeleteButton } from "../../../global-components/DeleteButton";
 import ActionTextField from "./ActionTextField";
+import { Grid } from "@mui/material";
 
 function AddDynamicInput() {
   const [val, setVal] = useState<any[]>([]);
@@ -24,25 +25,20 @@ function AddDynamicInput() {
   };
   // console.log(val, "data-");
   return (
-    <>
+    <Grid>
       {val.map((datas, int) => {
         return (
-          <>
-            <input
-              key={int}
-              value={datas}
-              onChange={(e) => handleChange(e, int)}
-            />
+          <span key={crypto.randomUUID()}>
+            {/* <input value={datas} onChange={(e) => handleChange(e, int)} /> */}
             <TalentTextField />
             <ActionTextField />
-            <DeleteButton />
-            <button onClick={() => handleDelete(int)}></button>
-          </>
+
+            <DeleteButton clicHandler={() => handleDelete(int)} />
+          </span>
         );
       })}
-      <AddButton />
-      <button title="Añadir" onClick={() => handleAdd()} />
-    </>
+      <AddButton clicHandler={handleAdd} />
+    </Grid>
   );
 }
 export default AddDynamicInput;
