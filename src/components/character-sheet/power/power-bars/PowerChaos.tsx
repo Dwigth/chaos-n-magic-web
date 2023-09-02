@@ -26,6 +26,7 @@ const PowerBar = styled(LinearProgress)({
 interface Value {
   powerValue: number;
 }
+
 export const PowerChaosBar: FC<Value> = ({ powerValue }) => {
   return (
     <>
@@ -44,8 +45,15 @@ export const PowerChaosBar: FC<Value> = ({ powerValue }) => {
   );
 };
 
-export function PowerChaos() {
-  const [pwChaos, setPwChaos] = useState({ actual: 0, max: 0 });
+interface PowerChaos {
+  Datos: any;
+}
+
+export const PowerChaos: FC<PowerChaos> = ({ Datos }) => {
+  const [pwChaos, setPwChaos] = useState({
+    actual: 0,
+    max: Datos.heroBasicInfo.powers.chaos.value,
+  });
 
   const handleMax = (event: any) => {
     const { name } = event.target;
@@ -120,4 +128,4 @@ export function PowerChaos() {
       </Grid2>
     </Box>
   );
-}
+};

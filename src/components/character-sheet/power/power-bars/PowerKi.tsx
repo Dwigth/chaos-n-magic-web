@@ -44,8 +44,15 @@ export const PowerKiBar: FC<Value> = ({ powerValue }) => {
   );
 };
 
-export function PowerKi() {
-  const [pwChaos, setPwChaos] = useState({ actual: 0, max: 0 });
+interface PowerKi {
+  Datos: any;
+}
+
+export const PowerKi: FC<PowerKi> = ({ Datos }) => {
+  const [pwChaos, setPwChaos] = useState({
+    actual: 0,
+    max: Datos.heroBasicInfo.powers.ki.value,
+  });
 
   const handleMax = (event: any) => {
     const { name } = event.target;
@@ -119,4 +126,4 @@ export function PowerKi() {
       </Grid2>
     </Box>
   );
-}
+};

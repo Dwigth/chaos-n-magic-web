@@ -1,6 +1,18 @@
 import { TextField } from "@mui/material";
+import { FC, useState } from "react";
 
-export function CSCharProfession() {
+interface Especie {
+  Datos: any;
+}
+
+export const CSCharProfession: FC<Especie> = ({ Datos }) => {
+  const [profesion, setProfession] = useState(
+    Datos.heroBasicInfo.profession ? Datos.heroBasicInfo.profession : ""
+  );
+
+  const handleChange = (event: any) => {
+    setProfession(event.target.value as string);
+  };
   return (
     <TextField
       color="secondary"
@@ -10,7 +22,8 @@ export function CSCharProfession() {
       variant="outlined"
       type="text"
       name="info-profesion"
-      defaultValue=" "
+      value={profesion}
+      onChange={handleChange}
     />
   );
-}
+};

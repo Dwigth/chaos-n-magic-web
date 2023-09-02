@@ -7,13 +7,14 @@ import {
   Typography,
   Alert,
   Collapse,
+  CircularProgress,
 } from "@mui/material";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const OpenCharacterSheet = () => {
   const [CSId, setIdCS] = useState({ id: "", passCode: "" });
-  // const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
   const [open, setOpen] = useState(true);
 
@@ -27,7 +28,7 @@ export const OpenCharacterSheet = () => {
   let navigate = useNavigate();
 
   const routeChange = () => {
-    let path = `characterSheet`;
+    let path = `/characterSheet/${CSId.id}`;
     navigate(path);
   };
 
@@ -37,7 +38,6 @@ export const OpenCharacterSheet = () => {
         `http://localhost:3000/hero-sheet?hero-sheet-id=${CSId.id}`
       );
 
-      // setIsLoading(false);
       if (response.ok) {
         const data = await response.json();
         localStorage.setItem("CharacterSheetInfo", JSON.stringify(data));
@@ -45,6 +45,7 @@ export const OpenCharacterSheet = () => {
 
         console.log({ data });
         setError("");
+        setIsLoading(false);
         routeChange();
       } else {
         setError("Esta hoja de personaje no esta disponible");
@@ -64,6 +65,7 @@ export const OpenCharacterSheet = () => {
         padding: "5px",
       }}
     >
+      {isLoading ? <CircularProgress /> : null}
       <Grid
         container
         direction={"column"}

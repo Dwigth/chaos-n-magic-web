@@ -7,15 +7,15 @@ interface Sense {
   senses: number;
 }
 
-export const CSSensesControl: FC<Sense> = ({ senses }) => {
+export const CSSensesControl: FC<Sense> = ({ Sense }) => {
   return (
     <Paper elevation={2} sx={{ marginTop: "2%", padding: "5%" }}>
       <Grid container direction="column" spacing={1}>
         <Grid item xs={12}>
-          <SenseSight senses={senses} />
+          <SenseSight />
         </Grid>
         <Grid item xs={12}>
-          <SenseHearing senses={senses} />
+          <SenseHearing />
         </Grid>
       </Grid>
     </Paper>

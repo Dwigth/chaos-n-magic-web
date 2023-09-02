@@ -9,10 +9,11 @@ import CSStanceControl from "./stance/CSStanceControl";
 import { CSLevelControl } from "./info/level/CSLevelControl";
 import { DamageStacksControl } from "./damage-stacks/DamageStacksControl";
 import { CSPowerControl } from "./power/CSPowerControl";
-import { useState, FC } from "react";
+import { useState, FC, useEffect } from "react";
 import { CSSensesControl } from "./info/Senses/CSSensesControl";
 import TabPanel from "./panels/TabPanel";
 import LockIcon from "@mui/icons-material/Lock";
+import { useParams } from "react-router-dom";
 
 interface idCharacterSheet {
   Datos: any;
@@ -24,15 +25,37 @@ export const CharacterSheet: FC<idCharacterSheet> = ({ Datos }) => {
   const [mind, setMind] = useState(0);
   const [senses, setSenses] = useState(0);
 
-  let name = "";
-
-  // name = Datos.heroBasicInfo.characterName;
-
   const [disabled, setDisabled] = useState(false);
 
   function handleGameClick() {
     setDisabled(!disabled);
   }
+
+  let params = useParams();
+
+  const [error, setError] = useState("");
+
+  async function handleClick() {
+    try {
+      const response = await fetch(
+        `http://localhost:3000/hero-sheet?hero-sheet-id=${params.sheetId}`
+      );
+
+      if (response.ok) {
+        const data = await response.json();
+
+        console.log({ data });
+      } else {
+        setError("Esta hoja de personaje no esta disponible");
+      }
+    } catch (error) {
+      setError("No se completo la solicitud para obtener los datos");
+    }
+  }
+
+  useEffect(() => {
+    handleClick();
+  }, []);
 
   return (
     <Box
@@ -58,11 +81,11 @@ export const CharacterSheet: FC<idCharacterSheet> = ({ Datos }) => {
         </Grid>
         <Grid xs={1.7}>
           <Typography variant="caption" color="secondary">
-            {Datos.sheetId}
+            {params.sheetId}
           </Typography>
         </Grid>
         {disabled
-          ? Datos.sheetPasscode && (
+          ? params.sheetPasscode && (
               <>
                 <Grid xs={0.9}>
                   <Typography variant="body1" color="success">
@@ -71,7 +94,7 @@ export const CharacterSheet: FC<idCharacterSheet> = ({ Datos }) => {
                 </Grid>
                 <Grid>
                   <Typography variant="caption" color="secondary">
-                    {Datos.sheetPasscode}
+                    {params.sheetPasscode}
                   </Typography>
                 </Grid>
               </>
@@ -93,7 +116,7 @@ export const CharacterSheet: FC<idCharacterSheet> = ({ Datos }) => {
         columnSpacing={{ xs: 0, sm: 0, md: 0 }}
       >
         <Grid xs={6}>
-          <CSinfo Name={name} />
+          <CSinfo Datos={Datos} />
         </Grid>
         <Grid container xs={12} columns={24}>
           <Grid xs={14}>
@@ -120,13 +143,14 @@ export const CharacterSheet: FC<idCharacterSheet> = ({ Datos }) => {
               Fortaleza={(f) => setFortess(f)}
               Mente={(m) => setMind(m)}
               Sentidos={(s) => setSenses(s)}
+              Datos={Datos}
             />
           </Grid>
         </Grid>
         <Grid xs={6}>
           <CSLevelControl />
           <Grid xs={6}>
-            <CSPowerControl />
+            <CSPowerControl Datos={Datos} />
           </Grid>
           <Grid xs={6}>
             <CSSensesControl senses={senses} />

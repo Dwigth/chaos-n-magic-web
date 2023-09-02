@@ -44,8 +44,15 @@ export const PowerManaBar: FC<Value> = ({ powerValue }) => {
   );
 };
 
-export function PowerMana() {
-  const [pwChaos, setPwChaos] = useState({ actual: 0, max: 0 });
+interface PowerMana {
+  Datos: any;
+}
+
+export const PowerMana: FC<PowerMana> = ({ Datos }) => {
+  const [pwChaos, setPwChaos] = useState({
+    actual: 0,
+    max: Datos.heroBasicInfo.powers.manna.value,
+  });
 
   const handleMax = (event: any) => {
     const { name } = event.target;
@@ -120,4 +127,4 @@ export function PowerMana() {
       </Grid2>
     </Box>
   );
-}
+};

@@ -33,6 +33,7 @@ interface Props {
   Fortaleza: (fort: number) => void;
   Mente: (mind: number) => void;
   Sentidos: (sens: number) => void;
+  Datos: any;
 }
 
 export const CSAttributes: FC<Props> = ({
@@ -40,15 +41,24 @@ export const CSAttributes: FC<Props> = ({
   Fortaleza,
   Mente,
   Sentidos,
+  Datos,
 }) => {
+  const personality = Datos.heroBasicInfo.attributes.personality.value;
+  const combat = Datos.heroBasicInfo.attributes.combat.value;
+  const intellect = Datos.heroBasicInfo.attributes.intellect.value;
+  const fortitude = Datos.heroBasicInfo.attributes.fortitude.value;
+  const agility = Datos.heroBasicInfo.attributes.agility.value;
+  const senses = Datos.heroBasicInfo.attributes.senses.value;
+  const mind = Datos.heroBasicInfo.attributes.senses.value;
+
   const [attributes, setAttribute] = useState({
-    personalidad: 0,
-    combate: 0,
-    intelecto: 0,
-    fortaleza: 0,
-    agilidad: 0,
-    sentidos: 0,
-    mente: 0,
+    personalidad: personality,
+    combate: combat,
+    intelecto: intellect,
+    fortaleza: fortitude,
+    agilidad: agility,
+    sentidos: senses,
+    mente: mind,
   });
 
   const handleChange = (event: any) => {

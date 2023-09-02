@@ -2,11 +2,13 @@ import { TextField } from "@mui/material";
 import { FC, useState } from "react";
 
 interface Name {
-  Nombre: string;
+  Datos: any;
 }
 
-export const CSCharName: FC<Name> = ({ Nombre }) => {
-  const [CSName, setCSName] = useState({ infoName: "" });
+export const CSCharName: FC<Name> = ({ Datos }) => {
+  const Name = Datos.heroBasicInfo.characterName;
+
+  const [CSName, setCSName] = useState({ infoName: Name });
 
   const handleCSName = (event: any) => {
     const { name, value } = event.target;
@@ -24,7 +26,7 @@ export const CSCharName: FC<Name> = ({ Nombre }) => {
         color="secondary"
         fullWidth
         label="Nombre del personaje"
-        defaultValue={Nombre}
+        defaultValue={CSName.infoName}
         onChange={handleCSName}
         type="text"
         name="infoName"

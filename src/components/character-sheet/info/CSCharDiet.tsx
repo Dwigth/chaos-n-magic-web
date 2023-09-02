@@ -5,10 +5,16 @@ import {
   Select,
   SelectChangeEvent,
 } from "@mui/material";
-import React from "react";
+import { FC, useState } from "react";
 
-export function CSCharDiet() {
-  const [diet, setDiet] = React.useState("");
+interface CharDiet {
+  Datos: any;
+}
+
+export const CSCharDiet: FC<CharDiet> = ({ Datos }) => {
+  const [diet, setDiet] = useState(
+    Datos.heroBasicInfo.diet ? Datos.heroBasicInfo.diet : ""
+  );
 
   const handleChange = (event: SelectChangeEvent) => {
     setDiet(event.target.value as string);
@@ -49,4 +55,4 @@ export function CSCharDiet() {
       </Select>
     </FormControl>
   );
-}
+};

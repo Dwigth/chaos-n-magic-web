@@ -11,9 +11,9 @@ import { HeroClimbingSpeed } from "./speed/HeroClimbingSpeed";
 import { FC } from "react";
 
 interface CharInfo {
-  Name: string;
+  Datos: any;
 }
-export const CSinfo: FC<CharInfo> = ({ Name }) => {
+export const CSinfo: FC<CharInfo> = ({ Datos }) => {
   return (
     <Box
       component="form"
@@ -28,18 +28,18 @@ export const CSinfo: FC<CharInfo> = ({ Name }) => {
         spacing={1}
       >
         <Grid xs={12}>
-          <CSCharName Nombre={Name} />
+          <CSCharName Datos={Datos} />
         </Grid>
         <Grid container xs={12} direction={"row"}>
           <Grid xs={8}>
-            <CSCharSpecies />
+            <CSCharSpecies Datos={Datos} />
           </Grid>
           <Grid xs={4}>
-            <CSCharDiet />
+            <CSCharDiet Datos={Datos} />
           </Grid>
         </Grid>
         <Grid xs={12}>
-          <CSCharProfession />
+          <CSCharProfession Datos={Datos} />
         </Grid>
         <Grid xs={12}>
           <CSCharCharacteristics />
@@ -49,13 +49,13 @@ export const CSinfo: FC<CharInfo> = ({ Name }) => {
             <Typography variant="h6">Velocidad</Typography>
           </Grid>
           <Grid xs={4}>
-            <HeroWalkingSpeed />
+            <HeroWalkingSpeed Datos={Datos} />
           </Grid>
           <Grid xs={4}>
-            <HeroSwimmingSpeed />
+            <HeroSwimmingSpeed Datos={Datos} />
           </Grid>
           <Grid xs={4}>
-            <HeroClimbingSpeed />
+            <HeroClimbingSpeed Datos={Datos} />
           </Grid>
         </Grid>
       </Grid>

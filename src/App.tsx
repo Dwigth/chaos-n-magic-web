@@ -20,9 +20,7 @@ function App() {
     localStorage.getItem("CharacterSheetInfo") || "{}"
   );
 
-  const dataStorage = localStorage.getItem("CharacterSheetInfo");
-
-  console.log("datos: " + dataStorage);
+  // const dataStorage = localStorage.getItem("CharacterSheetInfo");
 
   const router = createBrowserRouter([
     {
@@ -47,7 +45,16 @@ function App() {
       errorElement: <ErrorHandler />,
     },
     {
-      path: "/characterSheet",
+      path: "/characterSheet/:sheetId?",
+      loader: async ({ request, params }) => {
+        console.log({ params });
+        return null;
+      },
+
+      // performing this mutation when data is submitted to it
+      // action: async ({ request }) => {
+      //   return updateFakeTeam(await request.formData());
+      // },
       element: (
         <>
           {jsonData ? (

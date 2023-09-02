@@ -44,8 +44,15 @@ export const PowerFaithBar: FC<Value> = ({ powerValue }) => {
   );
 };
 
-export function PowerFaith() {
-  const [pwChaos, setPwChaos] = useState({ actual: 0, max: 0 });
+interface PowerFaith {
+  Datos: any;
+}
+
+export const PowerFaith: FC<PowerFaith> = ({ Datos }) => {
+  const [pwChaos, setPwChaos] = useState({
+    actual: 0,
+    max: Datos.heroBasicInfo.powers.faith.value,
+  });
 
   const handleMax = (event: any) => {
     const { name } = event.target;
@@ -120,4 +127,4 @@ export function PowerFaith() {
       </Grid2>
     </Box>
   );
-}
+};
