@@ -1,29 +1,30 @@
 import { TextField } from "@mui/material";
-import { FC, useState } from "react";
+import { useCharacter } from "../../reducer-context/CharacterContextProvider";
 
-interface data {
-  Datos: any;
-}
+export const HeroWalkingSpeed = () => {
+  const { characterState, characterDispatch } = useCharacter();
 
-export const HeroWalkingSpeed: FC<data> = ({ Datos }) => {
-  const [walkSpeed, setWalkSpeed] = useState(
-    Datos.heroBasicInfo.speed.swimmingSpeed.value
-  );
-
-  const handleSpeed = (event: any) => {
+  const handleSpeeds = (event: any) => {
+    const { name } = event.target;
     const value = Math.max(0, Math.min(100, Number(event.target.value)));
-    setWalkSpeed(value);
+    characterDispatch({
+      type: "update_speeds",
+      payload: {
+        name,
+        value,
+      },
+    });
   };
   return (
     <TextField
       id="info-velocity-run"
-      name="info-velocity-run"
       label="Correr"
       variant="outlined"
       color="secondary"
       type="number"
-      value={walkSpeed}
-      onChange={handleSpeed}
+      name="walkingSpeed"
+      value={characterState.speed.walkingSpeed.value}
+      onChange={handleSpeeds}
       InputLabelProps={{
         style: {
           fontSize: 14,

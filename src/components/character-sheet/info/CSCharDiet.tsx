@@ -1,24 +1,21 @@
-import {
-  Avatar,
-  FormControl,
-  MenuItem,
-  Select,
-  SelectChangeEvent,
-} from "@mui/material";
-import { FC, useState } from "react";
+import { Avatar, FormControl, MenuItem, Select } from "@mui/material";
+import { useCharacter } from "../reducer-context/CharacterContextProvider";
 
-interface CharDiet {
-  Datos: any;
-}
+import Meat from "../../../assets/images/herodiet/HeroDiet_Meat.png";
+import Herbivore from "../../../assets/images/herodiet/HeroDiet_Herbivore.png";
+import Omnivore from "../../../assets/images/herodiet/HeroDiet_Omnivore.png";
 
-export const CSCharDiet: FC<CharDiet> = ({ Datos }) => {
-  const [diet, setDiet] = useState(
-    Datos.heroBasicInfo.diet ? Datos.heroBasicInfo.diet : ""
-  );
+export const CSCharDiet = () => {
+  const { characterState, characterDispatch } = useCharacter();
 
-  const handleChange = (event: SelectChangeEvent) => {
-    setDiet(event.target.value as string);
+  const handleChange = (event: any) => {
+    const value = event.target.value as string;
+    characterDispatch({
+      type: "update_diet",
+      payload: value,
+    });
   };
+
   return (
     // <TextField
     //       fullWidth
@@ -34,7 +31,7 @@ export const CSCharDiet: FC<CharDiet> = ({ Datos }) => {
       <Select
         labelId="herodiet"
         id="herodiet"
-        value={diet}
+        value={characterState.diet}
         onChange={handleChange}
         sx={{
           style: {
@@ -44,13 +41,13 @@ export const CSCharDiet: FC<CharDiet> = ({ Datos }) => {
         }}
       >
         <MenuItem value={"carnívoro"}>
-          <Avatar src="src/assets/images/herodiet/HeroDiet_Meat.png" />
+          <Avatar src={Meat} />
         </MenuItem>
-        <MenuItem value={"herbívoro"}>
-          <Avatar src="src/assets/images/herodiet/HeroDiet_Herbivore.png" />
+        <MenuItem value={"herbivorous"}>
+          <Avatar src={Herbivore} />
         </MenuItem>
         <MenuItem value={"omnívoro"}>
-          <Avatar src="src/assets/images/herodiet/HeroDiet_Omnivore.png" />
+          <Avatar src={Omnivore} />
         </MenuItem>
       </Select>
     </FormControl>

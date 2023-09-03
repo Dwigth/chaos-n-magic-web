@@ -8,12 +8,8 @@ import { CSCharCharacteristics } from "./CSCharCharacteristics";
 import { HeroWalkingSpeed } from "./speed/HeroWalkingSpeed";
 import { HeroSwimmingSpeed } from "./speed/HeroSwimmingSpeed";
 import { HeroClimbingSpeed } from "./speed/HeroClimbingSpeed";
-import { FC } from "react";
 
-interface CharInfo {
-  Datos: any;
-}
-export const CSinfo: FC<CharInfo> = ({ Datos }) => {
+export const CSinfo = () => {
   return (
     <Box
       component="form"
@@ -28,18 +24,18 @@ export const CSinfo: FC<CharInfo> = ({ Datos }) => {
         spacing={1}
       >
         <Grid xs={12}>
-          <CSCharName Datos={Datos} />
+          <CSCharName />
         </Grid>
         <Grid container xs={12} direction={"row"}>
           <Grid xs={8}>
-            <CSCharSpecies Datos={Datos} />
+            <CSCharSpecies />
           </Grid>
           <Grid xs={4}>
-            <CSCharDiet Datos={Datos} />
+            <CSCharDiet />
           </Grid>
         </Grid>
         <Grid xs={12}>
-          <CSCharProfession Datos={Datos} />
+          <CSCharProfession />
         </Grid>
         <Grid xs={12}>
           <CSCharCharacteristics />
@@ -49,13 +45,13 @@ export const CSinfo: FC<CharInfo> = ({ Datos }) => {
             <Typography variant="h6">Velocidad</Typography>
           </Grid>
           <Grid xs={4}>
-            <HeroWalkingSpeed Datos={Datos} />
+            <HeroWalkingSpeed />
           </Grid>
           <Grid xs={4}>
-            <HeroSwimmingSpeed Datos={Datos} />
+            <HeroSwimmingSpeed />
           </Grid>
           <Grid xs={4}>
-            <HeroClimbingSpeed Datos={Datos} />
+            <HeroClimbingSpeed />
           </Grid>
         </Grid>
       </Grid>

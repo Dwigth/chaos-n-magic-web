@@ -1,30 +1,32 @@
 import { TextField } from "@mui/material";
-import { FC, useState } from "react";
+import { useCharacter } from "../../reducer-context/CharacterContextProvider";
 
-interface data {
-  Datos: any;
-}
+export const HeroSwimmingSpeed = () => {
+  const { characterState, characterDispatch } = useCharacter();
 
-export const HeroSwimmingSpeed: FC<data> = ({ Datos }) => {
-  const [swimSpeed, setSwimSpeed] = useState(
-    Datos.heroBasicInfo.speed.swimmingSpeed.value
-  );
-
-  const handleSpeed = (event: any) => {
+  const handleSpeeds = (event: any) => {
+    const { name } = event.target;
     const value = Math.max(0, Math.min(100, Number(event.target.value)));
-    setSwimSpeed(value);
+    characterDispatch({
+      type: "update_speeds",
+      payload: {
+        name,
+        value,
+      },
+    });
   };
+
   return (
     <TextField
       fullWidth
       id="info-velocity-swimming"
-      name="info-velocity-swimming"
       color="secondary"
       label="Nado"
       variant="outlined"
       type="number"
-      value={swimSpeed}
-      onChange={handleSpeed}
+      name="swimmingSpeed"
+      value={characterState.speed.swimmingSpeed.value}
+      onChange={handleSpeeds}
     />
   );
 };

@@ -1,17 +1,15 @@
 import { TextField } from "@mui/material";
-import { FC, useState } from "react";
+import { useCharacter } from "../reducer-context/CharacterContextProvider";
 
-interface Especie {
-  Datos: any;
-}
-
-export const CSCharSpecies: FC<Especie> = ({ Datos }) => {
-  const [specie, setSpecie] = useState(
-    Datos.heroBasicInfo.specie ? Datos.heroBasicInfo.specie : ""
-  );
+export const CSCharSpecies = () => {
+  const { characterState, characterDispatch } = useCharacter();
 
   const handleChange = (event: any) => {
-    setSpecie(event.target.value as string);
+    const value = event.target.value as string;
+    characterDispatch({
+      type: "update_specie",
+      payload: value,
+    });
   };
   return (
     <TextField
@@ -21,7 +19,7 @@ export const CSCharSpecies: FC<Especie> = ({ Datos }) => {
       label="Especie"
       variant="outlined"
       name="info-specie"
-      value={specie}
+      value={characterState.specie}
       onChange={handleChange}
     />
   );

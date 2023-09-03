@@ -2,6 +2,7 @@ import { Box, LinearProgress, styled } from "@mui/material";
 import Grid2 from "@mui/material/Unstable_Grid2";
 import { PowerField, PowerFieldLabel } from "./PowerInputStyle";
 import { FC, useState } from "react";
+import { useCharacter } from "../../reducer-context/CharacterContextProvider";
 
 const PowerBar = styled(LinearProgress)({
   "& .MuiLinearProgress-barColorPrimary": {
@@ -44,21 +45,20 @@ export const PowerFaithBar: FC<Value> = ({ powerValue }) => {
   );
 };
 
-interface PowerFaith {
-  Datos: any;
-}
-
-export const PowerFaith: FC<PowerFaith> = ({ Datos }) => {
-  const [pwChaos, setPwChaos] = useState({
-    actual: 0,
-    max: Datos.heroBasicInfo.powers.faith.value,
-  });
+export const PowerFaith = () => {
+  const [pwChaos, setPwChaos] = useState({ actual: 0 });
+  const { characterState, characterDispatch } = useCharacter();
 
   const handleMax = (event: any) => {
     const { name } = event.target;
     const value = Math.max(0, Math.min(100, Number(event.target.value)));
-    setPwChaos((pwChaos) => {
-      return { ...pwChaos, [name]: value };
+    console.log({ name });
+    characterDispatch({
+      type: "update_powers",
+      payload: {
+        name,
+        value,
+      },
     });
   };
 
@@ -66,14 +66,15 @@ export const PowerFaith: FC<PowerFaith> = ({ Datos }) => {
     const { name } = event.target;
     const value = Math.max(
       0,
-      Math.min(pwChaos.max, Number(event.target.value))
+      Math.min(characterState.powers.faith.value, Number(event.target.value))
     );
     setPwChaos((pwChaos) => {
       return { ...pwChaos, [name]: value };
     });
   };
 
-  let setPowerProgress = (pwChaos.actual / pwChaos.max) * 100;
+  let setPowerProgress =
+    (pwChaos.actual / characterState.powers.faith.value) * 100;
 
   return (
     <Box>
@@ -115,9 +116,9 @@ export const PowerFaith: FC<PowerFaith> = ({ Datos }) => {
           </PowerFieldLabel>
           <PowerField
             id="maxfaith-input"
-            name="max"
             type="number"
-            value={pwChaos.max}
+            name="faith"
+            value={characterState.powers.faith.value}
             onChange={handleMax}
             variant="outlined"
             color="secondary"

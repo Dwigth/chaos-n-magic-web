@@ -5,10 +5,7 @@ import { PowerKi } from "./power-bars/PowerKi";
 import { PowerChaos } from "./power-bars/PowerChaos";
 import { FC } from "react";
 
-interface Power {
-  Datos: any;
-}
-export const CSPowerControl: FC<Power> = ({ Datos }) => {
+export const CSPowerControl = () => {
   return (
     <Paper elevation={2}>
       <Grid
@@ -24,19 +21,19 @@ export const CSPowerControl: FC<Power> = ({ Datos }) => {
         </Grid>
         <Grid item xs={3}>
           <Typography variant="caption"> Maná </Typography>
-          <PowerMana Datos={Datos} />
+          <PowerMana />
         </Grid>
         <Grid item xs={3}>
           <Typography variant="caption"> Fé</Typography>
-          <PowerFaith Datos={Datos} />
+          <PowerFaith />
         </Grid>
         <Grid item xs={3}>
           <Typography variant="caption"> Ki </Typography>
-          <PowerKi Datos={Datos} />
+          <PowerKi />
         </Grid>
         <Grid item xs={3}>
           <Typography variant="caption"> Caos </Typography>
-          <PowerChaos Datos={Datos} />
+          <PowerChaos />
         </Grid>
       </Grid>
     </Paper>

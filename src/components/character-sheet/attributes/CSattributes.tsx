@@ -13,6 +13,7 @@ import Fortress from "../../../assets/images/attributes/Attributes_F.png";
 import Agility from "../../../assets/images/attributes/Attributes_A.png";
 import Sense from "../../../assets/images/attributes/Attributes_S.png";
 import Mind from "../../../assets/images/attributes/Attributes_M.png";
+import { useCharacter } from "../reducer-context/CharacterContextProvider";
 
 const Item = styled(Paper)(({}) => ({
   background: "none",
@@ -20,69 +21,26 @@ const Item = styled(Paper)(({}) => ({
   boxShadow: "none",
   textAlign: "center",
   draggable: "false",
-  // ...theme.typography.body2,
-  // padding: theme.spacing(0),
 }));
 
 function getRandomInt(max: any) {
   return Math.floor(Math.random() * max + 1);
 }
 
-interface Props {
-  Combate: (comb: number) => void;
-  Fortaleza: (fort: number) => void;
-  Mente: (mind: number) => void;
-  Sentidos: (sens: number) => void;
-  Datos: any;
-}
+export const CSAttributes = () => {
+  const { characterState, characterDispatch } = useCharacter();
 
-export const CSAttributes: FC<Props> = ({
-  Combate,
-  Fortaleza,
-  Mente,
-  Sentidos,
-  Datos,
-}) => {
-  const personality = Datos.heroBasicInfo.attributes.personality.value;
-  const combat = Datos.heroBasicInfo.attributes.combat.value;
-  const intellect = Datos.heroBasicInfo.attributes.intellect.value;
-  const fortitude = Datos.heroBasicInfo.attributes.fortitude.value;
-  const agility = Datos.heroBasicInfo.attributes.agility.value;
-  const senses = Datos.heroBasicInfo.attributes.senses.value;
-  const mind = Datos.heroBasicInfo.attributes.senses.value;
-
-  const [attributes, setAttribute] = useState({
-    personalidad: personality,
-    combate: combat,
-    intelecto: intellect,
-    fortaleza: fortitude,
-    agilidad: agility,
-    sentidos: senses,
-    mente: mind,
-  });
-
-  const handleChange = (event: any) => {
+  const handleAttribute = (event: any) => {
     const { name } = event.target;
     const value = Math.max(-6, Math.min(6, Number(event.target.value)));
-    setAttribute((attributes) => {
-      return { ...attributes, [name]: value };
+    console.log({ name });
+    characterDispatch({
+      type: "update_attributes",
+      payload: {
+        name,
+        value,
+      },
     });
-
-    if (name == "combate") {
-      Combate(value);
-    }
-
-    if (name == "fortaleza") {
-      Fortaleza(value);
-    }
-
-    if (name == "mente") {
-      Mente(value);
-    }
-
-    if (name == "sentidos") {
-      Sentidos(value);
-    }
   };
 
   const alerts = (men: string) => {
@@ -135,13 +93,13 @@ export const CSAttributes: FC<Props> = ({
             <TextField
               id="attribute_personality"
               variant="outlined"
-              name="personalidad"
+              name="personality"
               color="secondary"
               label="Personalidad"
               type="number"
               size="medium"
-              onChange={handleChange}
-              value={attributes.personalidad}
+              onChange={handleAttribute}
+              value={characterState.attributes.personality.value}
               inputProps={{
                 style: {
                   fontSize: 32,
@@ -157,7 +115,12 @@ export const CSAttributes: FC<Props> = ({
               }}
             />
             <Item
-              onClick={() => tirada("Personalidad", attributes.personalidad)}
+              onClick={() =>
+                tirada(
+                  "Personalidad",
+                  characterState.attributes.personality.value
+                )
+              }
             >
               <Button size="small" draggable="false">
                 <Avatar
@@ -177,9 +140,9 @@ export const CSAttributes: FC<Props> = ({
               variant="outlined"
               color="secondary"
               type="number"
-              name="combate"
-              onChange={handleChange}
-              value={attributes.combate}
+              name="combat"
+              onChange={handleAttribute}
+              value={characterState.attributes.combat.value}
               label="Combate"
               size="medium"
               inputProps={{
@@ -196,7 +159,11 @@ export const CSAttributes: FC<Props> = ({
                 },
               }}
             />
-            <Item onClick={() => tirada("Combate", attributes.combate)}>
+            <Item
+              onClick={() =>
+                tirada("Combate", characterState.attributes.combat.value)
+              }
+            >
               <Button size="small" color="secondary">
                 <Avatar
                   alt="Combate"
@@ -216,9 +183,9 @@ export const CSAttributes: FC<Props> = ({
               variant="outlined"
               color="secondary"
               type="number"
-              name="intelecto"
-              onChange={handleChange}
-              value={attributes.intelecto}
+              name="intellect"
+              onChange={handleAttribute}
+              value={characterState.attributes.intellect.value}
               inputProps={{
                 style: {
                   fontSize: 32,
@@ -233,7 +200,11 @@ export const CSAttributes: FC<Props> = ({
                 },
               }}
             />
-            <Item onClick={() => tirada("Intelecto", attributes.intelecto)}>
+            <Item
+              onClick={() =>
+                tirada("Intelecto", characterState.attributes.intellect.value)
+              }
+            >
               <Button size="small">
                 <Avatar
                   alt="Intelecto"
@@ -253,8 +224,8 @@ export const CSAttributes: FC<Props> = ({
               color="secondary"
               type="number"
               name="fortaleza"
-              onChange={handleChange}
-              value={attributes.fortaleza}
+              onChange={handleAttribute}
+              value={characterState.attributes.fortitude.value}
               inputProps={{
                 style: {
                   fontSize: 32,
@@ -270,7 +241,11 @@ export const CSAttributes: FC<Props> = ({
               }}
             />
           </Item>
-          <Item onClick={() => tirada("Fortaleza", attributes.fortaleza)}>
+          <Item
+            onClick={() =>
+              tirada("Fortaleza", characterState.attributes.fortitude.value)
+            }
+          >
             <Button size="small">
               <Avatar
                 alt="Fortaleza"
@@ -288,9 +263,9 @@ export const CSAttributes: FC<Props> = ({
               variant="outlined"
               color="secondary"
               type="number"
-              name="agilidad"
-              onChange={handleChange}
-              value={attributes.agilidad}
+              name="agility"
+              onChange={handleAttribute}
+              value={characterState.attributes.agility.value}
               inputProps={{
                 style: {
                   fontSize: 32,
@@ -306,7 +281,11 @@ export const CSAttributes: FC<Props> = ({
               }}
             />
           </Item>
-          <Item onClick={() => tirada("Agilidad", attributes.agilidad)}>
+          <Item
+            onClick={() =>
+              tirada("Agilidad", characterState.attributes.agility.value)
+            }
+          >
             <Button size="small">
               <Avatar
                 alt="Agilidad"
@@ -324,9 +303,9 @@ export const CSAttributes: FC<Props> = ({
               variant="outlined"
               color="secondary"
               type="number"
-              name="sentidos"
-              onChange={handleChange}
-              value={attributes.sentidos}
+              name="senses"
+              onChange={handleAttribute}
+              value={characterState.attributes.senses.value}
               inputProps={{
                 style: {
                   fontSize: 32,
@@ -342,7 +321,11 @@ export const CSAttributes: FC<Props> = ({
               }}
             />
           </Item>
-          <Item onClick={() => tirada("Sentidos", attributes.sentidos)}>
+          <Item
+            onClick={() =>
+              tirada("Sentidos", characterState.attributes.senses.value)
+            }
+          >
             <Button size="small">
               <Avatar
                 alt="Sentidos"
@@ -360,9 +343,9 @@ export const CSAttributes: FC<Props> = ({
               variant="outlined"
               color="secondary"
               type="number"
-              name="mente"
-              onChange={handleChange}
-              value={attributes.mente}
+              name="mind"
+              onChange={handleAttribute}
+              value={characterState.attributes.mind.value}
               inputProps={{
                 style: {
                   fontSize: 32,
@@ -378,7 +361,11 @@ export const CSAttributes: FC<Props> = ({
               }}
             />
           </Item>
-          <Item onClick={() => tirada("Mente", attributes.mente)}>
+          <Item
+            onClick={() =>
+              tirada("Mente", characterState.attributes.mind.value)
+            }
+          >
             <Button size="small">
               <Avatar
                 alt="Mente"

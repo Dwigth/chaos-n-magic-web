@@ -6,6 +6,7 @@ import {
   styled,
 } from "@mui/material";
 import { FC, useState } from "react";
+import { useCharacter } from "../reducer-context/CharacterContextProvider";
 
 const VerticalProgress = styled(LinearProgress)({
   "& .MuiLinearProgress-barColorPrimary": {
@@ -21,10 +22,6 @@ const VerticalProgress = styled(LinearProgress)({
   backgroundImage: "url('/src/assets/images/charsheet/Bar_Toxic.png')",
   position: "relative",
 });
-
-interface Fortaleza {
-  fortress: number;
-}
 
 interface Resistence {
   resistence: number;
@@ -50,8 +47,10 @@ const ToxicStack: FC<Resistence> = ({ resistence, actValue }) => {
   );
 };
 
-export const ToxicStackElement: FC<Fortaleza> = ({ fortress }) => {
-  let resistence = 6 + Number(fortress);
+export const ToxicStackElement = () => {
+  const { characterState } = useCharacter();
+
+  let resistence = 6 + Number(characterState.attributes.fortitude.value);
 
   const [stackValue, setStackValue] = useState({
     toxic: 0,

@@ -4,17 +4,7 @@ import { ToxicStackElement } from "./ToxicStack";
 import { PsychicStackElement } from "./PsychicStacks";
 import { FC } from "react";
 
-interface Props {
-  combat: number;
-  fortaleza: number;
-  mente: number;
-}
-
-export const DamageStacksControl: FC<Props> = ({
-  combat,
-  fortaleza,
-  mente,
-}) => {
+export const DamageStacksControl = () => {
   return (
     <Container>
       <Grid
@@ -24,13 +14,13 @@ export const DamageStacksControl: FC<Props> = ({
         alignItems={"flex-start"}
       >
         <Grid item xs={4}>
-          <BleedingStackElement combatNumber={combat} />
+          <BleedingStackElement />
         </Grid>
         <Grid item xs={4}>
-          <ToxicStackElement fortress={fortaleza} />
+          <ToxicStackElement />
         </Grid>
         <Grid item xs={4}>
-          <PsychicStackElement mind={mente} />
+          <PsychicStackElement />
         </Grid>
       </Grid>
     </Container>

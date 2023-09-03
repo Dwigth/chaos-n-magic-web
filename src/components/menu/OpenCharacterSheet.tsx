@@ -29,19 +29,21 @@ export const OpenCharacterSheet = () => {
 
   const routeChange = () => {
     let path = `/characterSheet/${CSId.id}`;
-    navigate(path);
+    navigate(path, {
+      state: {
+        passCode: CSId.passCode,
+      },
+    });
   };
 
   async function handleClick() {
     try {
       const response = await fetch(
-        `http://localhost:3000/hero-sheet?hero-sheet-id=${CSId.id}`
+        `http://localhost:3000/hero-sheet?hero-sheet-id=${CSId.id}&sheet-passcode=${CSId.passCode}`
       );
 
       if (response.ok) {
         const data = await response.json();
-        localStorage.setItem("CharacterSheetInfo", JSON.stringify(data));
-        // Datos(data);
 
         console.log({ data });
         setError("");

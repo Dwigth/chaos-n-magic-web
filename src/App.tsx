@@ -13,6 +13,8 @@ import {
 import CreateCharacter from "./components/create-character/CreateCharacter.tsx";
 import ErrorHandler from "./components/ErrorPages.tsx";
 
+import { CharacterContextProvider } from "../src/components/character-sheet/reducer-context/CharacterContextProvider.tsx";
+
 function App() {
   // const [data, getData] = useState(JSON);
 
@@ -46,22 +48,17 @@ function App() {
     },
     {
       path: "/characterSheet/:sheetId?",
-      loader: async ({ request, params }) => {
+      loader: async ({ params }) => {
         console.log({ params });
         return null;
       },
-
-      // performing this mutation when data is submitted to it
-      // action: async ({ request }) => {
-      //   return updateFakeTeam(await request.formData());
-      // },
       element: (
         <>
           {jsonData ? (
-            <>
+            <CharacterContextProvider>
               <ButtonAppBar />
-              <CharacterSheet Datos={jsonData} />{" "}
-            </>
+              <CharacterSheet />
+            </CharacterContextProvider>
           ) : (
             <>
               <Navigate to={"/"} />

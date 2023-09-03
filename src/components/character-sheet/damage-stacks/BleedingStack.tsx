@@ -6,6 +6,7 @@ import {
   styled,
 } from "@mui/material";
 import { FC, useState } from "react";
+import { useCharacter } from "../reducer-context/CharacterContextProvider";
 
 const VerticalProgress = styled(LinearProgress)({
   "& .MuiLinearProgress-barColorPrimary": {
@@ -20,10 +21,6 @@ const VerticalProgress = styled(LinearProgress)({
   backgroundImage: "url('/src/assets/images/charsheet/Bar_Bleeding.png')",
   position: "relative",
 });
-
-interface Combate {
-  combatNumber: number;
-}
 
 interface Resistence {
   resistence: number;
@@ -54,8 +51,10 @@ const BleedingStack: FC<Resistence> = ({ resistence, actValue }) => {
   );
 };
 
-export const BleedingStackElement: FC<Combate> = ({ combatNumber }) => {
-  let resistence = 6 + Number(combatNumber);
+export const BleedingStackElement = () => {
+  const { characterState } = useCharacter();
+
+  let resistence = 6 + Number(characterState.attributes.combat.value);
 
   const [stackValue, setStackValue] = useState({
     bleeding: 0,

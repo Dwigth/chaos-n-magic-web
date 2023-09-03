@@ -2,6 +2,7 @@ import { Box, LinearProgress, styled } from "@mui/material";
 import Grid2 from "@mui/material/Unstable_Grid2";
 import { PowerField, PowerFieldLabel } from "./PowerInputStyle";
 import { FC, useState } from "react";
+import { useCharacter } from "../../reducer-context/CharacterContextProvider";
 
 const PowerBar = styled(LinearProgress)({
   "& .MuiLinearProgress-barColorPrimary": {
@@ -44,21 +45,20 @@ export const PowerManaBar: FC<Value> = ({ powerValue }) => {
   );
 };
 
-interface PowerMana {
-  Datos: any;
-}
-
-export const PowerMana: FC<PowerMana> = ({ Datos }) => {
-  const [pwChaos, setPwChaos] = useState({
-    actual: 0,
-    max: Datos.heroBasicInfo.powers.manna.value,
-  });
+export const PowerMana = () => {
+  const [pwChaos, setPwChaos] = useState({ actual: 0 });
+  const { characterState, characterDispatch } = useCharacter();
 
   const handleMax = (event: any) => {
     const { name } = event.target;
     const value = Math.max(0, Math.min(100, Number(event.target.value)));
-    setPwChaos((pwChaos) => {
-      return { ...pwChaos, [name]: value };
+    console.log({ name });
+    characterDispatch({
+      type: "update_powers",
+      payload: {
+        name,
+        value,
+      },
     });
   };
 
@@ -66,14 +66,15 @@ export const PowerMana: FC<PowerMana> = ({ Datos }) => {
     const { name } = event.target;
     const value = Math.max(
       0,
-      Math.min(pwChaos.max, Number(event.target.value))
+      Math.min(characterState.powers.manna.value, Number(event.target.value))
     );
     setPwChaos((pwChaos) => {
       return { ...pwChaos, [name]: value };
     });
   };
 
-  let setPowerProgress = (pwChaos.actual / pwChaos.max) * 100;
+  let setPowerProgress =
+    (pwChaos.actual / characterState.powers.manna.value) * 100;
 
   return (
     <Box>
@@ -114,9 +115,9 @@ export const PowerMana: FC<PowerMana> = ({ Datos }) => {
             Max
           </PowerFieldLabel>
           <PowerField
-            name="max"
+            name="manna"
             type="number"
-            value={pwChaos.max}
+            value={characterState.powers.manna.value}
             onChange={handleMax}
             id="maxmana-input"
             variant="outlined"

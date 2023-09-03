@@ -1,15 +1,12 @@
 import { Avatar, Grid, Typography } from "@mui/material";
-import { FC } from "react";
-
-interface Senses {
-  senses: number;
-}
+import { useCharacter } from "../../../reducer-context/CharacterContextProvider";
 
 let sns = 0;
 
-export const SenseSight: FC<Senses> = ({ senses }) => {
-  if (senses >= 0) {
-    sns = senses;
+export const SenseSight = () => {
+  const { characterState } = useCharacter();
+  if (characterState.attributes.senses.value >= 0) {
+    sns = characterState.attributes.senses.value;
   } else {
     sns = 0;
   }

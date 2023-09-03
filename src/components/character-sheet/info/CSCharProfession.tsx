@@ -1,18 +1,17 @@
 import { TextField } from "@mui/material";
-import { FC, useState } from "react";
+import { useCharacter } from "../reducer-context/CharacterContextProvider";
 
-interface Especie {
-  Datos: any;
-}
-
-export const CSCharProfession: FC<Especie> = ({ Datos }) => {
-  const [profesion, setProfession] = useState(
-    Datos.heroBasicInfo.profession ? Datos.heroBasicInfo.profession : ""
-  );
+export const CSCharProfession = () => {
+  const { characterState, characterDispatch } = useCharacter();
 
   const handleChange = (event: any) => {
-    setProfession(event.target.value as string);
+    const value = event.target.value as string;
+    characterDispatch({
+      type: "update_profession",
+      payload: value,
+    });
   };
+
   return (
     <TextField
       color="secondary"
@@ -22,7 +21,7 @@ export const CSCharProfession: FC<Especie> = ({ Datos }) => {
       variant="outlined"
       type="text"
       name="info-profesion"
-      value={profesion}
+      value={characterState.profession}
       onChange={handleChange}
     />
   );

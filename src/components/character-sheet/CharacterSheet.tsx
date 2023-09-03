@@ -9,44 +9,44 @@ import CSStanceControl from "./stance/CSStanceControl";
 import { CSLevelControl } from "./info/level/CSLevelControl";
 import { DamageStacksControl } from "./damage-stacks/DamageStacksControl";
 import { CSPowerControl } from "./power/CSPowerControl";
-import { useState, FC, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { CSSensesControl } from "./info/Senses/CSSensesControl";
 import TabPanel from "./panels/TabPanel";
 import LockIcon from "@mui/icons-material/Lock";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 
-interface idCharacterSheet {
-  Datos: any;
-}
+import { useCharacter } from "./reducer-context/CharacterContextProvider";
 
-export const CharacterSheet: FC<idCharacterSheet> = ({ Datos }) => {
-  const [combat, setCombat] = useState(0);
-  const [fort, setFortess] = useState(0);
-  const [mind, setMind] = useState(0);
-  const [senses, setSenses] = useState(0);
-
+export const CharacterSheet = () => {
   const [disabled, setDisabled] = useState(false);
+  const [error, setError] = useState("");
+
+  const { characterState, characterDispatch } = useCharacter();
+
+  let params = useParams();
+
+  let location = useLocation();
 
   function handleGameClick() {
     setDisabled(!disabled);
   }
 
-  let params = useParams();
-
-  const [error, setError] = useState("");
-
-  async function handleClick() {
+  async function getSheetInfo() {
     try {
       const response = await fetch(
-        `http://localhost:3000/hero-sheet?hero-sheet-id=${params.sheetId}`
+        `http://localhost:3000/hero-sheet?hero-sheet-id=${params.sheetId}&sheet-passcode=${location.state.passCode}`
       );
 
       if (response.ok) {
         const data = await response.json();
-
-        console.log({ data });
+        const action = {
+          type: "load_character",
+          payload: data.heroBasicInfo,
+        };
+        characterDispatch(action);
       } else {
         setError("Esta hoja de personaje no esta disponible");
+        console.log(error);
       }
     } catch (error) {
       setError("No se completo la solicitud para obtener los datos");
@@ -54,7 +54,7 @@ export const CharacterSheet: FC<idCharacterSheet> = ({ Datos }) => {
   }
 
   useEffect(() => {
-    handleClick();
+    getSheetInfo();
   }, []);
 
   return (
@@ -85,7 +85,7 @@ export const CharacterSheet: FC<idCharacterSheet> = ({ Datos }) => {
           </Typography>
         </Grid>
         {disabled
-          ? params.sheetPasscode && (
+          ? location.state.passCode && (
               <>
                 <Grid xs={0.9}>
                   <Typography variant="body1" color="success">
@@ -94,7 +94,7 @@ export const CharacterSheet: FC<idCharacterSheet> = ({ Datos }) => {
                 </Grid>
                 <Grid>
                   <Typography variant="caption" color="secondary">
-                    {params.sheetPasscode}
+                    {location.state.passCode}
                   </Typography>
                 </Grid>
               </>
@@ -116,7 +116,7 @@ export const CharacterSheet: FC<idCharacterSheet> = ({ Datos }) => {
         columnSpacing={{ xs: 0, sm: 0, md: 0 }}
       >
         <Grid xs={6}>
-          <CSinfo Datos={Datos} />
+          <CSinfo />
         </Grid>
         <Grid container xs={12} columns={24}>
           <Grid xs={14}>
@@ -127,33 +127,23 @@ export const CharacterSheet: FC<idCharacterSheet> = ({ Datos }) => {
               <CSStanceControl />
             </Grid>
             <Grid xs>
-              <DamageStacksControl
-                combat={combat}
-                fortaleza={fort}
-                mente={mind}
-              />
+              <DamageStacksControl />
             </Grid>
           </Grid>
           <Grid xs={24}>
             <CSEnergyControl />
           </Grid>
           <Grid xs={24}>
-            <CSAttributes
-              Combate={(c) => setCombat(c)}
-              Fortaleza={(f) => setFortess(f)}
-              Mente={(m) => setMind(m)}
-              Sentidos={(s) => setSenses(s)}
-              Datos={Datos}
-            />
+            <CSAttributes />
           </Grid>
         </Grid>
         <Grid xs={6}>
           <CSLevelControl />
           <Grid xs={6}>
-            <CSPowerControl Datos={Datos} />
+            <CSPowerControl />
           </Grid>
           <Grid xs={6}>
-            <CSSensesControl senses={senses} />
+            <CSSensesControl />
           </Grid>
         </Grid>
         <Grid xs={24}>

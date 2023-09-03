@@ -6,6 +6,7 @@ import {
   styled,
 } from "@mui/material";
 import { FC, useState } from "react";
+import { useCharacter } from "../reducer-context/CharacterContextProvider";
 
 const VerticalProgress = styled(LinearProgress)({
   "& .MuiLinearProgress-barColorPrimary": {
@@ -20,10 +21,6 @@ const VerticalProgress = styled(LinearProgress)({
   backgroundImage: "url('/src/assets/images/charsheet/Bar_Psychic.png')",
   position: "relative",
 });
-
-interface Mente {
-  mind: number;
-}
 
 interface Resistence {
   resistence: number;
@@ -49,8 +46,9 @@ const PsychicStack: FC<Resistence> = ({ resistence, actValue }) => {
   );
 };
 
-export const PsychicStackElement: FC<Mente> = ({ mind }) => {
-  let resistence = 6 + Number(mind);
+export const PsychicStackElement = () => {
+  const { characterState } = useCharacter();
+  let resistence = 6 + Number(characterState.attributes.mind.value);
 
   const [stackValue, setStackValue] = useState({
     psychic: 0,

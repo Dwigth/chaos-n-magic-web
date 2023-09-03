@@ -1,33 +1,32 @@
 import { TextField } from "@mui/material";
-import { FC, useState } from "react";
+import { useCharacter } from "../../reducer-context/CharacterContextProvider";
 
-interface data {
-  Datos: any;
-}
+export const HeroClimbingSpeed = () => {
+  const { characterState, characterDispatch } = useCharacter();
 
-export const HeroClimbingSpeed: FC<data> = ({ Datos }) => {
-  const [climbSpeed, setClimbSpeed] = useState(
-    Datos.heroBasicInfo.speed.climbingSpeed.value
-  );
-
-  const handleSpeed = (event: any) => {
+  const handleSpeeds = (event: any) => {
+    const { name } = event.target;
     const value = Math.max(0, Math.min(100, Number(event.target.value)));
-    setClimbSpeed(value);
+    characterDispatch({
+      type: "update_speeds",
+      payload: {
+        name,
+        value,
+      },
+    });
   };
-
-  console.log("velocidad de escalada: " + climbSpeed);
 
   return (
     <TextField
       fullWidth
       id="info-velocity-climb"
-      name="info-velocity-climb"
       color="secondary"
       label="Escalado"
       variant="outlined"
       type="number"
-      value={climbSpeed}
-      onChange={handleSpeed}
+      name="climbingSpeed"
+      value={characterState.speed.climbingSpeed.value}
+      onChange={handleSpeeds}
       InputLabelProps={{
         style: {
           maxWidth: "100%",
