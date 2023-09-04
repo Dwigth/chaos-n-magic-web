@@ -46,7 +46,7 @@ export function CSTemporalStance(props: CheckboxProps) {
         checkedIcon={
           <img
             src="/src/assets/images/charsheet/Stance_Icon_Checked.png"
-            style={{ filter: "saturate(150%) hue-rotate(260deg)" }}
+            style={{ filter: "sepia(30%) saturate(10%) hue-rotate(220deg)" }}
             width={24}
           />
         }

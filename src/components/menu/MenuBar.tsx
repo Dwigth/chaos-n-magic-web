@@ -27,14 +27,15 @@ export default function ButtonAppBar() {
             edge="start"
             color="inherit"
             aria-label="menu"
-            sx={{ mr: 100 }}
+            sx={{ mr: 50 }}
           >
             <MenuIcon />
           </IconButton>
           <Button
             size="medium"
-            sx={{ mr: 0, height: "5pc", flexGrow: 1 }}
+            sx={{ mr: 50, height: "5pc", flexGrow: 1}}
             onClick={routeChange}
+            
           >
             <img src={source} />
           </Button>
@@ -42,9 +43,9 @@ export default function ButtonAppBar() {
           {/* <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Character Wizard
           </Typography> */}
-          <Button color="inherit" sx={{ ml: 80 }}>
+          {/* <Button color="inherit" sx={{ ml: 80 }}>
             Login
-          </Button>
+          </Button> */}
         </Toolbar>
       </AppBar>
     </Box>

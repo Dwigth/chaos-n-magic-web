@@ -24,14 +24,16 @@ export const CharMainMenu = () => {
             sx={{ flexGrow: 2, display: "flex" }}
           >
             <Grid item xs={8}>
-              <CreateNewCharacterSheet />
+              <OpenCharacterSheet />
             </Grid>
             <Grid item xs={8}>
               <CloneCharacterSheet />
             </Grid>
             <Grid item xs={8}>
-              <OpenCharacterSheet />
+              <CreateNewCharacterSheet />
             </Grid>
+            
+            
           </Grid>
         </Paper>
       </Container>

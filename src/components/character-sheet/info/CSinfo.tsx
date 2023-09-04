@@ -9,6 +9,7 @@ import { HeroWalkingSpeed } from "./speed/HeroWalkingSpeed";
 import { HeroSwimmingSpeed } from "./speed/HeroSwimmingSpeed";
 import { HeroClimbingSpeed } from "./speed/HeroClimbingSpeed";
 import { FC } from "react";
+import { CSCharLanguages } from "./CSCharLanguages";
 
 interface CharInfo {
   Name: string;
@@ -43,6 +44,9 @@ export const CSinfo: FC<CharInfo> = ({ Name }) => {
         </Grid>
         <Grid xs={12}>
           <CSCharCharacteristics />
+        </Grid>
+        <Grid xs={12}>
+          <CSCharLanguages />
         </Grid>
         <Grid container xs={12} direction={"row"}>
           <Grid xs={12}>

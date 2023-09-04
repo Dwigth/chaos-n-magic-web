@@ -31,16 +31,16 @@ export default function CSStanceControl() {
         </Grid2>
         <Grid2 container xs={3} spacing={0.3}>
           <Grid2 xs={6}>
-            <CSTemporalStance defaultChecked />
+            <CSTemporalStance />
           </Grid2>
           <Grid2 xs={6}>
-            <CSTemporalStance defaultChecked />
+            <CSTemporalStance />
           </Grid2>
           <Grid2 xs={6}>
-            <CSTemporalStance defaultChecked />
+            <CSTemporalStance />
           </Grid2>
           <Grid2 xs={6}>
-            <CSTemporalStance defaultChecked />
+            <CSTemporalStance />
           </Grid2>
         </Grid2>
       </Grid2>
