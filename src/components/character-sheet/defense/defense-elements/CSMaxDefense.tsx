@@ -1,5 +1,6 @@
 import { Grid, TextField, Typography, styled } from "@mui/material";
-import { FC, useState } from "react";
+import { useCharacter } from "../../reducer-context/CharacterContextProvider";
+import { useParams } from "react-router-dom";
 
 /** DEFENSA MÁXIMA
  *  La defensa máxima consiste en dos números:
@@ -30,37 +31,43 @@ const CssTextField = styled(TextField)({
   },
 });
 
-interface Props {
-  defMax: (def: number) => void;
-  defBono: (bon: number) => void;
-}
+export const CSMaxDefense = () => {
+  const { characterState, characterDispatch } = useCharacter();
 
-export const CSMaxDefense: FC<Props> = ({ defMax, defBono }) => {
-  const [maxDefense, setMaxDefense] = useState({ defense: 0, bono: 0 });
+  let params = useParams();
 
-  const currentDef = (val: number) => {
-    defMax(val);
-  };
+  async function putDefenseValues(name: string, val: string) {
+    try {
+      const response = await fetch("http://localhost:3000/hero-sheet", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          heroSheetId: params.sheetId,
+          propertyToUpdate: ["defense", name],
+          value: val,
+        }),
+      });
 
-  const currentBono = (val: number) => defBono(val);
+      if (response.ok) {
+        console.log("Se actualizo " + name + " a: " + val);
+      } else {
+        console.log("Error al actualizar");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
-  const handleDefense = (event: any) => {
+  const handleDefenseMax = (event: any) => {
     const { name } = event.target;
-    const value = Math.max(0, Math.min(99, Number(event.target.value)));
-    setMaxDefense((maxDefense) => {
-      return { ...maxDefense, [name]: value };
+    const value = Math.max(0, Math.min(100, Number(event.target.value)));
+    characterDispatch({
+      type: "update_max_defense",
+      payload: {
+        name,
+        value,
+      },
     });
-
-    currentDef(value);
-  };
-
-  const handleBono = (event: any) => {
-    const { name } = event.target;
-    const value = Math.max(0, Math.min(99, Number(event.target.value)));
-    setMaxDefense((maxDefense) => {
-      return { ...maxDefense, [name]: value };
-    });
-    currentBono(value);
   };
 
   return (
@@ -72,9 +79,10 @@ export const CSMaxDefense: FC<Props> = ({ defMax, defBono }) => {
             fullWidth
             type="number"
             id="defensaMax"
-            name="defense"
-            value={maxDefense.defense}
-            onChange={handleDefense}
+            name="max"
+            value={characterState.defense.max}
+            onChange={handleDefenseMax}
+            onBlur={() => putDefenseValues("max", characterState.defense.max)}
             inputProps={{
               style: {
                 paddingLeft: "25%",
@@ -90,10 +98,13 @@ export const CSMaxDefense: FC<Props> = ({ defMax, defBono }) => {
             size="small"
             type="number"
             label="Bono"
-            name="bono"
+            name="maxBonus"
             id="defensamaxbonus"
-            value={maxDefense.bono}
-            onChange={handleBono}
+            value={characterState.defense.maxBonus}
+            onChange={handleDefenseMax}
+            onBlur={() =>
+              putDefenseValues("maxBonus", characterState.defense.maxBonus)
+            }
             InputLabelProps={{
               style: {
                 fontSize: 13,

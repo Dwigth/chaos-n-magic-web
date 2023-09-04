@@ -6,7 +6,6 @@ import {
   styled,
 } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
-// import { DefenseHealDamage } from "../defense-control-buttons/DefenseHealDamage";
 import { FC, useState } from "react";
 
 const CssTextField = styled(TextField)({
@@ -69,8 +68,6 @@ export const CSDefenseControl: FC<Props> = ({
 
         totalBonus = bonus;
 
-        console.log("Bonus Data: " + totalBonus);
-
         damage = Number(actualDefense);
 
         amount.defenseControl = 0;
@@ -102,7 +99,6 @@ export const CSDefenseControl: FC<Props> = ({
 
   const Heal = () => {
     let heal = Number(actualDefense) + Number(amount.defenseControl);
-    console.log("Curacion: " + heal);
 
     if (heal > total) {
       heal = total;

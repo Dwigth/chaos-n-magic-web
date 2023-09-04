@@ -12,7 +12,7 @@ export default function ButtonAppBar() {
 
   const routeChange = () => {
     let path = `/`;
-    localStorage.clear();
+    // localStorage.clear();
     navigate(path);
   };
 

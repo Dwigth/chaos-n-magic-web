@@ -39,6 +39,7 @@ export const CharacterSheet = () => {
 
       if (response.ok) {
         const data = await response.json();
+        // console.log({ data });
         const action = {
           type: "load_character",
           payload: data.heroBasicInfo,

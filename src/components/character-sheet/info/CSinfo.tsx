@@ -8,6 +8,7 @@ import { CSCharCharacteristics } from "./CSCharCharacteristics";
 import { HeroWalkingSpeed } from "./speed/HeroWalkingSpeed";
 import { HeroSwimmingSpeed } from "./speed/HeroSwimmingSpeed";
 import { HeroClimbingSpeed } from "./speed/HeroClimbingSpeed";
+import { CSCharLanguages } from "./CSCharLanguages";
 
 export const CSinfo = () => {
   return (
@@ -36,6 +37,9 @@ export const CSinfo = () => {
         </Grid>
         <Grid xs={12}>
           <CSCharProfession />
+        </Grid>
+        <Grid xs={12}>
+          <CSCharLanguages />
         </Grid>
         <Grid xs={12}>
           <CSCharCharacteristics />

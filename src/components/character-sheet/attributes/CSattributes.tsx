@@ -14,6 +14,7 @@ import Agility from "../../../assets/images/attributes/Attributes_A.png";
 import Sense from "../../../assets/images/attributes/Attributes_S.png";
 import Mind from "../../../assets/images/attributes/Attributes_M.png";
 import { useCharacter } from "../reducer-context/CharacterContextProvider";
+import { useParams } from "react-router-dom";
 
 const Item = styled(Paper)(({}) => ({
   background: "none",
@@ -30,10 +31,33 @@ function getRandomInt(max: any) {
 export const CSAttributes = () => {
   const { characterState, characterDispatch } = useCharacter();
 
+  let params = useParams();
+
+  async function putAttributesValues(name: string, val: string) {
+    try {
+      const response = await fetch("http://localhost:3000/hero-sheet", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          heroSheetId: params.sheetId,
+          propertyToUpdate: ["attributes", name, "value"],
+          value: val,
+        }),
+      });
+
+      if (response.ok) {
+        console.log("Se actualizo " + name + " a: " + val);
+      } else {
+        console.log("Error al actualizar");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   const handleAttribute = (event: any) => {
     const { name } = event.target;
     const value = Math.max(-6, Math.min(6, Number(event.target.value)));
-    console.log({ name });
     characterDispatch({
       type: "update_attributes",
       payload: {
@@ -100,6 +124,12 @@ export const CSAttributes = () => {
               size="medium"
               onChange={handleAttribute}
               value={characterState.attributes.personality.value}
+              onBlur={() =>
+                putAttributesValues(
+                  "personality",
+                  characterState.attributes.personality.value
+                )
+              }
               inputProps={{
                 style: {
                   fontSize: 32,
@@ -143,6 +173,12 @@ export const CSAttributes = () => {
               name="combat"
               onChange={handleAttribute}
               value={characterState.attributes.combat.value}
+              onBlur={() =>
+                putAttributesValues(
+                  "combat",
+                  characterState.attributes.combat.value
+                )
+              }
               label="Combate"
               size="medium"
               inputProps={{
@@ -186,6 +222,12 @@ export const CSAttributes = () => {
               name="intellect"
               onChange={handleAttribute}
               value={characterState.attributes.intellect.value}
+              onBlur={() =>
+                putAttributesValues(
+                  "intellect",
+                  characterState.attributes.intellect.value
+                )
+              }
               inputProps={{
                 style: {
                   fontSize: 32,
@@ -223,9 +265,15 @@ export const CSAttributes = () => {
               variant="outlined"
               color="secondary"
               type="number"
-              name="fortaleza"
+              name="fortitude"
               onChange={handleAttribute}
               value={characterState.attributes.fortitude.value}
+              onBlur={() =>
+                putAttributesValues(
+                  "fortitude",
+                  characterState.attributes.fortitude.value
+                )
+              }
               inputProps={{
                 style: {
                   fontSize: 32,
@@ -266,6 +314,12 @@ export const CSAttributes = () => {
               name="agility"
               onChange={handleAttribute}
               value={characterState.attributes.agility.value}
+              onBlur={() =>
+                putAttributesValues(
+                  "agility",
+                  characterState.attributes.agility.value
+                )
+              }
               inputProps={{
                 style: {
                   fontSize: 32,
@@ -306,6 +360,12 @@ export const CSAttributes = () => {
               name="senses"
               onChange={handleAttribute}
               value={characterState.attributes.senses.value}
+              onBlur={() =>
+                putAttributesValues(
+                  "senses",
+                  characterState.attributes.senses.value
+                )
+              }
               inputProps={{
                 style: {
                   fontSize: 32,
@@ -346,6 +406,12 @@ export const CSAttributes = () => {
               name="mind"
               onChange={handleAttribute}
               value={characterState.attributes.mind.value}
+              onBlur={() =>
+                putAttributesValues(
+                  "mind",
+                  characterState.attributes.mind.value
+                )
+              }
               inputProps={{
                 style: {
                   fontSize: 32,

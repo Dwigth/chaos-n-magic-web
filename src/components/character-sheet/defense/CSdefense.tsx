@@ -6,21 +6,23 @@ import { CSDefenseBonus } from "./defense-elements/CSDefenseBonus";
 import { CSDefenseControl } from "./defense-elements/CSDefenseControl";
 import Image from "../../../assets/images/charsheet/Defense_Background_shield.png";
 import { useState } from "react";
+import { useCharacter } from "../reducer-context/CharacterContextProvider";
 
 let defenseAct = 0;
 
 export default function CSDefense() {
-  const [defData, setDataDef] = useState(0);
-
-  const [bonoData, setDataBono] = useState(0);
+  const { characterState } = useCharacter();
 
   const [bonusData, setDataBonus] = useState(0);
 
   const [amountDef, setAmountDef] = useState(0);
 
-  let allDef = Number(defData) + Number(bonoData);
+  let allDef =
+    Number(characterState.defense.max) +
+    Number(characterState.defense.maxBonus);
 
-  defenseAct = Number(defData) + Number(bonoData);
+  defenseAct = Number(characterState.defense.max);
+  Number(characterState.defense.maxBonus);
 
   if (amountDef != 0) {
     defenseAct = amountDef;
@@ -51,10 +53,7 @@ export default function CSDefense() {
             <CSCurrentDefense actDef={defenseAct} />
           </Grid>
           <Grid xs={6}>
-            <CSMaxDefense
-              defMax={(d) => setDataDef(d)}
-              defBono={(bon) => setDataBono(bon)}
-            />
+            <CSMaxDefense />
           </Grid>
           <Grid xs={3}></Grid>
           <Grid xs={5}>

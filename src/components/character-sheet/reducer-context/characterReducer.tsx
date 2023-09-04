@@ -14,7 +14,6 @@ export function characterReducer(state: any, action: any) {
       const newState = state;
       newState.characterName = action.payload;
 
-      console.log({ newState });
       return { ...newState };
     }
     case "update_specie": {
@@ -42,6 +41,13 @@ export function characterReducer(state: any, action: any) {
 
       return { ...newState };
     }
+    case "update_max_defense": {
+      const newState = state;
+      const { name, value } = action.payload;
+      newState.defense[name] = value;
+
+      return { ...newState };
+    }
     case "update_speeds": {
       const newState = state;
       const { name, value } = action.payload;
@@ -53,6 +59,31 @@ export function characterReducer(state: any, action: any) {
       const newState = state;
       const { name, value } = action.payload;
       newState.powers[name].value = value;
+
+      return { ...newState };
+    }
+    case "update_talents": {
+      const newState = state;
+      const { array, name, value } = action.payload;
+
+      newState.talents[array][name] = value;
+
+      return { ...newState };
+    }
+
+    case "add_talent": {
+      const newState = state;
+
+      newState.talents.push({ name: "", effect: "" });
+
+      return { ...newState };
+    }
+
+    case "delete_talent": {
+      const newState = state;
+      const { int } = action.payload;
+
+      newState.talents.splice(int, 1);
 
       return { ...newState };
     }

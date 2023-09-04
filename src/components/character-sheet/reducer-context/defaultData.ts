@@ -113,8 +113,8 @@ export const defaultData = {
   },
   talents: [
     {
-      name: "",
-      effect: "",
+      name: "Prueba",
+      effect: "Esto es una prueba",
     },
   ],
   equipment: {

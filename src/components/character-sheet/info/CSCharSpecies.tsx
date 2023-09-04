@@ -1,8 +1,33 @@
 import { TextField } from "@mui/material";
 import { useCharacter } from "../reducer-context/CharacterContextProvider";
+import { useParams } from "react-router-dom";
 
 export const CSCharSpecies = () => {
   const { characterState, characterDispatch } = useCharacter();
+
+  let params = useParams();
+
+  async function putCharSpecie(val: string) {
+    try {
+      const response = await fetch("http://localhost:3000/hero-sheet", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          heroSheetId: params.sheetId,
+          propertyToUpdate: ["specie"],
+          value: val,
+        }),
+      });
+
+      if (response.ok) {
+        console.log("Consulta exitosa");
+      } else {
+        console.log("Error al actualizar");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   const handleChange = (event: any) => {
     const value = event.target.value as string;
@@ -21,6 +46,7 @@ export const CSCharSpecies = () => {
       name="info-specie"
       value={characterState.specie}
       onChange={handleChange}
+      onBlur={() => putCharSpecie(characterState.specie)}
     />
   );
 };

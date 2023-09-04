@@ -1,8 +1,33 @@
 import { TextField } from "@mui/material";
 import { useCharacter } from "../../reducer-context/CharacterContextProvider";
+import { useParams } from "react-router-dom";
 
 export const HeroSwimmingSpeed = () => {
   const { characterState, characterDispatch } = useCharacter();
+
+  let params = useParams();
+
+  async function putSpeedsValue(name: string, val: string) {
+    try {
+      const response = await fetch("http://localhost:3000/hero-sheet", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          heroSheetId: params.sheetId,
+          propertyToUpdate: ["speed", name, "value"],
+          value: val,
+        }),
+      });
+
+      if (response.ok) {
+        console.log("Se actualizo " + name + " a: " + val);
+      } else {
+        console.log("Error al actualizar");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   const handleSpeeds = (event: any) => {
     const { name } = event.target;
@@ -27,6 +52,12 @@ export const HeroSwimmingSpeed = () => {
       name="swimmingSpeed"
       value={characterState.speed.swimmingSpeed.value}
       onChange={handleSpeeds}
+      onBlur={() =>
+        putSpeedsValue(
+          "swimmingSpeed",
+          characterState.speed.swimmingSpeed.value
+        )
+      }
     />
   );
 };

@@ -1,8 +1,8 @@
 import { Box, Checkbox, CheckboxProps, styled } from "@mui/material";
 
 /** POSTURA
- *  
- * 
+ *
+ *
  */
 
 const StanceCheckBox = styled(Checkbox)(({ theme }) => ({

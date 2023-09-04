@@ -15,7 +15,7 @@ const VerticalProgress = styled(LinearProgress)({
   "& .MuiLinearProgress-colorPrimary": {
     backgroundColor: "red",
   },
-  transform: "rotate(-90deg) translate(55%) scaleX(55%)",
+  transform: "rotate(-90deg) translate(55%) scaleX(55%) scaleY(180%)",
   width: "100%",
   zIndex: 0,
   backgroundImage: "url('/src/assets/images/charsheet/Bar_Bleeding.png')",

@@ -1,20 +1,19 @@
 import { useState } from "react";
-import TalentTextField from "./TalentTextField";
 import { AddButton } from "../../../global-components/AddButton";
 import { DeleteButton } from "../../../global-components/DeleteButton";
 import ActionTextField from "./ActionTextField";
 import { Grid } from "@mui/material";
 
 function AddDynamicInput() {
-  const [val, setVal] = useState<any[]>([]);
+  const [val, setVal] = useState<any[]>([1]);
   const handleAdd = () => {
     const abc = [...val, []];
     setVal(abc);
   };
 
-  const handleChange = (onChangeValue: any, i: any) => {
+  const handleChange = (event: any, i: any) => {
     const inputdata = [...val];
-    inputdata[i] = onChangeValue.target.value;
+    inputdata[i] = event.target.value;
     setVal(inputdata);
   };
 
@@ -28,12 +27,15 @@ function AddDynamicInput() {
     <Grid>
       {val.map((datas, int) => {
         return (
-          <span key={crypto.randomUUID()}>
-            <input value={datas} onChange={(e) => handleChange(e, int)} />
-            <TalentTextField />
+          <span key={int}>
+            {/* <input value={datas} onChange={(e) => handleChange(e, int)} /> */}
             <ActionTextField />
 
-            <DeleteButton clicHandler={() => handleDelete(int)} />
+            {int > 0 ? (
+              <DeleteButton clicHandler={() => handleDelete(int)} />
+            ) : null}
+
+            {/* <DeleteButton clicHandler={() => handleDelete(int)} /> */}
           </span>
         );
       })}
