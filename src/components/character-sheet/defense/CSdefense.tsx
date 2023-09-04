@@ -29,7 +29,7 @@ export default function CSDefense() {
   }
 
   return (
-    <Paper sx={{ padding: "15px", height: "100%" }}>
+    <Paper sx={{ padding: "20px", height: "100%" }}>
       <Grid container rowSpacing={1} spacing={1}>
         <Grid xs={4}>
           <CSDefenseControl

@@ -57,7 +57,10 @@ export function CloneCharacterSheet() {
         padding: "5px",
       }}
     >
-      <Grid container>
+      <Grid container alignItems={"center"} justifyContent={"center"}>
+        <Grid item xs={12}>
+          <Typography variant="h4" textAlign={"center"}> Clonar Personaje</Typography>
+        </Grid>
         <Grid item xs={10}>
           <TextField
             variant="filled"

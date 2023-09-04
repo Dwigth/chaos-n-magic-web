@@ -12,6 +12,7 @@ import {
 } from "react-router-dom";
 import CreateCharacter from "./components/create-character/CreateCharacter.tsx";
 import ErrorHandler from "./components/ErrorPages.tsx";
+import { Box } from "@mui/material";
 
 import { CharacterContextProvider } from "../src/components/character-sheet/reducer-context/CharacterContextProvider.tsx";
 
@@ -31,7 +32,9 @@ function App() {
       element: (
         <>
           <ButtonAppBar />
-          <CharMainMenu />
+          <Box sx={{ paddingTop: "10%" }}>
+            <CharMainMenu />
+          </Box>
         </>
       ),
       errorElement: <ErrorHandler />,

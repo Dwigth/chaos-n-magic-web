@@ -4,10 +4,11 @@ import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 
-import Inventory from "./inventory/inventory";
 import Magic from "./magic/magic";
 import { CSBackgroundPersonalityControl } from "./pers-transf/CSBackgroundPersonalityControl";
 import { TalentAndAttacksControl } from "./acc-talents/TalentAndAttacksControl";
+import { CSInventoryControl } from "./inventory/CSInventoryControl";
+import { MagicTablesControl } from "./magic/MagicTablesControl";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -82,10 +83,10 @@ export default function Panels() {
         <TalentAndAttacksControl />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <Inventory />
+        <CSInventoryControl />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <Magic />
+        <MagicTablesControl />
       </TabPanel>
       <TabPanel value={value} index={3}>
         <CSBackgroundPersonalityControl />
