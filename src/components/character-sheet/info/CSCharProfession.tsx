@@ -9,7 +9,7 @@ export const CSCharProfession = () => {
 
   async function submitCloneCS(val: string) {
     try {
-      const response = await fetch("http://localhost:3000/hero-sheet", {
+      await fetch("http://localhost:3000/hero-sheet", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -18,12 +18,6 @@ export const CSCharProfession = () => {
           value: val,
         }),
       });
-
-      if (response.ok) {
-        console.log("Consulta exitosa");
-      } else {
-        console.log("Error al actualizar");
-      }
     } catch (err) {
       console.log(err);
     }

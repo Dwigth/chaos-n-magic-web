@@ -2,7 +2,6 @@ import { Container, Grid } from "@mui/material";
 import { BleedingStackElement } from "./BleedingStack";
 import { ToxicStackElement } from "./ToxicStack";
 import { PsychicStackElement } from "./PsychicStacks";
-import { FC } from "react";
 
 export const DamageStacksControl = () => {
   return (

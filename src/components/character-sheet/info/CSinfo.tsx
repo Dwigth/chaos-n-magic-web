@@ -39,10 +39,10 @@ export const CSinfo = () => {
           <CSCharProfession />
         </Grid>
         <Grid xs={12}>
-          <CSCharLanguages />
+          <CSCharCharacteristics />
         </Grid>
         <Grid xs={12}>
-          <CSCharCharacteristics />
+          <CSCharLanguages />
         </Grid>
         <Grid container xs={12} direction={"row"}>
           <Grid xs={12}>

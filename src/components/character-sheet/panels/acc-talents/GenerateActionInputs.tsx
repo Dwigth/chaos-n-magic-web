@@ -1,46 +1,67 @@
-import { useState } from "react";
+import { useParams } from "react-router-dom";
 import { AddButton } from "../../../global-components/AddButton";
-import { DeleteButton } from "../../../global-components/DeleteButton";
-import ActionTextField from "./ActionTextField";
+import { useCharacter } from "../../reducer-context/CharacterContextProvider";
+import { ActionTextField } from "./ActionTextField";
 import { Grid } from "@mui/material";
 
-function AddDynamicInput() {
-  const [val, setVal] = useState<any[]>([1]);
-  const handleAdd = () => {
-    const abc = [...val, []];
-    setVal(abc);
+function AddDynamicAction() {
+  const { characterState, characterDispatch } = useCharacter();
+
+  let params = useParams();
+
+  let int = 0;
+
+  async function putAction(int: number) {
+    try {
+      await fetch("http://localhost:3000/hero-sheet", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          heroSheetId: params.sheetId,
+          propertyToUpdate: ["actions", int],
+          value: {
+            name: "",
+            formula: "",
+            damageType: "",
+            energyCost: "",
+          },
+        }),
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  int = characterState.actions.length;
+
+  const addAction = () => {
+    characterDispatch({
+      type: "add_action",
+    });
+    putAction(int);
   };
 
-  const handleChange = (event: any, i: any) => {
-    const inputdata = [...val];
-    inputdata[i] = event.target.value;
-    setVal(inputdata);
-  };
+  // const handleDelete = (i: any) => {
+  //   const deletVal = [...val];
+  //   deletVal.splice(i, 1);
+  //   setVal(deletVal);
+  // };
 
-  const handleDelete = (i: any) => {
-    const deletVal = [...val];
-    deletVal.splice(i, 1);
-    setVal(deletVal);
-  };
-  // console.log(val, "data-");
   return (
     <Grid>
-      {val.map((datas, int) => {
+      {characterState.actions.map(({}, int: number) => {
         return (
           <span key={int}>
-            {/* <input value={datas} onChange={(e) => handleChange(e, int)} /> */}
-            <ActionTextField />
+            <ActionTextField index={int} />
 
-            {int > 0 ? (
+            {/* {int > 0 ? (
               <DeleteButton clicHandler={() => handleDelete(int)} />
-            ) : null}
-
-            {/* <DeleteButton clicHandler={() => handleDelete(int)} /> */}
+            ) : null} */}
           </span>
         );
       })}
-      <AddButton clicHandler={handleAdd} />
+      <AddButton clicHandler={() => addAction()} />
     </Grid>
   );
 }
-export default AddDynamicInput;
+export default AddDynamicAction;

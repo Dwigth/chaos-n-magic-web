@@ -3,6 +3,7 @@ import Grid2 from "@mui/material/Unstable_Grid2";
 import { PowerField, PowerFieldLabel } from "./PowerInputStyle";
 import { FC, useState } from "react";
 import { useCharacter } from "../../reducer-context/CharacterContextProvider";
+import { useParams } from "react-router-dom";
 
 const PowerBar = styled(LinearProgress)({
   "& .MuiLinearProgress-barColorPrimary": {
@@ -14,7 +15,7 @@ const PowerBar = styled(LinearProgress)({
     backgroundColor: "transparent",
   },
   backgroundColor: "transparent",
-  transform: "rotate(-90deg) translate(55%) scaleX(80%) scaleY(2500%)",
+  transform: "rotate(-90deg) translate(55%) scaleX(80%) scaleY(2600%)",
   height: "3%",
   width: "100%",
   left: "2%",
@@ -48,6 +49,30 @@ export const PowerManaBar: FC<Value> = ({ powerValue }) => {
 export const PowerMana = () => {
   const [pwChaos, setPwChaos] = useState({ actual: 0 });
   const { characterState, characterDispatch } = useCharacter();
+
+  let params = useParams();
+
+  async function putPower(name: string, val: string) {
+    try {
+      const response = await fetch("http://localhost:3000/hero-sheet", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          heroSheetId: params.sheetId,
+          propertyToUpdate: ["powers", name, "value"],
+          value: val,
+        }),
+      });
+
+      if (response.ok) {
+        console.log("Se actualizo " + name);
+      } else {
+        console.log("Error al actualizar");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   const handleMax = (event: any) => {
     const { name } = event.target;
@@ -119,6 +144,7 @@ export const PowerMana = () => {
             type="number"
             value={characterState.powers.manna.value}
             onChange={handleMax}
+            onBlur={() => putPower("manna", characterState.powers.manna.value)}
             id="maxmana-input"
             variant="outlined"
             color="secondary"

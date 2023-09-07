@@ -3,7 +3,6 @@ import { PowerMana } from "./power-bars/PowerMana";
 import { PowerFaith } from "./power-bars/PowerFaith";
 import { PowerKi } from "./power-bars/PowerKi";
 import { PowerChaos } from "./power-bars/PowerChaos";
-import { FC } from "react";
 
 export const CSPowerControl = () => {
   return (

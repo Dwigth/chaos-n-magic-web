@@ -1,4 +1,4 @@
-import { FC, useReducer, createContext, useContext, useState } from "react";
+import { FC, useReducer, createContext, useContext } from "react";
 import { characterReducer } from "./characterReducer";
 import { defaultData } from "./defaultData";
 

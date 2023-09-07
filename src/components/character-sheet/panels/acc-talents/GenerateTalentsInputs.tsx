@@ -1,19 +1,17 @@
-import { useEffect, useState } from "react";
-// import TalentTextField from "./TalentTextField";
 import { AddButton } from "../../../global-components/AddButton";
-import { DeleteButton } from "../../../global-components/DeleteButton";
+// import { DeleteButton } from "../../../global-components/DeleteButton";
 import { Grid, TextField } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { useCharacter } from "../../reducer-context/CharacterContextProvider";
 
-function AddDynamicInput() {
+function AddDynamicTalent() {
   const { characterState, characterDispatch } = useCharacter();
   let params = useParams();
   let int = 0;
 
   async function putTalents(i: number, title: string, desc: string) {
     try {
-      const response = await fetch("http://localhost:3000/hero-sheet", {
+      await fetch("http://localhost:3000/hero-sheet", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -25,20 +23,12 @@ function AddDynamicInput() {
           },
         }),
       });
-
-      if (response.ok) {
-        console.log("Se actualizo " + title);
-      } else {
-        console.log("Error al actualizar");
-      }
     } catch (err) {
       console.log(err);
     }
   }
 
   int = characterState.talents.length;
-
-  console.log(int);
 
   const handleTalents = (event: any, array: number) => {
     const { name } = event.target;
@@ -53,38 +43,29 @@ function AddDynamicInput() {
     });
   };
 
-  const addTalent = (int: any) => {
+  const addTalent = () => {
     characterDispatch({
       type: "add_talent",
-      payload: {
-        int,
-      },
     });
     putTalents(int, "", "");
   };
 
-  const deleteTalent = (int: any) => {
-    characterDispatch({
-      type: "delete_talent",
-      payload: {
-        int,
-      },
-    });
-  };
+  // const deleteTalent = (int: any) => {
+  //   characterDispatch({
+  //     type: "delete_talent",
+  //     payload: {
+  //       int,
+  //     },
+  //   });
+  // };
 
   return (
-    <Grid>
+    <>
       {characterState.talents.map(({}, array: number) => {
         return (
-          <span key={array}>
-            <Grid
-              container
-              direction={"row"}
-              alignItems={"flex-start"}
-              justifyContent={"flex-start"}
-              sx={{ paddingRight: 1, paddingTop: 2 }}
-            >
-              <Grid item xs={8}>
+          <Grid key={array}>
+            <Grid sx={{ paddingRight: 1, paddingTop: 2 }}>
+              <Grid item xs={12}>
                 <TextField
                   variant="outlined"
                   color="secondary"
@@ -102,8 +83,7 @@ function AddDynamicInput() {
                   }
                 />
               </Grid>
-              <Grid item xs={4}></Grid>
-              <Grid item xs>
+              <Grid item xs={12}>
                 <TextField
                   variant="outlined"
                   color="secondary"
@@ -126,19 +106,19 @@ function AddDynamicInput() {
               </Grid>
             </Grid>
 
-            {array > 0 ? (
+            {/* {array > 0 ? (
               <DeleteButton
                 clicHandler={() => {
                   deleteTalent(array);
                 }}
               />
-            ) : null}
-          </span>
+            ) : null} */}
+          </Grid>
         );
       })}
-      <AddButton clicHandler={() => addTalent(int)} />
-    </Grid>
+      <AddButton clicHandler={addTalent} />
+    </>
   );
 }
 
-export default AddDynamicInput;
+export default AddDynamicTalent;

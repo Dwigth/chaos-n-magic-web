@@ -30,7 +30,6 @@ export function CreateNewCharacterSheet() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          sheetPasscode: "22533",
           heroBasicInfo: defaultData,
         }),
       });

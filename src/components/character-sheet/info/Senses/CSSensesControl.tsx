@@ -1,7 +1,6 @@
 import { Grid, Paper } from "@mui/material";
 import { SenseSight } from "./senses-componens/SenseSight";
 import { SenseHearing } from "./senses-componens/SenseHearing";
-import { FC } from "react";
 
 export const CSSensesControl = () => {
   return (

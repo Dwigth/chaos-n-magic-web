@@ -21,8 +21,9 @@ export default function CSDefense() {
     Number(characterState.defense.max) +
     Number(characterState.defense.maxBonus);
 
-  defenseAct = Number(characterState.defense.max);
-  Number(characterState.defense.maxBonus);
+  defenseAct =
+    Number(characterState.defense.max) +
+    Number(characterState.defense.maxBonus);
 
   if (amountDef != 0) {
     defenseAct = amountDef;

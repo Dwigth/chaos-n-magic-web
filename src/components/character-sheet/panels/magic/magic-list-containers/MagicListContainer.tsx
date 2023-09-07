@@ -7,7 +7,6 @@ import {
   Typography,
 } from "@mui/material";
 import { AddButton } from "../../../../global-components/AddButton";
-import { MagicSpellComponent } from "../magic-components/MagicSpellComponent";
 import { DeleteButton } from "../../../../global-components/DeleteButton";
 
 export function MagicListContainer() {
@@ -26,27 +25,19 @@ export function MagicListContainer() {
               </Typography>
             </Grid>
             <Grid item xs={2}>
-              <AddButton
-                clicHandler={function (val: any): void {
-                  throw new Error("Function not implemented.");
-                }}
-              />
+              <AddButton clicHandler={() => {}} />
             </Grid>
             <Grid item xs={2}>
-              <DeleteButton
-                clicHandler={function (val: any): void {
-                  throw new Error("Function not implemented.");
-                }}
-              />{" "}
+              <DeleteButton clicHandler={() => {}} />{" "}
             </Grid>
           </Grid>
         </ListItem>
         <Divider variant="inset" component="li" />
         <ListItem disableGutters disablePadding>
-          <MagicSpellComponent />
+          {/* <MagicSpellComponent /> */}
         </ListItem>
         <ListItem disableGutters disablePadding>
-          <MagicSpellComponent />
+          {/* <MagicSpellComponent /> */}
         </ListItem>
       </List>
     </Paper>

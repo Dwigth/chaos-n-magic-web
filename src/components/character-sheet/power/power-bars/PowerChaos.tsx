@@ -3,6 +3,9 @@ import Grid2 from "@mui/material/Unstable_Grid2";
 import { PowerField, PowerFieldLabel } from "./PowerInputStyle";
 import { FC, useState } from "react";
 import { useCharacter } from "../../reducer-context/CharacterContextProvider";
+import { useParams } from "react-router-dom";
+
+import PowerBarRound from "/src/assets/images/charsheet/Power_Bar_round.png";
 
 const PowerBar = styled(LinearProgress)({
   "& .MuiLinearProgress-barColorPrimary": {
@@ -32,12 +35,13 @@ export const PowerChaosBar: FC<Value> = ({ powerValue }) => {
   return (
     <>
       <img
-        src="/src/assets/images/charsheet/Power_Bar_round.png"
+        src={PowerBarRound}
         width={"110%"}
         style={{
           zIndex: 5,
           display: "block",
           position: "relative",
+          mask: "linear-gradient(45deg, #fff 50%, #ffffff00 50%)",
         }}
         draggable="false"
       ></img>
@@ -50,10 +54,33 @@ export const PowerChaos = () => {
   const [pwChaos, setPwChaos] = useState({ actual: 0 });
   const { characterState, characterDispatch } = useCharacter();
 
+  let params = useParams();
+
+  async function putPower(name: string, val: string) {
+    try {
+      const response = await fetch("http://localhost:3000/hero-sheet", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          heroSheetId: params.sheetId,
+          propertyToUpdate: ["powers", name, "value"],
+          value: val,
+        }),
+      });
+
+      if (response.ok) {
+        console.log("Se actualizo " + name);
+      } else {
+        console.log("Error al actualizar");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   const handleMax = (event: any) => {
     const { name } = event.target;
     const value = Math.max(0, Math.min(100, Number(event.target.value)));
-    console.log({ name });
     characterDispatch({
       type: "update_powers",
       payload: {
@@ -121,6 +148,7 @@ export const PowerChaos = () => {
             name="chaos"
             value={characterState.powers.chaos.value}
             onChange={handleMax}
+            onBlur={() => putPower("chaos", characterState.powers.chaos.value)}
             variant="outlined"
             color="secondary"
             size="small"

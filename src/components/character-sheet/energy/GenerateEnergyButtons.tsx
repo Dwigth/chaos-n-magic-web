@@ -28,9 +28,9 @@ function AddEnergyButtons() {
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
   return (
     <>
-      {val.map((i) => {
+      {val.map(({}, i) => {
         return (
-          <Grid item xs={1} md={1.2} key={energy + crypto.randomUUID()}>
+          <Grid item xs={2.5} sm={1.2} md={1.3} lg={1} xl={1} key={energy + i}>
             <CSEnergyButton
               {...label}
               checked
@@ -41,7 +41,7 @@ function AddEnergyButtons() {
           </Grid>
         );
       })}
-      <Grid item xs={1} md={1}>
+      <Grid item xs={2} md={1}>
         <IconButton
           aria-label="agregar"
           style={{ paddingTop: 4 }}

@@ -2,7 +2,6 @@ import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Unstable_Grid2";
 import { Avatar, Box, Button, TextField, Typography } from "@mui/material";
-import { FC, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -15,6 +14,7 @@ import Sense from "../../../assets/images/attributes/Attributes_S.png";
 import Mind from "../../../assets/images/attributes/Attributes_M.png";
 import { useCharacter } from "../reducer-context/CharacterContextProvider";
 import { useParams } from "react-router-dom";
+import DiceAlert from "../../../assets/images/icons/dados-d12.png";
 
 const Item = styled(Paper)(({}) => ({
   background: "none",
@@ -35,7 +35,7 @@ export const CSAttributes = () => {
 
   async function putAttributesValues(name: string, val: string) {
     try {
-      const response = await fetch("http://localhost:3000/hero-sheet", {
+      await fetch("http://localhost:3000/hero-sheet", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -44,12 +44,6 @@ export const CSAttributes = () => {
           value: val,
         }),
       });
-
-      if (response.ok) {
-        console.log("Se actualizo " + name + " a: " + val);
-      } else {
-        console.log("Error al actualizar");
-      }
     } catch (err) {
       console.log(err);
     }
@@ -76,12 +70,7 @@ export const CSAttributes = () => {
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
-      icon: () => (
-        <img
-          src="/src/assets/images/icons/dados-d12.png"
-          style={{ width: "100%" }}
-        />
-      ),
+      icon: () => <img src={DiceAlert} style={{ width: "100%" }} />,
       theme: "light",
     });
   };
@@ -101,18 +90,23 @@ export const CSAttributes = () => {
       <Grid
         container
         rowSpacing={0}
-        columnSpacing={{ xs: 1, sm: 3, md: 0 }}
+        columnSpacing={{ xs: 1, sm: 1, md: 1 }}
         spacing={0}
         columns={7}
         justifyContent={"center"}
         alignItems={"center"}
+        xs={8}
+        sm={7}
+        md={7}
+        lg={7}
+        xl={7}
       >
         <Grid xs={7}>
           <Typography variant="h5" align="center" sx={{ padding: 2 }}>
             Atributos
           </Typography>
         </Grid>
-        <Grid xs={1}>
+        <Grid xs={2} sm={1} md={1} lg={1} xl={1}>
           <Item>
             <TextField
               id="attribute_personality"
@@ -163,7 +157,7 @@ export const CSAttributes = () => {
             </Item>
           </Item>
         </Grid>
-        <Grid xs={1}>
+        <Grid xs={2} sm={1} md={1} lg={1} xl={1}>
           <Item>
             <TextField
               id="outlined-basic"
@@ -211,7 +205,7 @@ export const CSAttributes = () => {
             </Item>
           </Item>
         </Grid>
-        <Grid xs={1}>
+        <Grid xs={2} sm={1} md={1} lg={1} xl={1}>
           <Item>
             <TextField
               id="outlined-basic"
@@ -257,7 +251,7 @@ export const CSAttributes = () => {
             </Item>
           </Item>
         </Grid>
-        <Grid xs={1}>
+        <Grid xs={2} sm={1} md={1} lg={1} xl={1}>
           <Item>
             <TextField
               id="outlined-basic"
@@ -303,7 +297,7 @@ export const CSAttributes = () => {
             </Button>
           </Item>
         </Grid>
-        <Grid xs={1}>
+        <Grid xs={2} sm={1} md={1} lg={1} xl={1}>
           <Item>
             <TextField
               id="outlined-basic"
@@ -349,7 +343,7 @@ export const CSAttributes = () => {
             </Button>
           </Item>
         </Grid>
-        <Grid xs={1}>
+        <Grid xs={2} sm={1} md={1} lg={1} xl={1}>
           <Item>
             <TextField
               id="outlined-basic"
@@ -395,7 +389,7 @@ export const CSAttributes = () => {
             </Button>
           </Item>
         </Grid>
-        <Grid xs={1}>
+        <Grid xs={2} sm={1} md={1} lg={1} xl={1}>
           <Item>
             <TextField
               id="outlined-basic"
@@ -445,14 +439,12 @@ export const CSAttributes = () => {
       <ToastContainer
         position="bottom-right"
         autoClose={8000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="dark"
+        hideProgressBar={true}
+        closeOnClick={true}
+        pauseOnHover={true}
+        draggable={true}
+        icon={() => <img src={DiceAlert} style={{ width: "100%" }} />}
+        theme="light"
       />
     </Box>
   );

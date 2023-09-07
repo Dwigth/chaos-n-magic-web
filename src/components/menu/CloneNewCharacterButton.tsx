@@ -1,6 +1,14 @@
 // Botón de Clonar Personaje
 
-import { Button, Grid, TextField, Box, Alert, Collapse } from "@mui/material";
+import {
+  Button,
+  Grid,
+  TextField,
+  Box,
+  Alert,
+  Collapse,
+  Typography,
+} from "@mui/material";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -35,7 +43,7 @@ export function CloneCharacterSheet() {
       if (response.ok) {
         const data = await response.json();
         console.log({ data });
-        routeChange(data.newHeroSheetId, "10258");
+        routeChange(data.newHeroSheetId, data.sheetPasscode);
       } else {
         setError("Esta hoja de personaje no esta disponible");
         setOpen(true);
@@ -59,7 +67,9 @@ export function CloneCharacterSheet() {
     >
       <Grid container alignItems={"center"} justifyContent={"center"}>
         <Grid item xs={12}>
-          <Typography variant="h4" textAlign={"center"}> Clonar Personaje</Typography>
+          <Typography variant="h4" textAlign={"center"}>
+            Clonar Personaje
+          </Typography>
         </Grid>
         <Grid item xs={10}>
           <TextField

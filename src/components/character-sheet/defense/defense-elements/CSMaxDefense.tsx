@@ -38,7 +38,7 @@ export const CSMaxDefense = () => {
 
   async function putDefenseValues(name: string, val: string) {
     try {
-      const response = await fetch("http://localhost:3000/hero-sheet", {
+      await fetch("http://localhost:3000/hero-sheet", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -47,12 +47,6 @@ export const CSMaxDefense = () => {
           value: val,
         }),
       });
-
-      if (response.ok) {
-        console.log("Se actualizo " + name + " a: " + val);
-      } else {
-        console.log("Error al actualizar");
-      }
     } catch (err) {
       console.log(err);
     }

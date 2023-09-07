@@ -4,6 +4,28 @@ export const defaultData = {
   specie: "",
   profession: "",
   diet: "",
+  characterLevel: "",
+  description: "",
+  appearance: "",
+  characteristic: "",
+  milestones: [
+    {
+      exampleMilestone: false,
+    },
+    {
+      exampleMilestone: false,
+    },
+    {
+      exampleMilestone: false,
+    },
+    {
+      exampleMilestone: false,
+    },
+    {
+      exampleMilestone: false,
+    },
+  ],
+  characterKnownLanguages: "",
   defense: {
     min: 0,
     max: 0,
@@ -105,6 +127,15 @@ export const defaultData = {
       characteristicBonus: "",
     },
   ],
+  actions: [
+    {
+      name: "",
+      formula: "",
+      damageType: "",
+      energyCost: "",
+    },
+  ],
+  characteristicsText: "",
   languages: ["es", "en"],
   details: {
     height: "",
@@ -113,8 +144,8 @@ export const defaultData = {
   },
   talents: [
     {
-      name: "Prueba",
-      effect: "Esto es una prueba",
+      name: "",
+      effect: "",
     },
   ],
   equipment: {
@@ -169,12 +200,14 @@ export const defaultData = {
         weight: 0,
         quantity: 0,
         isEquipped: false,
+        showDescription: false,
+        description: "",
       },
     ],
     carriedWeight: 0,
   },
   spellbook: {
-    magicSchools: ["string"],
+    magicSchools: [""],
     minorMagic: [
       {
         name: "",

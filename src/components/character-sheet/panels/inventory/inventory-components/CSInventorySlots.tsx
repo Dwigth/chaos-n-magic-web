@@ -1,5 +1,5 @@
 import { Checkbox, Container } from "@mui/material";
-import Grid from '@mui/material/Unstable_Grid2';
+import Grid from "@mui/material/Unstable_Grid2";
 
 export function CSInventorySlots() {
   return (
@@ -18,222 +18,222 @@ export function CSInventorySlots() {
         columns={6}
       >
         {/* Primera fila*/}
-        <Grid  xs={1} md={1}>
+        <Grid xs={1} md={1}>
           <Checkbox
             color="secondary"
             sx={{ "& .MuiSvgIcon-root": { fontSize: 31 } }}
           />
         </Grid>
-        <Grid  xs={1} md={1}>
+        <Grid xs={1} md={1}>
           <Checkbox
             color="secondary"
             sx={{ "& .MuiSvgIcon-root": { fontSize: 31 } }}
           />
         </Grid>
-        <Grid  xs={1} md={1}>
+        <Grid xs={1} md={1}>
           <Checkbox
             color="secondary"
             sx={{ "& .MuiSvgIcon-root": { fontSize: 31 } }}
           />
         </Grid>
-        <Grid  xs={1} md={1}>
+        <Grid xs={1} md={1}>
           <Checkbox
             color="secondary"
             sx={{ "& .MuiSvgIcon-root": { fontSize: 31 } }}
           />
         </Grid>
-        <Grid  xs={1} md={1}>
+        <Grid xs={1} md={1}>
           <Checkbox
             color="secondary"
             sx={{ "& .MuiSvgIcon-root": { fontSize: 31 } }}
           />
         </Grid>
-        <Grid  xs={1} md={1}>
+        <Grid xs={1} md={1}>
           <Checkbox
             color="secondary"
             sx={{ "& .MuiSvgIcon-root": { fontSize: 31 } }}
           />
         </Grid>
         {/* Segunda Fila */}
-        <Grid  xs={1} md={1}>
+        <Grid xs={1} md={1}>
           <Checkbox
             color="secondary"
             sx={{ "& .MuiSvgIcon-root": { fontSize: 31 } }}
           />
         </Grid>
-        <Grid  xs={1} md={1}>
+        <Grid xs={1} md={1}>
           <Checkbox
             color="secondary"
             sx={{ "& .MuiSvgIcon-root": { fontSize: 31 } }}
           />
         </Grid>
-        <Grid  xs={1} md={1}>
+        <Grid xs={1} md={1}>
           <Checkbox
             color="secondary"
             sx={{ "& .MuiSvgIcon-root": { fontSize: 31 } }}
           />
         </Grid>
-        <Grid  xs={1} md={1}>
+        <Grid xs={1} md={1}>
           <Checkbox
             color="secondary"
             sx={{ "& .MuiSvgIcon-root": { fontSize: 31 } }}
           />
         </Grid>
-        <Grid  xs={1} md={1}>
+        <Grid xs={1} md={1}>
           <Checkbox
             color="secondary"
             sx={{ "& .MuiSvgIcon-root": { fontSize: 31 } }}
           />
         </Grid>
-        <Grid  xs={1} md={1}>
+        <Grid xs={1} md={1}>
           <Checkbox
             color="secondary"
             sx={{ "& .MuiSvgIcon-root": { fontSize: 31 } }}
           />
         </Grid>
         {/* Tercera Fila */}
-        <Grid  xs={1} md={1}>
+        <Grid xs={1} md={1}>
           <Checkbox
             color="secondary"
             sx={{ "& .MuiSvgIcon-root": { fontSize: 31 } }}
           />
         </Grid>
-        <Grid  xs={1} md={1}>
+        <Grid xs={1} md={1}>
           <Checkbox
             color="secondary"
             sx={{ "& .MuiSvgIcon-root": { fontSize: 31 } }}
           />
         </Grid>
-        <Grid  xs={1} md={1}>
+        <Grid xs={1} md={1}>
           <Checkbox
             color="secondary"
             sx={{ "& .MuiSvgIcon-root": { fontSize: 31 } }}
           />
         </Grid>
-        <Grid  xs={1} md={1}>
+        <Grid xs={1} md={1}>
           <Checkbox
             color="secondary"
             sx={{ "& .MuiSvgIcon-root": { fontSize: 31 } }}
           />
         </Grid>
-        <Grid  xs={1} md={1}>
+        <Grid xs={1} md={1}>
           <Checkbox
             color="secondary"
             sx={{ "& .MuiSvgIcon-root": { fontSize: 31 } }}
           />
         </Grid>
-        <Grid  xs={1} md={1}>
+        <Grid xs={1} md={1}>
           <Checkbox
             color="secondary"
             sx={{ "& .MuiSvgIcon-root": { fontSize: 31 } }}
           />
         </Grid>
         {/* Cuarta Fila */}
-        <Grid  xs={1} md={1}>
+        <Grid xs={1} md={1}>
           <Checkbox
             color="secondary"
             sx={{ "& .MuiSvgIcon-root": { fontSize: 31 } }}
           />
         </Grid>
-        <Grid  xs={1} md={1}>
+        <Grid xs={1} md={1}>
           <Checkbox
             color="secondary"
             sx={{ "& .MuiSvgIcon-root": { fontSize: 31 } }}
           />
         </Grid>
-        <Grid  xs={1} md={1}>
+        <Grid xs={1} md={1}>
           <Checkbox
             color="secondary"
             sx={{ "& .MuiSvgIcon-root": { fontSize: 31 } }}
           />
         </Grid>
-        <Grid  xs={1} md={1}>
+        <Grid xs={1} md={1}>
           <Checkbox
             color="secondary"
             sx={{ "& .MuiSvgIcon-root": { fontSize: 31 } }}
           />
         </Grid>
-        <Grid  xs={1} md={1}>
+        <Grid xs={1} md={1}>
           <Checkbox
             color="secondary"
             sx={{ "& .MuiSvgIcon-root": { fontSize: 31 } }}
           />
         </Grid>
-        <Grid  xs={1} md={1}>
+        <Grid xs={1} md={1}>
           <Checkbox
             color="secondary"
             sx={{ "& .MuiSvgIcon-root": { fontSize: 31 } }}
           />
         </Grid>
         {/* Quinta Fila */}
-        <Grid  xs={1} md={1}>
+        <Grid xs={1} md={1}>
           <Checkbox
             color="secondary"
             sx={{ "& .MuiSvgIcon-root": { fontSize: 31 } }}
           />
         </Grid>
-        <Grid  xs={1} md={1}>
+        <Grid xs={1} md={1}>
           <Checkbox
             color="secondary"
             sx={{ "& .MuiSvgIcon-root": { fontSize: 31 } }}
           />
         </Grid>
-        <Grid  xs={1} md={1}>
+        <Grid xs={1} md={1}>
           <Checkbox
             color="secondary"
             sx={{ "& .MuiSvgIcon-root": { fontSize: 31 } }}
           />
         </Grid>
-        <Grid  xs={1} md={1}>
+        <Grid xs={1} md={1}>
           <Checkbox
             color="secondary"
             sx={{ "& .MuiSvgIcon-root": { fontSize: 31 } }}
           />
         </Grid>
-        <Grid  xs={1} md={1}>
+        <Grid xs={1} md={1}>
           <Checkbox
             color="secondary"
             sx={{ "& .MuiSvgIcon-root": { fontSize: 31 } }}
           />
         </Grid>
-        <Grid  xs={1} md={1}>
+        <Grid xs={1} md={1}>
           <Checkbox
             color="secondary"
             sx={{ "& .MuiSvgIcon-root": { fontSize: 31 } }}
           />
         </Grid>
         {/* Sexta Fila */}
-        <Grid  xs={1} md={1}>
+        <Grid xs={1} md={1}>
           <Checkbox
             color="secondary"
             sx={{ "& .MuiSvgIcon-root": { fontSize: 31 } }}
           />
         </Grid>
-        <Grid  xs={1} md={1}>
+        <Grid xs={1} md={1}>
           <Checkbox
             color="secondary"
             sx={{ "& .MuiSvgIcon-root": { fontSize: 31 } }}
           />
         </Grid>
-        <Grid  xs={1} md={1}>
+        <Grid xs={1} md={1}>
           <Checkbox
             color="secondary"
             sx={{ "& .MuiSvgIcon-root": { fontSize: 31 } }}
           />
         </Grid>
-        <Grid  xs={1} md={1}>
+        <Grid xs={1} md={1}>
           <Checkbox
             color="secondary"
             sx={{ "& .MuiSvgIcon-root": { fontSize: 31 } }}
           />
         </Grid>
-        <Grid  xs={1} md={1}>
+        <Grid xs={1} md={1}>
           <Checkbox
             color="secondary"
             sx={{ "& .MuiSvgIcon-root": { fontSize: 31 } }}
           />
         </Grid>
-        <Grid  xs={1} md={1}>
+        <Grid xs={1} md={1}>
           <Checkbox
             color="secondary"
             sx={{ "& .MuiSvgIcon-root": { fontSize: 31 } }}
