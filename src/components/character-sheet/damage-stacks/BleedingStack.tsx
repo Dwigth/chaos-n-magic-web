@@ -7,6 +7,7 @@ import {
 } from "@mui/material";
 import { FC, useState } from "react";
 import { useCharacter } from "../reducer-context/CharacterContextProvider";
+import Bleeding from "/src/assets/images/charsheet/Bar_Bleeding.png";
 
 const VerticalProgress = styled(LinearProgress)({
   "& .MuiLinearProgress-barColorPrimary": {
@@ -18,7 +19,7 @@ const VerticalProgress = styled(LinearProgress)({
   transform: "rotate(-90deg) translate(55%) scaleX(55%) scaleY(180%)",
   width: "100%",
   zIndex: 0,
-  backgroundImage: "url('/src/assets/images/charsheet/Bar_Bleeding.png')",
+  backgroundImage: `url(${Bleeding})`,
   position: "relative",
 });
 
@@ -28,14 +29,12 @@ interface Resistence {
 }
 
 const BleedingStack: FC<Resistence> = ({ resistence, actValue }) => {
-  // let resistence = 6 + Number(combatNumber);
-
   let progess = (actValue / resistence) * 100;
 
   return (
     <>
       <img
-        src="/src/assets/images/charsheet/Bar_Bleeding.png"
+        src={Bleeding}
         width={"100%"}
         style={{
           zIndex: 5,

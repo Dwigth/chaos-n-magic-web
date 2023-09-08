@@ -7,6 +7,7 @@ import {
 } from "@mui/material";
 import { FC, useState } from "react";
 import { useCharacter } from "../reducer-context/CharacterContextProvider";
+import Psychic from "/src/assets/images/charsheet/Bar_Psychic.png";
 
 const VerticalProgress = styled(LinearProgress)({
   "& .MuiLinearProgress-barColorPrimary": {
@@ -18,7 +19,7 @@ const VerticalProgress = styled(LinearProgress)({
   transform: "rotate(-90deg) translate(55%) scaleX(55%)",
   width: "100%",
   zIndex: 0,
-  backgroundImage: "url('/src/assets/images/charsheet/Bar_Psychic.png')",
+  backgroundImage: `url(${Psychic})`,
   position: "relative",
 });
 
@@ -33,7 +34,7 @@ const PsychicStack: FC<Resistence> = ({ resistence, actValue }) => {
   return (
     <>
       <img
-        src="/src/assets/images/charsheet/Bar_Psychic.png"
+        src={Psychic}
         width={"100%"}
         style={{
           zIndex: 5,

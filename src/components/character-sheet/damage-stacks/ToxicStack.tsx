@@ -7,6 +7,7 @@ import {
 } from "@mui/material";
 import { FC, useState } from "react";
 import { useCharacter } from "../reducer-context/CharacterContextProvider";
+import Toxic from "/src/assets/images/charsheet/Bar_Toxic.png";
 
 const VerticalProgress = styled(LinearProgress)({
   "& .MuiLinearProgress-barColorPrimary": {
@@ -19,7 +20,7 @@ const VerticalProgress = styled(LinearProgress)({
   transform: "rotate(-90deg) translate(55%) scaleX(55%)",
   width: "100%",
   zIndex: 0,
-  backgroundImage: "url('/src/assets/images/charsheet/Bar_Toxic.png')",
+  backgroundImage: `url(${Toxic})`,
   position: "relative",
 });
 
@@ -34,7 +35,7 @@ const ToxicStack: FC<Resistence> = ({ resistence, actValue }) => {
   return (
     <>
       <img
-        src="/src/assets/images/charsheet/Bar_Toxic.png"
+        src={Toxic}
         width={"100%"}
         style={{
           zIndex: 5,

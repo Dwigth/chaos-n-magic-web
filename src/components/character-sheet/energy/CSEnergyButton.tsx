@@ -1,4 +1,6 @@
 import { Box, Checkbox, CheckboxProps, styled } from "@mui/material";
+import CheckEnergy from "/src/assets/images/charsheet/Energy_Full_Icon.png";
+import UncheckEnergy from "/src/assets/images/charsheet/Energy_Unchecked_Icon.png";
 
 const EnergyBox = styled(Checkbox)(({ theme }) => ({
   borderRadius: 16,
@@ -42,17 +44,12 @@ export function CSEnergyButton(props: CheckboxProps) {
         color="default"
         checkedIcon={
           <img
-            src="/src/assets/images/charsheet/Energy_Full_Icon.png"
+            src={CheckEnergy}
             style={{ filter: "saturate(240%) " }}
             width={32}
           />
         }
-        icon={
-          <img
-            src="/src/assets/images/charsheet/Energy_Unchecked_Icon.png"
-            width={32}
-          />
-        }
+        icon={<img src={UncheckEnergy} width={32} />}
         inputProps={{ "aria-label": "Checkbox demo" }}
         {...props}
         size="medium"
