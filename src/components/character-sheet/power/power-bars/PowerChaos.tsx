@@ -17,14 +17,14 @@ const PowerBar = styled(LinearProgress)({
     backgroundColor: "transparent",
   },
   backgroundColor: "transparent",
-  transform: "rotate(-90deg) translate(55%) scaleX(80%) scaleY(2400%)",
+  transform: "rotate(-90deg) translate(55%) scaleX(80%) scaleY(2300%)",
   height: "3%",
   width: "100%",
-  left: "10%",
+  left: "5%",
   zIndex: 0,
   position: "relative",
   WebkitMask: "radial-gradient(circle, black 100%, rgba(0,0,0,1) 100%)",
-  WebkitBorderRadius: "50%",
+  WebkitBorderRadius: "100%",
 });
 
 interface Value {

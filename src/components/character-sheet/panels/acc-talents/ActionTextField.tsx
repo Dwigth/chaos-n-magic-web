@@ -62,8 +62,6 @@ export const ActionTextField: FC<passIndex> = ({ index }) => {
   const throwDiceCM = () => {
     const split = characterState.actions[index].formula.split("d");
 
-    console.log(split);
-
     if (split == null) {
       let mensaje = "Error al leer el dado";
       return errorAlert(mensaje);

@@ -175,6 +175,30 @@ export function characterReducer(state: any, action: any) {
 
       return { ...newState };
     }
+    case "delete_inventory_item": {
+      const newState = state;
+      const { int } = action.payload;
+
+      newState.inventory.items.splice(int, 1);
+
+      return { ...newState };
+    }
+    case "delete_action": {
+      const newState = state;
+      const { int } = action.payload;
+
+      newState.actions.splice(int, 1);
+
+      return { ...newState };
+    }
+    case "delete_magic": {
+      const newState = state;
+      const { type, int } = action.payload;
+
+      newState.spellbook[type].splice(int, 1);
+
+      return { ...newState };
+    }
     case "add_inventory_item": {
       const newState = state;
 

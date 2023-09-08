@@ -8,7 +8,7 @@ import { MagicSchoolsLabel } from "./magic-components/MagicSchoolsLabel";
 export function MagicTablesControl() {
   return (
     <Container maxWidth={false}>
-      <Grid container xs={24} direction={"row"} spacing={1}>
+      <Grid container item xs={24} direction={"row"} spacing={1}>
         <Grid item xs={24}>
           <Typography variant="h6"> Magia </Typography>
         </Grid>

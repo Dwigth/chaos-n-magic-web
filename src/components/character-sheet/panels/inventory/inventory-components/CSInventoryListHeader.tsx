@@ -8,7 +8,7 @@ export function CSInventoryListHeader() {
           Cantidad
         </Typography>
       </Grid>
-      <Grid item xs={4.5}>
+      <Grid item xs={4.2}>
         <Typography variant="body2"> Objeto </Typography>
       </Grid>
       <Grid item xs={1}>

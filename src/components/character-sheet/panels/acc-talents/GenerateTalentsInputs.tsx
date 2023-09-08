@@ -3,13 +3,14 @@ import { AddButton } from "../../../global-components/AddButton";
 import { Grid, TextField } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { useCharacter } from "../../reducer-context/CharacterContextProvider";
+import { DeleteButton } from "../../../global-components/DeleteButton";
 
 function AddDynamicTalent() {
   const { characterState, characterDispatch } = useCharacter();
   let params = useParams();
   let int = 0;
 
-  async function putTalents(i: number, title: string, desc: string) {
+  async function putTalents(i: number, title?: string, desc?: string) {
     try {
       await fetch(import.meta.env.VITE_CHAOS_SERVER + "/hero-sheet", {
         method: "PUT",
@@ -50,74 +51,80 @@ function AddDynamicTalent() {
     putTalents(int, "", "");
   };
 
-  // const deleteTalent = (int: any) => {
-  //   characterDispatch({
-  //     type: "delete_talent",
-  //     payload: {
-  //       int,
-  //     },
-  //   });
-  // };
+  const deleteTalent = (int: any) => {
+    characterDispatch({
+      type: "delete_talent",
+      payload: {
+        int,
+      },
+    });
+    putTalents(int);
+  };
 
   return (
-    <>
+    <Grid>
       {characterState.talents.map(({}, array: number) => {
         return (
-          <Grid key={array}>
-            <Grid sx={{ paddingRight: 1, paddingTop: 2 }}>
-              <Grid item xs={12}>
-                <TextField
-                  variant="outlined"
-                  color="secondary"
-                  placeholder="Nombre del Talento"
-                  size="small"
-                  name="name"
-                  value={characterState.talents[array].name}
-                  onChange={(e) => handleTalents(e, array)}
-                  onBlur={() =>
-                    putTalents(
-                      array,
-                      characterState.talents[array].name,
-                      characterState.talents[array].effect
-                    )
-                  }
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  variant="outlined"
-                  color="secondary"
-                  placeholder="Descripción"
-                  name="effect"
-                  minRows={2}
-                  value={characterState.talents[array].effect}
-                  onChange={(e) => handleTalents(e, array)}
-                  onBlur={() =>
-                    putTalents(
-                      array,
-                      characterState.talents[array].name,
-                      characterState.talents[array].effect
-                    )
-                  }
-                  multiline
-                  fullWidth
-                  inputProps={{ style: { fontSize: "0.8rem" } }}
-                />
-              </Grid>
-            </Grid>
+          <span key={array}>
+            {characterState.talents[array].name != null ? (
+              <>
+                <Grid sx={{ paddingRight: 1, paddingTop: 2 }}>
+                  <Grid item xs={12}>
+                    <TextField
+                      variant="outlined"
+                      color="secondary"
+                      placeholder="Nombre del Talento"
+                      size="small"
+                      name="name"
+                      value={characterState.talents[array].name}
+                      onChange={(e) => handleTalents(e, array)}
+                      onBlur={() =>
+                        putTalents(
+                          array,
+                          characterState.talents[array].name,
+                          characterState.talents[array].effect
+                        )
+                      }
+                    />
+                  </Grid>
 
-            {/* {array > 0 ? (
-              <DeleteButton
-                clicHandler={() => {
-                  deleteTalent(array);
-                }}
-              />
-            ) : null} */}
-          </Grid>
+                  <Grid item xs={12}>
+                    <TextField
+                      variant="outlined"
+                      color="secondary"
+                      placeholder="Descripción"
+                      name="effect"
+                      minRows={2}
+                      value={characterState.talents[array].effect}
+                      onChange={(e) => handleTalents(e, array)}
+                      onBlur={() =>
+                        putTalents(
+                          array,
+                          characterState.talents[array].name,
+                          characterState.talents[array].effect
+                        )
+                      }
+                      multiline
+                      fullWidth
+                      inputProps={{ style: { fontSize: "0.8rem" } }}
+                    />
+                  </Grid>
+                </Grid>
+
+                {array > 0 ? (
+                  <DeleteButton
+                    clicHandler={() => {
+                      deleteTalent(array);
+                    }}
+                  />
+                ) : null}
+              </>
+            ) : null}
+          </span>
         );
       })}
       <AddButton clicHandler={addTalent} />
-    </>
+    </Grid>
   );
 }
 

@@ -3,6 +3,7 @@ import { Grid, TextField, styled } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { useCharacter } from "../../../reducer-context/CharacterContextProvider";
 import { FC } from "react";
+import { DeleteButton } from "../../../../global-components/DeleteButton";
 
 const SpellTextField = styled(TextField)({
   "& .MuiInputBase-input": {
@@ -54,6 +55,34 @@ export const MagicSpellDescription: FC<SpellbookDesc> = ({ type, index }) => {
       },
     });
   };
+
+  async function EliminateMagic(int: number) {
+    try {
+      await fetch(import.meta.env.VITE_CHAOS_SERVER + "/hero-sheet", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          heroSheetId: params.sheetId,
+          propertyToUpdate: ["spellbook", type, int],
+          value: {},
+        }),
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  const deleteMagic = (int: any) => {
+    characterDispatch({
+      type: "delete_magic",
+      payload: {
+        type,
+        int,
+      },
+    });
+    EliminateMagic(int);
+  };
+
   return (
     <Grid container spacing={0.5}>
       <Grid item xs={6}>
@@ -181,13 +210,11 @@ export const MagicSpellDescription: FC<SpellbookDesc> = ({ type, index }) => {
           }
         />
       </Grid>
-      {/* <Grid item xs={1}>
-        <DeleteButton
-          clicHandler={function (val: any): void {
-            throw new Error("Function not implemented.");
-          }}
-        />
-      </Grid> */}
+      <Grid item xs={12}>
+        {index > 0 ? (
+          <DeleteButton clicHandler={() => deleteMagic(index)} />
+        ) : null}
+      </Grid>
     </Grid>
   );
 };

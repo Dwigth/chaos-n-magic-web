@@ -69,36 +69,42 @@ export const MagicSpellComponent: FC<SpellbookDesc> = ({ type }) => {
     <>
       {characterState.spellbook[type].map(({}, index: any) => {
         return (
-          <Accordion
-            elevation={3}
-            sx={{
-              width: "100%",
-              height: "100%",
-              paddingBottom: 2,
-              paddingTop: 2,
-            }}
-          >
-            <AccordionSummary expandIcon={<MenuBookIcon />}>
-              <TextField
-                color="secondary"
-                variant="standard"
-                label="Nombre"
-                name="name"
-                value={characterState.spellbook[type][index].name}
-                onChange={(e) => handleSpellbook(e, index, type)}
-                onBlur={() =>
-                  putSpellbook(
-                    index,
-                    "name",
-                    characterState.spellbook[type][index].name
-                  )
-                }
-              />
-            </AccordionSummary>
-            <AccordionDetails sx={{ backgroundColor: "#0a1006" }}>
-              <MagicSpellDescription type={type} index={index} />
-            </AccordionDetails>
-          </Accordion>
+          <span key={index}>
+            {characterState.spellbook[type][index].name != null ? (
+              <>
+                <Accordion
+                  elevation={3}
+                  sx={{
+                    width: "100%",
+                    height: "100%",
+                    paddingBottom: 2,
+                    paddingTop: 2,
+                  }}
+                >
+                  <AccordionSummary expandIcon={<MenuBookIcon />}>
+                    <TextField
+                      color="secondary"
+                      variant="standard"
+                      label="Nombre"
+                      name="name"
+                      value={characterState.spellbook[type][index].name}
+                      onChange={(e) => handleSpellbook(e, index, type)}
+                      onBlur={() =>
+                        putSpellbook(
+                          index,
+                          "name",
+                          characterState.spellbook[type][index].name
+                        )
+                      }
+                    />
+                  </AccordionSummary>
+                  <AccordionDetails sx={{ backgroundColor: "#0a1006" }}>
+                    <MagicSpellDescription type={type} index={index} />
+                  </AccordionDetails>
+                </Accordion>
+              </>
+            ) : null}
+          </span>
         );
       })}
     </>
