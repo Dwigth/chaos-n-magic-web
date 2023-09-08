@@ -1,4 +1,6 @@
 import { Box, Checkbox, CheckboxProps, styled } from "@mui/material";
+import TemporalStanceChecked from "/src/assets/images/charsheet/Stance_Icon_Checked.png";
+import TemporalStanceUnchecked from "/src/assets/images/charsheet/Stance_Icon_Unchecked.png";
 
 /** POSTURA
  *
@@ -45,17 +47,12 @@ export function CSTemporalStance(props: CheckboxProps) {
         color="default"
         checkedIcon={
           <img
-            src="/src/assets/images/charsheet/Stance_Icon_Checked.png"
+            src={TemporalStanceChecked}
             style={{ filter: "sepia(30%) saturate(10%) hue-rotate(220deg)" }}
             width={24}
           />
         }
-        icon={
-          <img
-            src="/src/assets/images/charsheet/Stance_Icon_Unchecked.png"
-            width={24}
-          />
-        }
+        icon={<img src={TemporalStanceUnchecked} width={24} />}
         inputProps={{ "aria-label": "Checkbox demo" }}
         {...props}
       />

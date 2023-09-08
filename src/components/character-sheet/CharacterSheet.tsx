@@ -69,7 +69,7 @@ export const CharacterSheet = () => {
   }, []);
 
   return (
-    <Container>
+    <Container maxWidth={false}>
       <Grid
         container
         direction="row"
