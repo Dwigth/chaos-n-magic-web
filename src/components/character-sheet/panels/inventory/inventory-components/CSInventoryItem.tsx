@@ -2,7 +2,6 @@ import { Checkbox, Grid, IconButton, TextField, styled } from "@mui/material";
 import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
 import { useParams } from "react-router-dom";
 import { useCharacter } from "../../../reducer-context/CharacterContextProvider";
-import { useState } from "react";
 
 const ItemField = styled(TextField)({
   "& .MuiInputBase-input": {
@@ -12,7 +11,6 @@ const ItemField = styled(TextField)({
 
 export function CSInventoryItem() {
   const { characterState, characterDispatch } = useCharacter();
-  const [disabled, setDisabled] = useState(false);
 
   let params = useParams();
 
@@ -77,10 +75,6 @@ export function CSInventoryItem() {
   //     },
   //   });
   // };
-
-  const updateStatus = () => {
-    setDisabled(!disabled);
-  };
 
   return (
     <>

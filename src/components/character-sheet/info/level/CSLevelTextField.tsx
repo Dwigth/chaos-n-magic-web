@@ -8,7 +8,6 @@ export function LevelTextField() {
   let params = useParams();
 
   async function putCharacterLevel(event: any) {
-    const { name } = event.target;
     const value = event.target.value;
     try {
       await fetch("http://localhost:3000/hero-sheet", {
