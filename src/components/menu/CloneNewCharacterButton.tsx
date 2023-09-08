@@ -30,7 +30,7 @@ export function CloneCharacterSheet() {
   async function submitCloneCS() {
     try {
       const response = await fetch(
-        "http://localhost:3000/hero-sheet/duplicate",
+        `${import.meta.env.VITE_CHAOS_SERVER}/hero-sheet/duplicate`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

@@ -16,7 +16,7 @@ export function CSInventoryItem() {
 
   async function putInventory(int: number, name: string, val: string) {
     try {
-      await fetch("http://localhost:3000/hero-sheet", {
+      await fetch(import.meta.env.VITE_CHAOS_SERVER + "/hero-sheet", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

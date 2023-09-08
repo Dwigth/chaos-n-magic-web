@@ -41,7 +41,9 @@ export const CharacterSheet = () => {
   async function getSheetInfo() {
     try {
       const response = await fetch(
-        `http://localhost:3000/hero-sheet?hero-sheet-id=${params.sheetId}&sheet-passcode=${location.state.passCode}`
+        `${import.meta.env.VITE_CHAOS_SERVER}/hero-sheet?hero-sheet-id=${
+          params.sheetId
+        }&sheet-passcode=${location.state.passCode}`
       );
 
       if (response.ok) {

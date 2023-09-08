@@ -13,7 +13,7 @@ function AddDynamicAction() {
 
   async function putAction(int: number) {
     try {
-      await fetch("http://localhost:3000/hero-sheet", {
+      await fetch(import.meta.env.VITE_CHAOS_SERVER + "/hero-sheet", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

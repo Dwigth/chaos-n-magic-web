@@ -9,15 +9,18 @@ export function CSCharBackground() {
 
   async function putDetails(name: string, val: string) {
     try {
-      const response = await fetch("http://localhost:3000/hero-sheet", {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          heroSheetId: params.sheetId,
-          propertyToUpdate: ["details", name],
-          value: val,
-        }),
-      });
+      const response = await fetch(
+        import.meta.env.VITE_CHAOS_SERVER + "/hero-sheet",
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            heroSheetId: params.sheetId,
+            propertyToUpdate: ["details", name],
+            value: val,
+          }),
+        }
+      );
 
       if (response.ok) {
         console.log("Se actualizo " + name + " a: " + val);

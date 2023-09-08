@@ -39,7 +39,9 @@ export const OpenCharacterSheet = () => {
   async function handleClick() {
     try {
       const response = await fetch(
-        `http://localhost:3000/hero-sheet?hero-sheet-id=${CSId.id}&sheet-passcode=${CSId.passCode}`
+        `${import.meta.env.VITE_CHAOS_SERVER}/hero-sheet?hero-sheet-id=${
+          CSId.id
+        }&sheet-passcode=${CSId.passCode}`
       );
 
       if (response.ok) {

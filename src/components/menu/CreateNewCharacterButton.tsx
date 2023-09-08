@@ -26,13 +26,16 @@ export function CreateNewCharacterSheet() {
 
   async function submitDatabase() {
     try {
-      const response = await fetch("http://localhost:3000/hero-sheet", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          heroBasicInfo: defaultData,
-        }),
-      });
+      const response = await fetch(
+        import.meta.env.VITE_CHAOS_SERVER + "/hero-sheet",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            heroBasicInfo: defaultData,
+          }),
+        }
+      );
 
       if (response.ok) {
         const data = await response.json();
