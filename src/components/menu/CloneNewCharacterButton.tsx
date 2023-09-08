@@ -19,7 +19,7 @@ export function CloneCharacterSheet() {
   let navigate = useNavigate();
 
   const routeChange = (id: string, passCode: string) => {
-    let path = `/characterSheet/${id}`;
+    let path = `/character-sheet/${id}`;
     navigate(path, {
       state: {
         passCode: passCode,

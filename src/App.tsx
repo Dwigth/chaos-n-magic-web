@@ -50,7 +50,7 @@ function App() {
       errorElement: <ErrorHandler />,
     },
     {
-      path: "/characterSheet/:sheetId?",
+      path: "/character-sheet/:sheetId?",
       loader: async ({ params }) => {
         console.log({ params });
         return null;

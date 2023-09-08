@@ -28,7 +28,7 @@ export const OpenCharacterSheet = () => {
   let navigate = useNavigate();
 
   const routeChange = () => {
-    let path = `/characterSheet/${CSId.id}`;
+    let path = `/character-sheet/${CSId.id}`;
     navigate(path, {
       state: {
         passCode: CSId.passCode,

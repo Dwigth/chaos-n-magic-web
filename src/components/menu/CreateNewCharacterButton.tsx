@@ -16,7 +16,7 @@ export function CreateNewCharacterSheet() {
   let navigate = useNavigate();
 
   const routeChange = (id: any, passCode: any) => {
-    let path = `/characterSheet/${id}`;
+    let path = `/character-sheet/${id}`;
     navigate(path, {
       state: {
         passCode: passCode,
