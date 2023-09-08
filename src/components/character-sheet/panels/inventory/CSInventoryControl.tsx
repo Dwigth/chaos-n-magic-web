@@ -1,8 +1,6 @@
 import { Box, Grid, Typography } from "@mui/material";
 import { CSMoneyField } from "./inventory-components/CSMoneyField";
 import { CSInventoryList } from "./inventory-components/CSInventoryList";
-import { useParams } from "react-router-dom";
-import { useCharacter } from "../../reducer-context/CharacterContextProvider";
 import CSSlotsControler from "./inventory-components/CSSlotsControler";
 
 export function CSInventoryControl() {
