@@ -4,6 +4,7 @@ import { PowerField, PowerFieldLabel } from "./PowerInputStyle";
 import { FC, useState } from "react";
 import { useCharacter } from "../../reducer-context/CharacterContextProvider";
 import { useParams } from "react-router-dom";
+import PowerBarRound from "/src/assets/images/charsheet/Power_Bar_round.png";
 
 const PowerBar = styled(LinearProgress)({
   "& .MuiLinearProgress-barColorPrimary": {
@@ -32,7 +33,7 @@ export const PowerManaBar: FC<Value> = ({ powerValue }) => {
   return (
     <>
       <img
-        src="/src/assets/images/charsheet/Power_Bar_round.png"
+        src={PowerBarRound}
         width={"110%"}
         style={{
           zIndex: 5,

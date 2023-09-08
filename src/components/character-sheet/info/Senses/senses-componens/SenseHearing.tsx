@@ -1,5 +1,6 @@
 import { Avatar, Grid, Typography } from "@mui/material";
 import { useCharacter } from "../../../reducer-context/CharacterContextProvider";
+import SenseHearingImage from "/src/assets/images/charsheet/Icon_Hearing.jpg";
 
 let sns = 0;
 
@@ -20,10 +21,7 @@ export const SenseHearing = () => {
       columns={16}
     >
       <Grid item xs={4}>
-        <Avatar
-          alt="hearing"
-          src="/src/assets/images/charsheet/Icon_Hearing.jpg"
-        />
+        <Avatar alt="hearing" src={SenseHearingImage} />
       </Grid>
       <Grid item xs={5}>
         <Typography variant="body2">{4 + sns}</Typography>
