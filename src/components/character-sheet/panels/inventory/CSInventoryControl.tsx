@@ -2,6 +2,7 @@ import { Box, Grid, Typography } from "@mui/material";
 import { CSMoneyField } from "./inventory-components/CSMoneyField";
 import { CSInventoryList } from "./inventory-components/CSInventoryList";
 import CSSlotsControler from "./inventory-components/CSSlotsControler";
+import CSWalletControler from "./inventory-components/CSWalletControler";
 
 export function CSInventoryControl() {
   return (
@@ -36,6 +37,7 @@ export function CSInventoryControl() {
         </Grid>
         <Grid item xs={12} sm={6} md={4} lg={3} xl={3}>
           <CSSlotsControler />
+          <CSWalletControler />
         </Grid>
       </Grid>
     </Box>

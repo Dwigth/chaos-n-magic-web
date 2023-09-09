@@ -1,69 +1,63 @@
 import { useState } from "react";
-import CSSlots from "./CSSlots";
 import { Container } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import { useCharacter } from "../../../reducer-context/CharacterContextProvider";
+import CSWalletSlots from "./CSWalletSlots";
 
-const CSSlotsControler = () => {
+const CSWalletControler = () => {
   const { characterState } = useCharacter();
 
   let name = "";
 
-  let smallBackPack = false;
+  let walletSmall = false;
 
-  let mediumBackpack = false;
+  let walletMedium = false;
 
-  let bigBackpack = false;
+  let walletBig = false;
 
-  let explorerBackpack = false;
+  let walletGiant = false;
 
   let numberSlots = 0;
-
-  let columns = 0;
 
   characterState.inventory.items.map(({}, index: number) => {
     if (characterState.inventory.items[index].name != null) {
       name = characterState.inventory.items[index].name;
 
-      smallBackPack = name.includes("4x4");
-      mediumBackpack = name.includes("5x5");
-      bigBackpack = name.includes("6x6");
-      explorerBackpack = name.includes("6x8");
+      walletSmall = name.includes("2x1");
+      walletMedium = name.includes("2x2");
+      walletBig = name.includes("3x3");
+      walletGiant = name.includes("3x4");
     }
 
     if (
-      smallBackPack &&
+      walletSmall &&
+      characterState.inventory.items[index].isEquipped === true
+    ) {
+      numberSlots += 2;
+    }
+
+    if (
+      walletMedium &&
+      characterState.inventory.items[index].isEquipped === true
+    ) {
+      numberSlots += 4;
+    }
+
+    if (
+      walletBig &&
+      characterState.inventory.items[index].isEquipped === true
+    ) {
+      numberSlots += 12;
+    }
+
+    if (
+      walletGiant &&
       characterState.inventory.items[index].isEquipped === true
     ) {
       numberSlots += 16;
-      columns = 4;
     }
 
-    if (
-      mediumBackpack &&
-      characterState.inventory.items[index].isEquipped === true
-    ) {
-      numberSlots += 25;
-      columns = 5;
-    }
-
-    if (
-      bigBackpack &&
-      characterState.inventory.items[index].isEquipped === true
-    ) {
-      numberSlots += 36;
-      columns = 6;
-    }
-
-    if (
-      explorerBackpack &&
-      characterState.inventory.items[index].isEquipped === true
-    ) {
-      numberSlots += 48;
-      columns = 6;
-    }
-
-    if (numberSlots >= 48) numberSlots = 48;
+    if (numberSlots >= 27) numberSlots = 27;
   });
 
   const checkboxes = Array(numberSlots).fill({});
@@ -92,23 +86,21 @@ const CSSlotsControler = () => {
       <Grid
         container
         direction="row"
-        spacing={0}
+        columnSpacing={5}
         justifyContent={"flex-start"}
-        alignItems={"center"}
-        columns={columns}
       >
-        <CSSlots
+        <CSWalletSlots
           checkboxes={checkboxes}
-          checkedState={checkedState}
+          checkedState={setCheckedState}
           handleCheckboxChange={handleCheckboxChange}
         />
-        <p>
-          Espacio de la mochila en uso:{" "}
-          <strong>{countCheckedCheckboxes()}</strong>
-        </p>
       </Grid>
+      <p>
+        Espacio de la carteras en uso:{" "}
+        <strong>{countCheckedCheckboxes()}</strong>
+      </p>
     </Container>
   );
 };
 
-export default CSSlotsControler;
+export default CSWalletControler;

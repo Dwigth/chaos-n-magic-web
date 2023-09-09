@@ -124,13 +124,13 @@ export const CharacterSheet = () => {
           <CSinfo />
         </Grid>
         <Grid container xs={24} sm={24} md={16} lg={12} xl={12} spacing={1}>
-          <Grid xs={24} sm={13} md={13} lg={13} xl={14}>
+          <Grid xs={24} sm={24} md={13} lg={13} xl={14}>
             <CSDefense />
           </Grid>
           <Grid
             container
             xs={24}
-            sm={11}
+            sm={24}
             md={11}
             lg={11}
             xl={10}
