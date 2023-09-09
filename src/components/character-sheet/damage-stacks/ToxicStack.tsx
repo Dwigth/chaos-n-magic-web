@@ -48,10 +48,18 @@ const ToxicStack: FC<Resistence> = ({ resistence, actValue }) => {
   );
 };
 
+let fortitude = 0;
+
 export const ToxicStackElement = () => {
   const { characterState } = useCharacter();
 
   let resistence = 6 + Number(characterState.attributes.fortitude.value);
+
+  if (characterState.attributes.fortitude.value >= -2) {
+    fortitude = characterState.attributes.fortitude.value;
+  } else {
+    fortitude = -2;
+  }
 
   const [stackValue, setStackValue] = useState({
     toxic: 0,
@@ -75,7 +83,7 @@ export const ToxicStackElement = () => {
     >
       <Grid item xs={1}>
         <Typography variant="caption" textAlign={"center"}>
-          {resistence}
+          {6 + fortitude}
         </Typography>
       </Grid>
       <Grid

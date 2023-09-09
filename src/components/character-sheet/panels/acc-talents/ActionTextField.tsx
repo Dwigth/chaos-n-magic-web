@@ -10,6 +10,7 @@ import Hoja from "../../../../assets/images/icons/hoja.webp";
 import Estrella from "../../../../assets/images/icons/estrella.webp";
 import { useCharacter } from "../../reducer-context/CharacterContextProvider";
 import { useParams } from "react-router-dom";
+import { DeleteButton } from "../../../global-components/DeleteButton";
 
 interface passIndex {
   index: number;
@@ -174,8 +175,36 @@ export const ActionTextField: FC<passIndex> = ({ index }) => {
     });
   };
 
+  async function EliminateAction(int: number) {
+    try {
+      await fetch(import.meta.env.VITE_CHAOS_SERVER + "/hero-sheet", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          heroSheetId: params.sheetId,
+          propertyToUpdate: ["actions", int],
+          value: {},
+        }),
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  const deleteAction = (event: any, int: any) => {
+    if (event.detail == 2) {
+      characterDispatch({
+        type: "delete_action",
+        payload: {
+          int,
+        },
+      });
+      EliminateAction(int);
+    }
+  };
+
   return (
-    <Grid container direction="row" sx={{ marginTop: 1 }} spacing={0.5}>
+    <Grid container direction="row" sx={{ marginTop: 0 }} spacing={0.5}>
       <Grid item xs={24} sm={3} md={3} lg={3} xl={3}>
         <TextField
           variant="standard"
@@ -185,9 +214,10 @@ export const ActionTextField: FC<passIndex> = ({ index }) => {
           value={characterState.actions[index].name}
           onChange={(e) => handleAction(e, index)}
           onBlur={(e) => putAction(index, e)}
+          fullWidth
         />
       </Grid>
-      <Grid item xs={24} sm={2} md={2} lg={2} xl={2}>
+      <Grid item xs={10} sm={2} md={2} lg={2} xl={2}>
         <TextField
           variant="standard"
           placeholder="1dcm"
@@ -199,7 +229,7 @@ export const ActionTextField: FC<passIndex> = ({ index }) => {
           fullWidth
         />
       </Grid>
-      <Grid item xs={5} sm={1} md={1} lg={1} xl={1}>
+      <Grid item xs={1.8} sm={1} md={1} lg={1} xl={1}>
         <IconButton onClick={throwDiceCM}>
           <img src={Dices} width={"120%"} />
         </IconButton>
@@ -213,9 +243,10 @@ export const ActionTextField: FC<passIndex> = ({ index }) => {
           value={characterState.actions[index].damageType}
           onChange={(e) => handleAction(e, index)}
           onBlur={(e) => putAction(index, e)}
+          fullWidth
         />
       </Grid>
-      <Grid item xs={24} sm={3} md={3} lg={3} xl={3}>
+      <Grid item xs={24} sm={3} md={2} lg={2} xl={2}>
         <TextField
           variant="standard"
           placeholder="3 E, 1 P"
@@ -224,7 +255,15 @@ export const ActionTextField: FC<passIndex> = ({ index }) => {
           value={characterState.actions[index].energyCost}
           onChange={(e) => handleAction(e, index)}
           onBlur={(e) => putAction(index, e)}
+          fullWidth
         />
+      </Grid>
+      <Grid item xs={1}>
+        {index > 0 ? (
+          <div>
+            <DeleteButton clicHandler={(e) => deleteAction(e, index)} />
+          </div>
+        ) : null}
       </Grid>
     </Grid>
   );

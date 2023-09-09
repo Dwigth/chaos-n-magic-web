@@ -87,9 +87,10 @@ export const CSDefenseControl: FC<Props> = ({
       damage = 0;
     }
 
-    if (damage >= total) {
-      damage = total;
-      amount.defenseControl = 0;
+    if (actualDefense >= total) {
+      setAmount((amount) => {
+        return { ...amount, defenseControl: 0 };
+      });
     }
 
     amount.defenseControl = 0;
@@ -100,8 +101,14 @@ export const CSDefenseControl: FC<Props> = ({
   const Heal = () => {
     let heal = Number(actualDefense) + Number(amount.defenseControl);
 
-    if (heal > total) {
+    if (heal >= total) {
       heal = total;
+    }
+
+    if (actualDefense >= total) {
+      setAmount((amount) => {
+        return { ...amount, defenseControl: 0 };
+      });
     }
 
     amount.defenseControl = 0;

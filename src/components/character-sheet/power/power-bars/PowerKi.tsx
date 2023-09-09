@@ -102,8 +102,11 @@ export const PowerKi = () => {
     });
   };
 
-  let setPowerProgress =
-    (pwChaos.actual / characterState.powers.ki.value) * 100;
+  let setPowerProgress = 0;
+
+  if (pwChaos.actual > 0) {
+    setPowerProgress = (pwChaos.actual / characterState.powers.ki.value) * 100;
+  }
 
   return (
     <Box>

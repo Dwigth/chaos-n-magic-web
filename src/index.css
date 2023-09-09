@@ -1,0 +1,39 @@
+.energy_btn {
+    order: 1;
+    height: 70px;
+    width: 40px;
+    
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    z-index: 1;
+    outline: none;
+  
+    background-image: url("assets/images/charsheet/Energy_Full_Icon.png");
+    background-position: center;
+    background-size: 40px;
+    background-repeat: no-repeat;
+  }
+  
+  .energy_btn:checked {
+    opacity: 0;
+    z-index: 0;
+    position: absolute;
+  }
+  
+  .energy_btn:checked ~ .energy_btn {
+    order: 3;
+    background-color: transparent;  
+    background-image: url("assets/images/charsheet/Energy_Unchecked_Icon.png");
+    background-position: center;
+    background-size: 40px;
+    background-repeat: no-repeat;
+}
+  
+  .energy_btn.reset_eng {
+    order: 2;
+    background-image: url("assets/images/charsheet/Energy_Full_Icon.png");
+    background-position: center;
+    background-size: 40px;
+    background-repeat: no-repeat;
+  } 

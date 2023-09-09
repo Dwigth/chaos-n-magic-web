@@ -50,10 +50,18 @@ const BleedingStack: FC<Resistence> = ({ resistence, actValue }) => {
   );
 };
 
+let combat = 0;
+
 export const BleedingStackElement = () => {
   const { characterState } = useCharacter();
 
   let resistence = 6 + Number(characterState.attributes.combat.value);
+
+  if (characterState.attributes.combat.value >= -2) {
+    combat = characterState.attributes.combat.value;
+  } else {
+    combat = -2;
+  }
 
   const [stackValue, setStackValue] = useState({
     bleeding: 0,
@@ -78,7 +86,7 @@ export const BleedingStackElement = () => {
     >
       <Grid item xs={1}>
         <Typography variant="caption" textAlign={"center"}>
-          {resistence}
+          {6 + combat}
         </Typography>
       </Grid>
       <Grid

@@ -51,14 +51,16 @@ function AddDynamicTalent() {
     putTalents(int, "", "");
   };
 
-  const deleteTalent = (int: any) => {
-    characterDispatch({
-      type: "delete_talent",
-      payload: {
-        int,
-      },
-    });
-    putTalents(int);
+  const deleteTalent = (event: any, int: any) => {
+    if (event.details == 2) {
+      characterDispatch({
+        type: "delete_talent",
+        payload: {
+          int,
+        },
+      });
+      putTalents(int);
+    }
   };
 
   return (
@@ -68,8 +70,12 @@ function AddDynamicTalent() {
           <span key={array}>
             {characterState.talents[array].name != null ? (
               <>
-                <Grid sx={{ paddingRight: 1, paddingTop: 2 }}>
-                  <Grid item xs={12}>
+                <Grid
+                  container
+                  direction="row"
+                  sx={{ paddingRight: 1, paddingTop: 2 }}
+                >
+                  <Grid item xs={11}>
                     <TextField
                       variant="outlined"
                       color="secondary"
@@ -87,7 +93,15 @@ function AddDynamicTalent() {
                       }
                     />
                   </Grid>
-
+                  <Grid item xs={1}>
+                    {array > 0 ? (
+                      <DeleteButton
+                        clicHandler={(e) => {
+                          deleteTalent(e, array);
+                        }}
+                      />
+                    ) : null}
+                  </Grid>
                   <Grid item xs={12}>
                     <TextField
                       variant="outlined"
@@ -110,19 +124,12 @@ function AddDynamicTalent() {
                     />
                   </Grid>
                 </Grid>
-
-                {array > 0 ? (
-                  <DeleteButton
-                    clicHandler={() => {
-                      deleteTalent(array);
-                    }}
-                  />
-                ) : null}
               </>
             ) : null}
           </span>
         );
       })}
+
       <AddButton clicHandler={addTalent} />
     </Grid>
   );

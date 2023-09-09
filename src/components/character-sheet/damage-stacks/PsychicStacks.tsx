@@ -47,9 +47,17 @@ const PsychicStack: FC<Resistence> = ({ resistence, actValue }) => {
   );
 };
 
+let mind = 0;
+
 export const PsychicStackElement = () => {
   const { characterState } = useCharacter();
   let resistence = 6 + Number(characterState.attributes.mind.value);
+
+  if (characterState.attributes.mind.value >= -2) {
+    mind = characterState.attributes.mind.value;
+  } else {
+    mind = -2;
+  }
 
   const [stackValue, setStackValue] = useState({
     psychic: 0,
@@ -61,8 +69,6 @@ export const PsychicStackElement = () => {
     setStackValue((stackValue) => {
       return { ...stackValue, [name]: value };
     });
-
-    // if (value >= process) stackValue.psychic = resistence;
   };
 
   return (
@@ -75,7 +81,7 @@ export const PsychicStackElement = () => {
     >
       <Grid item xs={1}>
         <Typography variant="caption" textAlign={"center"}>
-          {resistence}
+          {6 + mind}
         </Typography>
       </Grid>
       <Grid

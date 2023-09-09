@@ -102,8 +102,12 @@ export const PowerFaith = () => {
     });
   };
 
-  let setPowerProgress =
-    (pwChaos.actual / characterState.powers.faith.value) * 100;
+  let setPowerProgress = 0;
+
+  if (pwChaos.actual > 0) {
+    setPowerProgress =
+      (pwChaos.actual / characterState.powers.faith.value) * 100;
+  }
 
   return (
     <Box>

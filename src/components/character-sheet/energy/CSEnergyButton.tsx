@@ -7,6 +7,8 @@ const EnergyBox = styled(Checkbox)(({ theme }) => ({
   width: 32,
   height: 32,
   color: "green",
+  order: 1,
+  zIndex: 1,
   boxShadow:
     theme.palette.mode === "dark"
       ? "0 0 0 1px rgb(16 22 26 / 1%)"
@@ -45,7 +47,7 @@ export function CSEnergyButton(props: CheckboxProps) {
         checkedIcon={
           <img
             src={CheckEnergy}
-            style={{ filter: "saturate(240%) " }}
+            style={{ filter: "saturate(240%)" }}
             width={32}
           />
         }

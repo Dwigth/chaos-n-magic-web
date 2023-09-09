@@ -18,7 +18,7 @@ const CSSlots: FC<checkbox> = ({
         <Grid xs={1} md={1} key={index}>
           <Checkbox
             checked={checkedState[index]}
-            onChange={() => handleCheckboxChange(index)}
+            onChange={handleCheckboxChange}
             color="secondary"
             sx={{ "& .MuiSvgIcon-root": { fontSize: 31 } }}
           />

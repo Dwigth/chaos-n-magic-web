@@ -16,6 +16,7 @@ import LockIcon from "@mui/icons-material/Lock";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 import { useCharacter } from "./reducer-context/CharacterContextProvider";
+import { toast } from "react-toastify";
 
 export const CharacterSheet = () => {
   const [disabled, setDisabled] = useState(false);
@@ -38,6 +39,23 @@ export const CharacterSheet = () => {
     setDisabled(!disabled);
   }
 
+  const advertise = () => {
+    toast.warn(
+      "Recuerda guardar el ID y la contraseña de tu hoja de personaje",
+      {
+        position: "top-center",
+        autoClose: 6000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        icon: true,
+      }
+    );
+  };
+
   async function getSheetInfo() {
     try {
       const response = await fetch(
@@ -53,6 +71,7 @@ export const CharacterSheet = () => {
           payload: data.heroBasicInfo,
         };
         characterDispatch(action);
+        advertise();
       } else {
         setError("Esta hoja de personaje no esta disponible");
 

@@ -21,6 +21,8 @@ const CSSlotsControler = () => {
 
   let columns = 0;
 
+  let carry = 0;
+
   characterState.inventory.items.map(({}, index: number) => {
     if (characterState.inventory.items[index].name != null) {
       name = characterState.inventory.items[index].name;
@@ -71,11 +73,19 @@ const CSSlotsControler = () => {
     new Array(checkboxes.length).fill(false)
   );
 
-  const handleCheckboxChange = (index: any) => {
-    const updatedCheckedState = checkedState.map((item, idx) =>
-      idx === index ? !item : item
+  characterState.inventory.items.map(({}, index: number) => {
+    if (characterState.inventory.items[index].isEquipped == true) {
+      carry +=
+        characterState.inventory.items[index].weight *
+        characterState.inventory.items[index].quantity;
+    }
+  });
+
+  const handleCheckboxChange = () => {
+    const updatedSlots = checkedState.map((item, idx) =>
+      idx < carry ? (item = true) : (item = false)
     );
-    setCheckedState(updatedCheckedState);
+    setCheckedState(updatedSlots);
   };
 
   const countCheckedCheckboxes = () => {
