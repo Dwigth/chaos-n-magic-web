@@ -70,22 +70,22 @@ export function CSEnergyControl() {
         <input type="radio" className="energy_btn" name="energy" /> */}
 
         <Grid item xs={2.5} sm={1.2} md={1.3} lg={1} xl={1}>
-          <CSEnergyButton />
+          <CSEnergyButton defaultChecked />
         </Grid>
         <Grid item xs={2.5} sm={1.2} md={1.3} lg={1} xl={1}>
-          <CSEnergyButton />
+          <CSEnergyButton defaultChecked />
         </Grid>
         <Grid item xs={2.5} sm={1.2} md={1.3} lg={1} xl={1}>
-          <CSEnergyButton />
+          <CSEnergyButton defaultChecked />
         </Grid>
         <Grid item xs={2.5} sm={1.2} md={1.3} lg={1} xl={1}>
-          <CSEnergyButton />
+          <CSEnergyButton defaultChecked />
         </Grid>
         <Grid item xs={2.5} sm={1.2} md={1.3} lg={1} xl={1}>
-          <CSEnergyButton />
+          <CSEnergyButton defaultChecked />
         </Grid>
         <Grid item xs={2.5} sm={1.2} md={1.3} lg={1} xl={1}>
-          <CSEnergyButton />
+          <CSEnergyButton defaultChecked />
         </Grid>
         <GEbuttons />
       </Grid>

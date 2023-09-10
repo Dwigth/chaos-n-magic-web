@@ -68,28 +68,38 @@ const CSSlotsControler = () => {
     if (numberSlots >= 48) numberSlots = 48;
   });
 
-  const checkboxes = Array(numberSlots).fill({});
-  const [checkedState, setCheckedState] = useState(
-    new Array(checkboxes.length).fill(false)
-  );
+  const checkboxes = Array(numberSlots).fill(false);
+  const [checkedState] = useState(new Array(checkboxes.length).fill(false));
 
   characterState.inventory.items.map(({}, index: number) => {
-    if (characterState.inventory.items[index].isEquipped == true) {
+    if (characterState.inventory.items[index].isEquipped == false) {
       carry +=
         characterState.inventory.items[index].weight *
         characterState.inventory.items[index].quantity;
+
+      for (let i = 0; i < carry; i++) {
+        checkedState[i] = true;
+        for (let index = i + 1; index < numberSlots; index++) {
+          checkedState[index] = false;
+        }
+      }
+
+      if (carry <= 0) {
+        for (let index = 0; index < numberSlots; index++) {
+          checkedState[index] = false;
+        }
+      }
+
+      if (carry >= numberSlots) {
+        carry = numberSlots;
+      }
     }
+    //
   });
 
-  const handleCheckboxChange = () => {
-    const updatedSlots = checkedState.map((item, idx) =>
-      idx < carry ? (item = true) : (item = false)
-    );
-    setCheckedState(updatedSlots);
-  };
-
   const countCheckedCheckboxes = () => {
-    const count = checkedState.filter(Boolean).length;
+    // const count = checkedState.filter(Boolean).length;
+    const count = Math.round(carry);
     return count;
   };
 
@@ -107,11 +117,7 @@ const CSSlotsControler = () => {
         alignItems={"center"}
         columns={columns}
       >
-        <CSSlots
-          checkboxes={checkboxes}
-          checkedState={checkedState}
-          handleCheckboxChange={handleCheckboxChange}
-        />
+        <CSSlots checkboxes={checkboxes} checkedState={checkedState} />
         <p>
           Espacio de la mochila en uso:{" "}
           <strong>{countCheckedCheckboxes()}</strong>

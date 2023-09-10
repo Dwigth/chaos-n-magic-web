@@ -225,43 +225,47 @@ export function CSInventoryItem() {
                     </IconButton>
                   </Grid>
                   {characterState.inventory.items[index].showDescription ? (
-                    <Grid item xs={11.8} style={{ padding: 10 }}>
-                      <TextField
-                        color="secondary"
-                        variant="outlined"
-                        label="Descripción"
-                        placeholder="Esta bolsa de dormir es muy cómoda..."
-                        minRows={2}
-                        name="description"
-                        value={
-                          characterState.inventory.items[index].description
-                        }
-                        onChange={(e) => handleInventory(e, index)}
-                        onBlur={() =>
-                          putInventory(
-                            index,
-                            "description",
+                    <>
+                      <Grid item xs={11} style={{ padding: 10 }}>
+                        <TextField
+                          color="secondary"
+                          variant="outlined"
+                          label="Descripción"
+                          placeholder="Esta bolsa de dormir es muy cómoda..."
+                          minRows={2}
+                          name="description"
+                          value={
                             characterState.inventory.items[index].description
-                          )
-                        }
-                        inputProps={{
-                          style: {
-                            fontSize: "12px",
-                          },
-                        }}
-                        multiline
-                        fullWidth
-                      />
-                    </Grid>
+                          }
+                          onChange={(e) => handleInventory(e, index)}
+                          onBlur={() =>
+                            putInventory(
+                              index,
+                              "description",
+                              characterState.inventory.items[index].description
+                            )
+                          }
+                          inputProps={{
+                            style: {
+                              fontSize: "12px",
+                            },
+                          }}
+                          multiline
+                          fullWidth
+                        />
+                      </Grid>
+                      <Grid item xs={1} marginTop={7}>
+                        {index > 0 ? (
+                          <DeleteButton
+                            clicHandler={() => {
+                              deleteInventoryItem(index);
+                            }}
+                          />
+                        ) : null}
+                      </Grid>
+                    </>
                   ) : null}
                 </Grid>
-                {index > 0 ? (
-                  <DeleteButton
-                    clicHandler={() => {
-                      deleteInventoryItem(index);
-                    }}
-                  />
-                ) : null}
               </>
             ) : null}
           </span>
