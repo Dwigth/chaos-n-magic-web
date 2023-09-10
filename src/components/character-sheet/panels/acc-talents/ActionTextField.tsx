@@ -141,7 +141,7 @@ export const ActionTextField: FC<passIndex> = ({ index }) => {
       const ImageAlert = () => {
         return respuestasCM.map((image, indx) => (
           <span key={indx}>
-            <Example imageURL={image} />
+            <Example imageURL={image} />{" "}
           </span>
         ));
       };
@@ -149,8 +149,8 @@ export const ActionTextField: FC<passIndex> = ({ index }) => {
       const FinalResult = () => {
         return (
           <>
-            Resultado de {characterState.actions[index].formula}: {ImageAlert()}{" "}
-            = {respuestasFinales}
+            {characterState.actions[index].formula}: {ImageAlert()} ={" "}
+            {respuestasFinales}
           </>
         );
       };
