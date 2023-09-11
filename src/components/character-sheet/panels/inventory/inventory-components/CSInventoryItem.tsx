@@ -87,14 +87,16 @@ export function CSInventoryItem() {
     });
   };
 
-  const deleteInventoryItem = (int: any) => {
-    characterDispatch({
-      type: "delete_inventory_item",
-      payload: {
-        int,
-      },
-    });
-    EliminateInventoryItem(int);
+  const deleteInventoryItem = (event: any, int: any) => {
+    if (event.detail == 2) {
+      characterDispatch({
+        type: "delete_inventory_item",
+        payload: {
+          int,
+        },
+      });
+      EliminateInventoryItem(int);
+    }
   };
 
   async function newInventory(int: number) {
@@ -257,8 +259,8 @@ export function CSInventoryItem() {
                       <Grid item xs={1} marginTop={7}>
                         {index > 0 ? (
                           <DeleteButton
-                            clicHandler={() => {
-                              deleteInventoryItem(index);
+                            clicHandler={(e) => {
+                              deleteInventoryItem(e, index);
                             }}
                           />
                         ) : null}

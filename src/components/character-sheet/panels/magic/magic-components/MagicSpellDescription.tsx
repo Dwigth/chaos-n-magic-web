@@ -72,15 +72,17 @@ export const MagicSpellDescription: FC<SpellbookDesc> = ({ type, index }) => {
     }
   }
 
-  const deleteMagic = (int: any) => {
-    characterDispatch({
-      type: "delete_magic",
-      payload: {
-        type,
-        int,
-      },
-    });
-    EliminateMagic(int);
+  const deleteMagic = (event: any, int: any) => {
+    if (event.detail == 2) {
+      characterDispatch({
+        type: "delete_magic",
+        payload: {
+          type,
+          int,
+        },
+      });
+      EliminateMagic(int);
+    }
   };
 
   return (
@@ -212,7 +214,7 @@ export const MagicSpellDescription: FC<SpellbookDesc> = ({ type, index }) => {
       </Grid>
       <Grid item xs={12}>
         {index > 0 ? (
-          <DeleteButton clicHandler={() => deleteMagic(index)} />
+          <DeleteButton clicHandler={(e) => deleteMagic(e, index)} />
         ) : null}
       </Grid>
     </Grid>

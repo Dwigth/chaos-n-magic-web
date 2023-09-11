@@ -52,7 +52,7 @@ function AddDynamicTalent() {
   };
 
   const deleteTalent = (event: any, int: any) => {
-    if (event.details == 2) {
+    if (event.detail == 2) {
       characterDispatch({
         type: "delete_talent",
         payload: {
