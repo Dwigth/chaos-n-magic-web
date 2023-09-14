@@ -38,10 +38,10 @@ export const CSCurrentDefense: FC<Props> = ({ actDef }) => {
       <Typography variant="caption">Defensa Actual</Typography>
       <CssTextField
         fullWidth
-        type="number"
+        // type="number"
         id="Defensa"
         value={actDef}
-        style={{ maxWidth: "60%" }}
+        // style={{ maxWidth: "60%" }}
         draggable
         disabled
       />

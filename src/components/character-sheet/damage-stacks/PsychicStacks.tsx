@@ -51,13 +51,14 @@ let mind = 0;
 
 export const PsychicStackElement = () => {
   const { characterState } = useCharacter();
-  let resistence = 6 + Number(characterState.attributes.mind.value);
 
   if (characterState.attributes.mind.value >= -2) {
     mind = characterState.attributes.mind.value;
   } else {
     mind = -2;
   }
+
+  let resistence = 6 + mind;
 
   const [stackValue, setStackValue] = useState({
     psychic: 0,

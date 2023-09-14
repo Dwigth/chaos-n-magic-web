@@ -30,9 +30,18 @@ export default function CSDefense() {
   }
 
   return (
-    <Paper sx={{ padding: "20px", height: "100%" }}>
-      <Grid container rowSpacing={1} spacing={1}>
-        <Grid xs={4}>
+    <Paper sx={{ padding: "10px", height: "100%" }}>
+      <Grid
+        xs={16}
+        sm={13}
+        md={15}
+        lg={15}
+        xl={15}
+        container
+        rowSpacing={1}
+        spacing={1}
+      >
+        <Grid xs={12} sm={3} md={3} lg={3} xl={3}>
           <CSDefenseControl
             getBonus={bonusData}
             actualDefense={defenseAct}
@@ -43,26 +52,28 @@ export default function CSDefense() {
         </Grid>
         <Grid
           container
-          xs={8}
+          xs={9}
           sx={{
             style: {
               backgroundImage: `url(${Image})`,
             },
           }}
         >
-          <Grid xs={6}>
+          {/* <Grid xs={12} sm={12} md={12} lg={15} xl={8}> */}
+          <Grid xs={12} sm={4} md={3} lg={3} xl={3}>
             <CSCurrentDefense actDef={defenseAct} />
           </Grid>
-          <Grid xs={6}>
+          <Grid xs={12} sm={8} md={6} lg={6} xl={6}>
             <CSMaxDefense />
           </Grid>
-          <Grid xs={3}></Grid>
-          <Grid xs={5}>
+          <Grid xs={3.3}></Grid>
+          <Grid xs={12} sm={5} md={4} lg={4} xl={4}>
             <CSDefenseBonus
               bonus={(bonusSh) => setDataBonus(bonusSh)}
               actBonus={bonusData}
             />
           </Grid>
+          {/* </Grid> */}
         </Grid>
       </Grid>
     </Paper>

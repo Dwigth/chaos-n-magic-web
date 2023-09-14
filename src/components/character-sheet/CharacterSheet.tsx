@@ -137,25 +137,25 @@ export const CharacterSheet = () => {
         columns={24}
         rowSpacing={1}
         spacing={1}
-        // columnSpacing={{ xs: 0, sm: 0, md: 0, xl: 0 }}
+        columnSpacing={{ xs: 0, sm: 0, md: 0, xl: 0 }}
       >
-        <Grid xs={24} sm={24} md={8} lg={6} xl={6}>
+        <Grid xs={24} sm={24} md={8} lg={5} xl={5}>
           <CSinfo />
         </Grid>
-        <Grid container xs={24} sm={24} md={16} lg={12} xl={12} spacing={1}>
-          <Grid xs={24} sm={24} md={13} lg={13} xl={14}>
+        <Grid container xs={24} sm={24} md={16} lg={12} xl={13} spacing={0}>
+          <Grid xs={9} sm={12} md={13} lg={13} xl={14}>
             <CSDefense />
           </Grid>
           <Grid
             container
-            xs={24}
-            sm={24}
+            xs={15}
+            sm={12}
             md={11}
             lg={11}
             xl={10}
             direction={"column"}
           >
-            <Grid xs={22} sm={24} md={24} lg={24} xl={24}>
+            <Grid xs={24} sm={24} md={24} lg={24} xl={24}>
               <CSStanceControl />
             </Grid>
             <Grid xs={22} sm={22} md={22} lg={20} xl={22}>
@@ -169,7 +169,7 @@ export const CharacterSheet = () => {
             <CSAttributes />
           </Grid>
         </Grid>
-        <Grid xs={24} sm={24} md={13} lg={6} xl={6}>
+        <Grid xs={24} sm={24} md={13} lg={7} xl={6}>
           <Grid>
             <CSLevelControl />
           </Grid>

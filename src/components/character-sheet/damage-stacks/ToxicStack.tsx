@@ -53,13 +53,13 @@ let fortitude = 0;
 export const ToxicStackElement = () => {
   const { characterState } = useCharacter();
 
-  let resistence = 6 + Number(characterState.attributes.fortitude.value);
-
   if (characterState.attributes.fortitude.value >= -2) {
     fortitude = characterState.attributes.fortitude.value;
   } else {
     fortitude = -2;
   }
+
+  let resistence = 6 + fortitude;
 
   const [stackValue, setStackValue] = useState({
     toxic: 0,

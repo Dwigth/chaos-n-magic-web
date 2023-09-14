@@ -1,6 +1,6 @@
 import {
   Button,
-  ButtonGroup,
+  // ButtonGroup,
   TextField,
   Typography,
   styled,
@@ -118,11 +118,11 @@ export const CSDefenseControl: FC<Props> = ({
 
   return (
     <Grid container spacing={0} alignItems={"center"} justifyContent={"center"}>
-      <Grid xs={12}>
+      <Grid xs={9}>
         <Typography variant="caption">Curar o Recibir Daño</Typography>
       </Grid>
       <Grid xs={2} />
-      <Grid xs={8}>
+      <Grid xs={8} sm={12} md={12} lg={12} xl={12}>
         <CssTextField
           variant="outlined"
           name="defenseControl"
@@ -132,26 +132,29 @@ export const CSDefenseControl: FC<Props> = ({
         />
       </Grid>
       <Grid xs={2} />
-      <Grid xs={12}>
-        {/* <DefenseHealDamage setAccion={(acc) => acc} /> */}
-        <ButtonGroup size="small" variant="contained">
-          <Button
-            variant="contained"
-            color="error"
-            onClick={() => {
-              sendNewDefense(Damage()), sendNewBonus(totalBonus);
-            }}
-          >
-            Daño
-          </Button>
-          <Button
-            variant="contained"
-            color="success"
-            onClick={() => sendNewDefense(Heal())}
-          >
-            Curar
-          </Button>
-        </ButtonGroup>
+      <Grid xs={10} sm={10} md={10} lg={10} xl={10}>
+        {/* <ButtonGroup size="small" variant="contained"> */}
+
+        <Button
+          variant="contained"
+          color="error"
+          style={{ width: "80%" }}
+          onClick={() => {
+            sendNewDefense(Damage()), sendNewBonus(totalBonus);
+          }}
+        >
+          Daño
+        </Button>
+        <Button
+          variant="contained"
+          color="success"
+          style={{ width: "80%" }}
+          onClick={() => sendNewDefense(Heal())}
+        >
+          Curar
+        </Button>
+
+        {/* </ButtonGroup> */}
       </Grid>
     </Grid>
   );

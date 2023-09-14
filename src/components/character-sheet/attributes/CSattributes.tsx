@@ -95,7 +95,7 @@ export const CSAttributes = () => {
         columns={7}
         justifyContent={"center"}
         alignItems={"center"}
-        xs={8}
+        xs={7}
         sm={7}
         md={7}
         lg={7}

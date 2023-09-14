@@ -55,13 +55,13 @@ let combat = 0;
 export const BleedingStackElement = () => {
   const { characterState } = useCharacter();
 
-  let resistence = 6 + Number(characterState.attributes.combat.value);
-
   if (characterState.attributes.combat.value >= -2) {
     combat = characterState.attributes.combat.value;
   } else {
     combat = -2;
   }
+
+  let resistence = 6 + combat;
 
   const [stackValue, setStackValue] = useState({
     bleeding: 0,

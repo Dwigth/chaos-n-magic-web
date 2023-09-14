@@ -12,7 +12,12 @@ export default function CSStanceControl() {
         </Grid2>
         <Grid2
           container
-          padding={2.6}
+          xs={8}
+          sm={7}
+          md={7}
+          lg={7}
+          xl={7}
+          padding={2}
           spacing={3}
           rowSpacing={2}
           /* En esta parte de aquí se vaa leer la cantidad de posturas máximas, se creará 1 Checkbox
@@ -29,17 +34,17 @@ export default function CSStanceControl() {
             <CSStanceIcon defaultChecked />
           </Grid2>
         </Grid2>
-        <Grid2 container xs={3} spacing={0.3}>
-          <Grid2 xs={6}>
+        <Grid2 container xs={4} sm={4} md={4} lg={4} xl={4} spacing={0.5}>
+          <Grid2 xs={4} sm={4} md={4} lg={4} xl={4}>
             <CSTemporalStance />
           </Grid2>
-          <Grid2 xs={6}>
+          <Grid2 xs={5} sm={5} md={5} lg={5} xl={5}>
             <CSTemporalStance />
           </Grid2>
-          <Grid2 xs={6}>
+          <Grid2 xs={4} sm={4} md={4} lg={4} xl={4}>
             <CSTemporalStance />
           </Grid2>
-          <Grid2 xs={6}>
+          <Grid2 xs={5} sm={5} md={5} lg={5} xl={5}>
             <CSTemporalStance />
           </Grid2>
         </Grid2>

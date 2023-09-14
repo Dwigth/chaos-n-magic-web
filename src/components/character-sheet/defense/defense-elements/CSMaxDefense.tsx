@@ -68,7 +68,7 @@ export const CSMaxDefense = () => {
     <>
       <Typography variant="caption">Defensa Máxima</Typography>
       <Grid container direction="row">
-        <Grid item xs={6}>
+        <Grid item xs={7} sm={6} md={7} lg={7} xl={7}>
           <CssTextField
             fullWidth
             type="number"
@@ -87,7 +87,7 @@ export const CSMaxDefense = () => {
             }}
           />
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={8} sm={5} md={5} lg={5} xl={4}>
           <CssTextField
             size="small"
             type="number"
