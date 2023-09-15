@@ -4,6 +4,8 @@ import { CSInventoryList } from "./inventory-components/CSInventoryList";
 import CSSlotsControler from "./inventory-components/CSSlotsControler";
 import CSWalletControler from "./inventory-components/CSWalletControler";
 
+let usedInventory = 0;
+
 export function CSInventoryControl() {
   return (
     <Box>
@@ -36,8 +38,8 @@ export function CSInventoryControl() {
           </Grid>
         </Grid>
         <Grid item xs={12} sm={6} md={4} lg={3} xl={3}>
-          <CSSlotsControler />
-          <CSWalletControler />
+          <CSSlotsControler backPackUsed={(i) => (usedInventory = i)} />
+          <CSWalletControler backPackUsed={usedInventory} />
         </Grid>
       </Grid>
     </Box>

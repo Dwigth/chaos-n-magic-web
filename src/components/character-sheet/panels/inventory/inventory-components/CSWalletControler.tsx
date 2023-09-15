@@ -1,10 +1,14 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 import { Container } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import { useCharacter } from "../../../reducer-context/CharacterContextProvider";
 import CSWalletSlots from "./CSWalletSlots";
 
-const CSWalletControler = () => {
+interface BackPack {
+  backPackUsed: number;
+}
+
+const CSWalletControler: FC<BackPack> = ({ backPackUsed }) => {
   const { characterState } = useCharacter();
 
   let name = "";
@@ -18,6 +22,9 @@ const CSWalletControler = () => {
   let walletGiant = false;
 
   let numberSlots = 0;
+
+  let carry = 0;
+  let newCarry = 0;
 
   characterState.inventory.items.map(({}, index: number) => {
     if (characterState.inventory.items[index].name != null) {
@@ -61,19 +68,42 @@ const CSWalletControler = () => {
   });
 
   const checkboxes = Array(numberSlots).fill({});
-  const [checkedState, setCheckedState] = useState(
-    new Array(checkboxes.length).fill(false)
-  );
+  const [checkedState] = useState(new Array(checkboxes.length).fill(false));
 
-  const handleCheckboxChange = (index: any) => {
-    const updatedCheckedState = checkedState.map((item, idx) =>
-      idx === index ? !item : item
-    );
-    setCheckedState(updatedCheckedState);
-  };
+  characterState.inventory.items.map(({}, index: number) => {
+    if (characterState.inventory.items[index].isEquipped == false) {
+      carry +=
+        characterState.inventory.items[index].weight *
+        characterState.inventory.items[index].quantity;
+
+      if (carry >= backPackUsed || backPackUsed == 0) {
+        newCarry +=
+          characterState.inventory.items[index].weight *
+            characterState.inventory.items[index].quantity -
+          backPackUsed;
+
+        for (let i = 0; i < newCarry; i++) {
+          checkedState[i] = true;
+          for (let index = i + 1; index < numberSlots; index++) {
+            checkedState[index] = false;
+          }
+        }
+      }
+
+      if (newCarry <= 0) {
+        for (let index = 0; index < numberSlots; index++) {
+          checkedState[index] = false;
+        }
+      }
+
+      if (newCarry >= numberSlots) {
+        newCarry = numberSlots;
+      }
+    }
+  });
 
   const countCheckedCheckboxes = () => {
-    const count = checkedState.filter(Boolean).length;
+    const count = Math.round(newCarry);
     return count;
   };
 
@@ -89,11 +119,7 @@ const CSWalletControler = () => {
         columnSpacing={5}
         justifyContent={"flex-start"}
       >
-        <CSWalletSlots
-          checkboxes={checkboxes}
-          checkedState={setCheckedState}
-          handleCheckboxChange={handleCheckboxChange}
-        />
+        <CSWalletSlots checkboxes={checkboxes} checkedState={checkedState} />
       </Grid>
       <p>
         Espacio de la carteras en uso:{" "}

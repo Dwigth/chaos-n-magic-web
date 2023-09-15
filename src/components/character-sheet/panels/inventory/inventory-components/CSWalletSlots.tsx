@@ -5,20 +5,14 @@ import { FC } from "react";
 interface checkbox {
   checkboxes: any;
   checkedState: any;
-  handleCheckboxChange: any;
 }
-const CSWalletSlots: FC<checkbox> = ({
-  checkboxes,
-  checkedState,
-  handleCheckboxChange,
-}) => {
+const CSWalletSlots: FC<checkbox> = ({ checkboxes, checkedState }) => {
   return (
     <>
       {checkboxes.map(({}, index: number) => (
         <Grid xs={1} md={1} key={index}>
           <Checkbox
             checked={checkedState[index]}
-            onChange={() => handleCheckboxChange(index)}
             color="secondary"
             sx={{ "& .MuiSvgIcon-root": { fontSize: 31 } }}
           />

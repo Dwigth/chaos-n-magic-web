@@ -1,10 +1,14 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 import CSSlots from "./CSSlots";
 import { Container } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import { useCharacter } from "../../../reducer-context/CharacterContextProvider";
 
-const CSSlotsControler = () => {
+interface BackPack {
+  backPackUsed: (used: number) => void;
+}
+
+const CSSlotsControler: FC<BackPack> = ({ backPackUsed }) => {
   const { characterState } = useCharacter();
 
   let name = "";
@@ -38,6 +42,7 @@ const CSSlotsControler = () => {
       characterState.inventory.items[index].isEquipped === true
     ) {
       numberSlots += 16;
+
       columns = 4;
     }
 
@@ -46,6 +51,7 @@ const CSSlotsControler = () => {
       characterState.inventory.items[index].isEquipped === true
     ) {
       numberSlots += 25;
+
       columns = 5;
     }
 
@@ -54,6 +60,7 @@ const CSSlotsControler = () => {
       characterState.inventory.items[index].isEquipped === true
     ) {
       numberSlots += 36;
+
       columns = 6;
     }
 
@@ -62,10 +69,15 @@ const CSSlotsControler = () => {
       characterState.inventory.items[index].isEquipped === true
     ) {
       numberSlots += 48;
+
       columns = 6;
     }
 
-    if (numberSlots >= 48) numberSlots = 48;
+    if (numberSlots >= 48) {
+      numberSlots = 48;
+    }
+
+    backPackUsed(numberSlots);
   });
 
   const checkboxes = Array(numberSlots).fill(false);
@@ -99,6 +111,7 @@ const CSSlotsControler = () => {
 
   const countCheckedCheckboxes = () => {
     // const count = checkedState.filter(Boolean).length;
+
     const count = Math.round(carry);
     return count;
   };
