@@ -1,5 +1,5 @@
 import { Grid, IconButton, TextField } from "@mui/material";
-import { FC } from "react";
+import { FC, useState } from "react";
 import { toast } from "react-toastify";
 import Dices from "../../../../assets/images/icons/DiceIcon_DCM_Mini.png";
 
@@ -16,10 +16,33 @@ interface passIndex {
   index: number;
 }
 
+let count = 0;
+
 export const ActionTextField: FC<passIndex> = ({ index }) => {
   const { characterState, characterDispatch } = useCharacter();
+  const [enable, isEnable] = useState(true);
 
   let params = useParams();
+
+  const webhook =
+    "https://discord.com/api/webhooks/1158534821228859423/sT5UpLeVNiILqTz7MVXrdhAEFymBW1f7USqhDV8015WnvlVRSukrQmA5-bo-b58UpOEQ";
+
+  const messageDiscord =
+    "Tirada de " + "**" + characterState.characterName + "**: ";
+
+  async function sendDiscordMessages(val: string) {
+    try {
+      await fetch(webhook, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          content: val,
+        }),
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   async function putAction(int: number, event: any) {
     const { name, value } = event.target;
@@ -82,6 +105,7 @@ export const ActionTextField: FC<passIndex> = ({ index }) => {
 
     let plus = quantity;
     const respuestasCM = Array(plus);
+    const respuestasDiscord = Array(plus);
 
     let bonus = split[1].split("+");
 
@@ -103,31 +127,37 @@ export const ActionTextField: FC<passIndex> = ({ index }) => {
         switch (respuestasCM[i]) {
           case 1:
             respuestasCM[i] = Hoja;
+            respuestasDiscord[i] = ` <:dcmhoja:1115403752598421575> `;
             respuestasFinales += 0;
             break;
 
           case 2:
             respuestasCM[i] = Hoja;
+            respuestasDiscord[i] = ` <:dcmhoja:1115403752598421575> `;
             respuestasFinales += 0;
             break;
 
           case 3:
             respuestasCM[i] = Espada1;
+            respuestasDiscord[i] = ` <:dcm1sw:1115403834710302761> `;
             respuestasFinales += 1;
             break;
 
           case 4:
             respuestasCM[i] = Espada2;
+            respuestasDiscord[i] = ` <:dcm2sw:1115403890020597871> `;
             respuestasFinales += 2;
             break;
 
           case 5:
             respuestasCM[i] = Espada3;
+            respuestasDiscord[i] = ` <:dcm3sw:1115403922652278868> `;
             respuestasFinales += 3;
             break;
 
           case 6:
             respuestasCM[i] = Estrella;
+            respuestasDiscord[i] = ` <:dcmstar:1115403627503288400> `;
             respuestasFinales += 3;
             contador += 1;
             break;
@@ -156,6 +186,24 @@ export const ActionTextField: FC<passIndex> = ({ index }) => {
       };
 
       toast(FinalResult);
+
+      if (enable) {
+        count++;
+        sendDiscordMessages(
+          messageDiscord +
+            respuestasDiscord.join("") +
+            " = " +
+            respuestasFinales
+        );
+        console.log(count);
+
+        if (count >= 3) {
+          isEnable(false);
+          setTimeout(() => {
+            isEnable(true), (count = 0);
+          }, 30000);
+        }
+      }
     } else {
       let mensaje = "Comando incorrecto";
       return errorAlert(mensaje);

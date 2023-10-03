@@ -15,6 +15,7 @@ import Mind from "../../../assets/images/attributes/Attributes_M.png";
 import { useCharacter } from "../reducer-context/CharacterContextProvider";
 import { useParams } from "react-router-dom";
 import DiceAlert from "../../../assets/images/icons/dados-d12.png";
+import { useState } from "react";
 
 const Item = styled(Paper)(({}) => ({
   background: "none",
@@ -28,10 +29,34 @@ function getRandomInt(max: any) {
   return Math.floor(Math.random() * max + 1);
 }
 
+let count = 0;
+
 export const CSAttributes = () => {
   const { characterState, characterDispatch } = useCharacter();
+  const [enable, isEnable] = useState(true);
+  // const [count, setCount] = useState(0);
+
+  const webhook =
+    "https://discord.com/api/webhooks/1158534821228859423/sT5UpLeVNiILqTz7MVXrdhAEFymBW1f7USqhDV8015WnvlVRSukrQmA5-bo-b58UpOEQ";
+
+  const messageDiscord =
+    "Tirada de " + "**" + characterState.characterName + "**: ";
 
   let params = useParams();
+
+  async function sendDiscordMessages(val: string) {
+    try {
+      await fetch(webhook, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          content: val,
+        }),
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   async function putAttributesValues(name: string, val: string) {
     try {
@@ -41,6 +66,22 @@ export const CSAttributes = () => {
         body: JSON.stringify({
           heroSheetId: params.sheetId,
           propertyToUpdate: ["attributes", name, "value"],
+          value: val,
+        }),
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  async function saveDCM(val: string) {
+    try {
+      await fetch(`${import.meta.env.VITE_CHAOS_SERVER}/hero-sheet`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          heroSheetId: params.sheetId,
+          propertyToUpdate: ["notes", 0],
           value: val,
         }),
       });
@@ -83,6 +124,20 @@ export const CSAttributes = () => {
     const mensaje = attr + ": d12(" + random + ") + " + val + " = " + sum;
 
     alerts(mensaje);
+    saveDCM(mensaje);
+
+    if (enable) {
+      count++;
+      sendDiscordMessages(messageDiscord + mensaje);
+      console.log(count);
+
+      if (count >= 3) {
+        isEnable(false);
+        setTimeout(() => {
+          isEnable(true), (count = 0);
+        }, 30000);
+      }
+    }
   };
 
   return (
