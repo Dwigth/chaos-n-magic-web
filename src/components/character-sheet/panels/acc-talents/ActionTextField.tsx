@@ -192,6 +192,8 @@ export const ActionTextField: FC<passIndex> = ({ index }) => {
         sendDiscordMessages(
           messageDiscord +
             respuestasDiscord.join("") +
+            " + " +
+            bonusInt +
             " = " +
             respuestasFinales
         );
