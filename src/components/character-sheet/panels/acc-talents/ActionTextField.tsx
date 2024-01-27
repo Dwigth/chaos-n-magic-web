@@ -199,11 +199,11 @@ export const ActionTextField: FC<passIndex> = ({ index }) => {
         );
         console.log(count);
 
-        if (count >= 3) {
+        if (count >= 24) {
           isEnable(false);
           setTimeout(() => {
             isEnable(true), (count = 0);
-          }, 30000);
+          }, 1000);
         }
       }
     } else {

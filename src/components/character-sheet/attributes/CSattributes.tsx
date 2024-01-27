@@ -131,11 +131,11 @@ export const CSAttributes = () => {
       sendDiscordMessages(messageDiscord + mensaje);
       console.log(count);
 
-      if (count >= 3) {
+      if (count >= 24) {
         isEnable(false);
         setTimeout(() => {
           isEnable(true), (count = 0);
-        }, 30000);
+        }, 1000);
       }
     }
   };
